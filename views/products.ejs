@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>
+    <%= title %>
+  </title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body>
+  <h1>
+  <%= title %>
+  </h1>
+  <% products.forEach(function(product) { %>
+    <h2><%= product.title %></h2>
+    <h4><%= product.model %></h4>
+    <p><%= product.description %></p>
+    <h4>Series: <%= product.series %></h4>
+    <h4>Quantity: <%= product.qty %></h4>
+    <h4>Price: $<%= product.pricing.retail %></h4>
+    <h3>Order Information</h4>
+    <p>Bag Quantity: <%= product.order_information.bag_quantity %></p>
+    <p>Bag Size: <%= product.order_information.bag_size %></p>
+    <p>Material: <%= product.order_information.material %></p>
+    <p>Max Pressure: <%= product.order_information.max_pressure_psi %></p>
+    <p>Connection: <%= product.order_information.connection %></p>
+    <p>Connection Type: <%= product.order_information.connection_type %></p>
+    <br>
+    <% }) %>
+</body>
+
+</html>
