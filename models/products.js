@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
-var schema = mongoose.Schema({
-  model: Number,
+var productSchema = mongoose.Schema({
+  model: String,
   title: String,
   description: String,
   qty: Number,
@@ -16,9 +16,11 @@ var schema = mongoose.Schema({
     max_pressure_psi: Number,
     connection: Number,
     connection_type: String
-  }
+  },
+  dimensions: Array,
+  specifications: Array
 })
 
-var Product = mongoose.model('products', schema);
+var Product = mongoose.model('products', productSchema);
 
 module.exports = Product;
