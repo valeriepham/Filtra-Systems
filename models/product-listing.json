@@ -1,0 +1,1529 @@
+[
+  {
+    "model": "FSC1010202S4NR",
+    "title": "FSC1 Single Bag Filter",
+    "description": "FSC1 Single Bag Filter Housings are used in low flow applications, where high temperatures and pressures are not required. They have a durable stainless steel construction, and utilize an easy to use v-clamp to close the housing.",
+    "qty": "100",
+    "series": "FSC1",
+    "pricing": {
+      "retail": "60"
+    },
+    "order_information": {
+      "bag_quantity": "1",
+      "bag_size": "2",
+      "material": "SS 304",
+      "max_pressure_psi": "87",
+      "connection": "2",
+      "connection_type": "NPT"
+    },
+    "dimensions": [
+      "A: 38 7/8\"",
+      "B: 33 3/4\"",
+      "C: 3 15/16\"",
+      "D: 1 5/16\"",
+      "E: 8\"",
+      "F: 9 5/16\"",
+      "G: 6 1/8\"",
+      "H: 9 3/8\""
+    ],
+    "specifications": [
+      "All vessels have 1/2\" npt vent connection",
+      "Hydraulic Test Pressure: ( 180 psig )",
+      "Design Temperature: ( 14 F – 194 F )",
+      "Filter Volume:",
+      [
+        "#1 (4.75 gal.) ",
+        "#2 (7.40 gal.) "
+      ],
+      "Nuts & Bolts: Zinc coated carbon steel",
+      "Empty Weight: #2 (55.0 lbs)"
+    ]
+  },
+  {
+    "model": "FSC1010202S6NR",
+    "title": "FSC1 Single Bag Filter",
+    "description": "FSC1 Single Bag Filter Housings are used in low flow applications, where high temperatures and pressures are not required. They have a durable stainless steel construction, and utilize an easy to use v-clamp to close the housing.",
+    "qty": "100",
+    "series": "FSC1",
+    "pricing": {
+      "retail": "60"
+    },
+    "order_information": {
+      "bag_quantity": "1",
+      "bag_size": "2",
+      "material": "SS 316L",
+      "max_pressure_psi": "87",
+      "connection": "2",
+      "connection_type": "NPT"
+    },
+    "dimensions": [
+      "A: 38 7/8\"",
+      "B: 33 3/4\"",
+      "C: 3 15/16\"",
+      "D: 1 5/16\"",
+      "E: 8\"",
+      "F: 9 5/16\"",
+      "G: 6 1/8\"",
+      "H: 9 3/8\""
+    ],
+    "specifications": [
+      "All vessels have 1/2\" npt vent connection",
+      "Hydraulic Test Pressure: ( 180 psig )",
+      "Design Temperature: ( 14 F – 194 F )",
+      "Filter Volume:",
+      [
+        "#1 (4.75 gal.) ",
+        "#2 (7.40 gal.) "
+      ],
+      "Nuts & Bolts: Zinc coated carbon steel",
+      "Empty Weight: #2 (55.0 lbs)"
+    ]
+  },
+  {
+    "model": "FSC1010303S4NR",
+    "title": "FSC1 Single Bag Filter",
+    "description": "FSC1 Single Bag Filter Housings are used in low flow applications, where high temperatures and pressures are not required. They have a durable stainless steel construction, and utilize an easy to use v-clamp to close the housing.",
+    "qty": "100",
+    "series": "FSC1",
+    "pricing": {
+      "retail": "60"
+    },
+    "order_information": {
+      "bag_quantity": "1",
+      "bag_size": "2",
+      "material": "SS 304",
+      "max_pressure_psi": "87",
+      "connection": "3",
+      "connection_type": "NPT"
+    },
+    "dimensions": [
+      "A: 38 7/8\"",
+      "B: 33 3/4\"",
+      "C: 3 15/16\"",
+      "D: 1 5/16\"",
+      "E: 8\"",
+      "F: 9 5/16\"",
+      "G: 6 1/8\"",
+      "H: 9 3/8\""
+    ],
+    "specifications": [
+      "All vessels have 1/2\" npt vent connection",
+      "Hydraulic Test Pressure: ( 180 psig )",
+      "Design Temperature: ( 14 F – 194 F )",
+      "Filter Volume:",
+      [
+        "#1 (4.75 gal.) ",
+        "#2 (7.40 gal.) "
+      ],
+      "Nuts & Bolts: Zinc coated carbon steel",
+      "Empty Weight: #2 (55.0 lbs)"
+    ]
+  },
+  {
+    "model": "FSC1010303S6NR",
+    "title": "FSC1 Single Bag Filter",
+    "description": "FSC1 Single Bag Filter Housings are used in low flow applications, where high temperatures and pressures are not required. They have a durable stainless steel construction, and utilize an easy to use v-clamp to close the housing.",
+    "qty": "100",
+    "series": "FSC1",
+    "pricing": {
+      "retail": "60"
+    },
+    "order_information": {
+      "bag_quantity": "1",
+      "bag_size": "2",
+      "material": "SS 316L",
+      "max_pressure_psi": "87",
+      "connection": "3",
+      "connection_type": "NPT"
+    },
+    "dimensions": [
+      "A: 38 7/8\"",
+      "B: 33 3/4\"",
+      "C: 3 15/16\"",
+      "D: 1 5/16\"",
+      "E: 8\"",
+      "F: 9 5/16\"",
+      "G: 6 1/8\"",
+      "H: 9 3/8\""
+    ],
+    "specifications": [
+      "All vessels have 1/2\" npt vent connection",
+      "Hydraulic Test Pressure: ( 180 psig )",
+      "Design Temperature: ( 14 F – 194 F )",
+      "Filter Volume:",
+      [
+        "#1 (4.75 gal.) ",
+        "#2 (7.40 gal.) "
+      ],
+      "Nuts & Bolts: Zinc coated carbon steel",
+      "Empty Weight: #2 (55.0 lbs)"
+    ]
+  },
+  {
+    "model": "FSC2010202S4NR2",
+    "title": "FSC2 Single Bag Filter",
+    "description": "FSC2 Single Bag Filter Housings are used in low flow applications, where high temperatures and pressures are not required. They have a durable stainless steel construction, and utilize an easy to use v-clamp to close the housing.",
+    "qty": "280",
+    "series": "FSC2",
+    "pricing": {
+      "retail": "75"
+    },
+    "order_information": {
+      "bag_quantity": "1",
+      "bag_size": "2",
+      "material": "SS 304",
+      "max_pressure_psi": "87",
+      "connection": "2",
+      "connection_type": "NPT"
+    },
+    "dimensions": [
+      "A: 38 7/8\" - 52 5/8\"",
+      "B: 33 3/4\" - 47 1/2\"",
+      "C: 3 15/16\"",
+      "D: 0\" - 13 3/4\"",
+      "E: 8\"",
+      "F: 5 3/8\"",
+      "G: 12 5/8\""
+    ],
+    "specifications": [
+      "All vessels have 1/2″ npt vent connection",
+      "Hydraulic Test Pressure: ( 180 psig )",
+      "Design Temperature: ( 14 F – 194 F )",
+      "Filter Volume:",
+      [
+        "#2 (7.40 gal.)"
+      ],
+      "Nuts & Bolts: Zinc coated carbon steel",
+      "Empty Weight: #2 (55.0 lbs)"
+    ]
+  },
+  {
+    "model": "FSC2010303S4NR2",
+    "title": "FSC2 Single Bag Filter",
+    "description": "FSC2 Single Bag Filter Housings are used in low flow applications, where high temperatures and pressures are not required. They have a durable stainless steel construction, and utilize an easy to use v-clamp to close the housing.",
+    "qty": "280",
+    "series": "FSC2",
+    "pricing": {
+      "retail": "75"
+    },
+    "order_information": {
+      "bag_quantity": "1",
+      "bag_size": "2",
+      "material": "SS 304",
+      "max_pressure_psi": "87",
+      "connection": "3",
+      "connection_type": "NPT"
+    },
+    "dimensions": [
+      "A: 38 7/8\" - 52 5/8\"",
+      "B: 33 3/4\" - 47 1/2\"",
+      "C: 3 15/16\"",
+      "D: 0\" - 13 3/4\"",
+      "E: 8\"",
+      "F: 5 3/8\"",
+      "G: 12 5/8\""
+    ],
+    "specifications": [
+      "All vessels have 1/2″ npt vent connection",
+      "Hydraulic Test Pressure: ( 180 psig )",
+      "Design Temperature: ( 14 F – 194 F )",
+      "Filter Volume:",
+      [
+        "#2 (7.40 gal.)"
+      ],
+      "Nuts & Bolts: Zinc coated carbon steel",
+      "Empty Weight: #2 (55.0 lbs)"
+    ]
+  },{
+    "model": "FSC2010202S6NR2",
+    "title": "FSC2 Single Bag Filter",
+    "description": "FSC2 Single Bag Filter Housings are used in low flow applications, where high temperatures and pressures are not required. They have a durable stainless steel construction, and utilize an easy to use v-clamp to close the housing.",
+    "qty": "280",
+    "series": "FSC2",
+    "pricing": {
+      "retail": "75"
+    },
+    "order_information": {
+      "bag_quantity": "1",
+      "bag_size": "2",
+      "material": "SS 316L",
+      "max_pressure_psi": "87",
+      "connection": "2",
+      "connection_type": "NPT"
+    },
+    "dimensions": [
+      "A: 38 7/8\" - 52 5/8\"",
+      "B: 33 3/4\" - 47 1/2\"",
+      "C: 3 15/16\"",
+      "D: 0\" - 13 3/4\"",
+      "E: 8\"",
+      "F: 5 3/8\"",
+      "G: 12 5/8\""
+    ],
+    "specifications": [
+      "All vessels have 1/2″ npt vent connection",
+      "Hydraulic Test Pressure: ( 180 psig )",
+      "Design Temperature: ( 14 F – 194 F )",
+      "Filter Volume:",
+      [
+        "#2 (7.40 gal.)"
+      ],
+      "Nuts & Bolts: Zinc coated carbon steel",
+      "Empty Weight: #2 (55.0 lbs)"
+    ]
+  },
+  {
+    "model": "FSC2010303S6NR2",
+    "title": "FSC2 Single Bag Filter",
+    "description": "FSC2 Single Bag Filter Housings are used in low flow applications, where high temperatures and pressures are not required. They have a durable stainless steel construction, and utilize an easy to use v-clamp to close the housing.",
+    "qty": "280",
+    "series": "FSC2",
+    "pricing": {
+      "retail": "75"
+    },
+    "order_information": {
+      "bag_quantity": "1",
+      "bag_size": "2",
+      "material": "SS 316L",
+      "max_pressure_psi": "87",
+      "connection": "3",
+      "connection_type": "NPT"
+    },
+    "dimensions": [
+      "A: 38 7/8\" - 52 5/8\"",
+      "B: 33 3/4\" - 47 1/2\"",
+      "C: 3 15/16\"",
+      "D: 0\" - 13 3/4\"",
+      "E: 8\"",
+      "F: 5 3/8\"",
+      "G: 12 5/8\""
+    ],
+    "specifications": [
+      "All vessels have 1/2″ npt vent connection",
+      "Hydraulic Test Pressure: ( 180 psig )",
+      "Design Temperature: ( 14 F – 194 F )",
+      "Filter Volume:",
+      [
+        "#2 (7.40 gal.)"
+      ],
+      "Nuts & Bolts: Zinc coated carbon steel",
+      "Empty Weight: #2 (55.0 lbs)"
+    ]
+  },
+  {
+    "model": "FSCS010202S4NR2",
+    "title": "FSCS Single Bag Filter",
+    "description": "FSCS Single Bag Filter Housings are used in low flow applications, where high temperatures and pressures are not required. They have a durable carbon steel or stainless steel filter housing construction, and utilize eye bolts to close the housing for high pressure operation. All FSCS vessels fit size #2 filter bags.",
+    "qty": "60",
+    "series": "FSCS",
+    "pricing": {
+      "retail": "180"
+    },
+    "order_information": {
+      "bag_quantity": "1",
+      "bag_size": "2",
+      "material": "SS 304",
+      "max_pressure_psi": "150",
+      "connection": "2",
+      "connection_type": "ANSI Flanged"
+    },
+    "dimensions": [
+      "A: 43 5/16\" - 56 1/2\"",
+      "B: 34 1/16\" - 47 1/4\"",
+      "C: 0 - 13 3/16\"",
+      "D: 4 1/2\"",
+      "E: 8\"",
+      "F: 9 3/8\"",
+      "G: 8 1/4\""
+    ],
+    "specifications": [
+      "All vessels have 1/2″ npt vent connection",
+      "Hydraulic Test Pressure: ( 200 psig )",
+      "Design Temperature: ( 14 F – 194 F )",
+      "Filter Volume:",
+      [
+        "#2 (7.40 gal.)"
+      ],
+      "Nuts & Bolts: Zinc coated carbon steel",
+      "Empty Weight: #1 (72.0 lbs)"
+    ]
+  },
+  {
+    "model": "FSCS010303S4NR2",
+    "title": "FSCS Single Bag Filter",
+    "description": "FSCS Single Bag Filter Housings are used in low flow applications, where high temperatures and pressures are not required. They have a durable carbon steel or stainless steel filter housing construction, and utilize eye bolts to close the housing for high pressure operation. All FSCS vessels fit size #2 filter bags.",
+    "qty": "60",
+    "series": "FSCS",
+    "pricing": {
+      "retail": "180"
+    },
+    "order_information": {
+      "bag_quantity": "1",
+      "bag_size": "2",
+      "material": "SS 304",
+      "max_pressure_psi": "150",
+      "connection": "3",
+      "connection_type": "ANSI Flanged"
+    },
+    "dimensions": [
+      "A: 43 5/16\" - 56 1/2\"",
+      "B: 34 1/16\" - 47 1/4\"",
+      "C: 0 - 13 3/16\"",
+      "D: 4 1/2\"",
+      "E: 8\"",
+      "F: 9 3/8\"",
+      "G: 8 1/4\""
+    ],
+    "specifications": [
+      "All vessels have 1/2″ npt vent connection",
+      "Hydraulic Test Pressure: ( 200 psig )",
+      "Design Temperature: ( 14 F – 194 F )",
+      "Filter Volume:",
+      [
+        "#2 (7.40 gal.)"
+      ],
+      "Nuts & Bolts: Zinc coated carbon steel",
+      "Empty Weight: #1 (72.0 lbs)"
+    ]
+  },
+  {
+    "model": "FSCS010202S6NR2",
+    "title": "FSCS Single Bag Filter",
+    "description": "FSCS Single Bag Filter Housings are used in low flow applications, where high temperatures and pressures are not required. They have a durable carbon steel or stainless steel filter housing construction, and utilize eye bolts to close the housing for high pressure operation. All FSCS vessels fit size #2 filter bags.",
+    "qty": "60",
+    "series": "FSCS",
+    "pricing": {
+      "retail": "180"
+    },
+    "order_information": {
+      "bag_quantity": "1",
+      "bag_size": "2",
+      "material": "SS 316L",
+      "max_pressure_psi": "150",
+      "connection": "2",
+      "connection_type": "ANSI Flanged"
+    },
+    "dimensions": [
+      "A: 43 5/16\" - 56 1/2\"",
+      "B: 34 1/16\" - 47 1/4\"",
+      "C: 0 - 13 3/16\"",
+      "D: 4 1/2\"",
+      "E: 8\"",
+      "F: 9 3/8\"",
+      "G: 8 1/4\""
+    ],
+    "specifications": [
+      "All vessels have 1/2″ npt vent connection",
+      "Hydraulic Test Pressure: ( 200 psig )",
+      "Design Temperature: ( 14 F – 194 F )",
+      "Filter Volume:",
+      [
+        "#2 (7.40 gal.)"
+      ],
+      "Nuts & Bolts: Zinc coated carbon steel",
+      "Empty Weight: #1 (72.0 lbs)"
+    ]
+  },
+  {
+    "model": "FSCS010303S6NR2",
+    "title": "FSCS Single Bag Filter",
+    "description": "FSCS Single Bag Filter Housings are used in low flow applications, where high temperatures and pressures are not required. They have a durable carbon steel or stainless steel filter housing construction, and utilize eye bolts to close the housing for high pressure operation. All FSCS vessels fit size #2 filter bags.",
+    "qty": "60",
+    "series": "FSCS",
+    "pricing": {
+      "retail": "180"
+    },
+    "order_information": {
+      "bag_quantity": "1",
+      "bag_size": "2",
+      "material": "SS 316L",
+      "max_pressure_psi": "150",
+      "connection": "3",
+      "connection_type": "ANSI Flanged"
+    },
+    "dimensions": [
+      "A: 43 5/16\" - 56 1/2\"",
+      "B: 34 1/16\" - 47 1/4\"",
+      "C: 0 - 13 3/16\"",
+      "D: 4 1/2\"",
+      "E: 8\"",
+      "F: 9 3/8\"",
+      "G: 8 1/4\""
+    ],
+    "specifications": [
+      "All vessels have 1/2″ npt vent connection",
+      "Hydraulic Test Pressure: ( 200 psig )",
+      "Design Temperature: ( 14 F – 194 F )",
+      "Filter Volume:",
+      [
+        "#2 (7.40 gal.)"
+      ],
+      "Nuts & Bolts: Zinc coated carbon steel",
+      "Empty Weight: #1 (72.0 lbs)"
+    ]
+  },
+  {
+    "model": "FSCS010202CSVR2",
+    "title": "FSCS Single Bag Filter",
+    "description": "FSCS Single Bag Filter Housings are used in low flow applications, where high temperatures and pressures are not required. They have a durable carbon steel or stainless steel filter housing construction, and utilize eye bolts to close the housing for high pressure operation. All FSCS vessels fit size #2 filter bags.",
+    "qty": "60",
+    "series": "FSCS",
+    "pricing": {
+      "retail": "180"
+    },
+    "order_information": {
+      "bag_quantity": "1",
+      "bag_size": "2",
+      "material": "CS",
+      "max_pressure_psi": "150",
+      "connection": "2",
+      "connection_type": "ANSI Flanged"
+    },
+    "dimensions": [
+      "A: 43 5/16\" - 56 1/2\"",
+      "B: 34 1/16\" - 47 1/4\"",
+      "C: 0 - 13 3/16\"",
+      "D: 4 1/2\"",
+      "E: 8\"",
+      "F: 9 3/8\"",
+      "G: 8 1/4\""
+    ],
+    "specifications": [
+      "All vessels have 1/2″ npt vent connection",
+      "Hydraulic Test Pressure: ( 200 psig )",
+      "Design Temperature: ( 14 F – 194 F )",
+      "Filter Volume:",
+      [
+        "#2 (7.40 gal.)"
+      ],
+      "Nuts & Bolts: Zinc coated carbon steel",
+      "Empty Weight: #1 (72.0 lbs)"
+    ]
+  },
+  {
+    "model": "FSCT010202S4NR2",
+    "title": "FSCT Single Bag Filter",
+    "description": "FSCT Single Bag Filter Housings are used in low flow applications, where high temperatures and pressures are required. They have a durable stainless steel construction, and have a goose-neck inlet for laminar flow. All FSCT vessels fit size #2 filter bags.",
+    "qty": "60",
+    "series": "FSCS",
+    "pricing": {
+      "retail": "180"
+    },
+    "order_information": {
+      "bag_quantity": "1",
+      "bag_size": "2",
+      "material": "SS 304",
+      "max_pressure_psi": "150",
+      "connection": "2",
+      "connection_type": "ANSI Flanged"
+    },
+    "dimensions": [
+      "A: 35 13/16\" - 49\"",
+      "B: 29 5/16\" - 42 9/16\"",
+      "C: 0 - 13 3/16\"",
+      "D: 7 11/16\"",
+      "E: 8\"",
+      "F: 12 5/8\""
+    ],
+    "specifications": [
+      "All vessels have 1/2″ npt vent connection",
+      "Hydraulic Test Pressure: ( 200 psig )",
+      "Design Temperature: ( 14 F – 194 F )",
+      "Filter Volume:",
+      [
+        "#2 (7.40 gal.)"
+      ],
+      "Nuts & Bolts: Zinc coated carbon steel",
+      "Empty Weight: #2 (72.6 lbs)"
+    ]
+  },
+  {
+    "model": "FSCT010202S6NR2",
+    "title": "FSCT Single Bag Filter",
+    "description": "FSCT Single Bag Filter Housings are used in low flow applications, where high temperatures and pressures are required. They have a durable stainless steel construction, and have a goose-neck inlet for laminar flow. All FSCT vessels fit size #2 filter bags.",
+    "qty": "60",
+    "series": "FSCS",
+    "pricing": {
+      "retail": "180"
+    },
+    "order_information": {
+      "bag_quantity": "1",
+      "bag_size": "2",
+      "material": "SS 316L",
+      "max_pressure_psi": "150",
+      "connection": "2",
+      "connection_type": "ANSI Flanged"
+    },
+    "dimensions": [
+      "A: 35 13/16\" - 49\"",
+      "B: 29 5/16\" - 42 9/16\"",
+      "C: 0 - 13 3/16\"",
+      "D: 7 11/16\"",
+      "E: 8\"",
+      "F: 12 5/8\""
+    ],
+    "specifications": [
+      "All vessels have 1/2″ npt vent connection",
+      "Hydraulic Test Pressure: ( 200 psig )",
+      "Design Temperature: ( 14 F – 194 F )",
+      "Filter Volume:",
+      [
+        "#2 (7.40 gal.)"
+      ],
+      "Nuts & Bolts: Zinc coated carbon steel",
+      "Empty Weight: #2 (72.6 lbs)"
+    ]
+  },
+  {
+    "model": "FSQC030303S4NR",
+    "title": "FSQC Multi-Bag Filter",
+    "description": "FSCQ Multiple Bag Filter Housings are used in high flow applications, when minimizing downtime is of the utmost importance. The Quick-Change clamps allow you to change bags quickly, while also allowing high pressure operation.",
+    "qty": "20",
+    "series": "FSQC",
+    "pricing": {
+      "retail": "320"
+    },
+    "order_information": {
+      "bag_quantity": "3",
+      "bag_size": "2",
+      "material": "SS 304",
+      "max_pressure_psi": "150",
+      "connection": "3",
+      "connection_type": "ANSI Flanged"
+    },
+    "dimensions": [
+    ],
+    "specifications": [
+      "All vessels lids have two 1/2″ npt vent connections",
+      "All vessels have a 1 1/4\" drain plug located on the bottom of both the inlet and outlet pipe.",
+      "Hydraulic Test Pressure: ( 200 psig )",
+      "Design Temperature: ( 176 F )",
+      "Standard Inlet and Outlet sizes are listed. Other sizes and orientation may be ordered.",
+      "All vessels sandblasted inside adn out (SSPC-SP5)"
+    ]
+  },
+  {
+    "model": "FSQC040404S4NR",
+    "title": "FSQC Multi-Bag Filter",
+    "description": "FSCQ Multiple Bag Filter Housings are used in high flow applications, when minimizing downtime is of the utmost importance. The Quick-Change clamps allow you to change bags quickly, while also allowing high pressure operation.",
+    "qty": "20",
+    "series": "FSQC",
+    "pricing": {
+      "retail": "320"
+    },
+    "order_information": {
+      "bag_quantity": "4",
+      "bag_size": "2",
+      "material": "SS 304",
+      "max_pressure_psi": "150",
+      "connection": "4",
+      "connection_type": "ANSI Flanged"
+    },
+    "dimensions": [
+    ],
+    "specifications": [
+      "All vessels lids have two 1/2″ npt vent connections",
+      "All vessels have a 1 1/4\" drain plug located on the bottom of both the inlet and outlet pipe.",
+      "Hydraulic Test Pressure: ( 200 psig )",
+      "Design Temperature: ( 176 F )",
+      "Standard Inlet and Outlet sizes are listed. Other sizes and orientation may be ordered.",
+      "All vessels sandblasted inside adn out (SSPC-SP5)"
+    ]
+  },
+  {
+    "model": "FSQC060606S4NR",
+    "title": "FSQC Multi-Bag Filter",
+    "description": "FSCQ Multiple Bag Filter Housings are used in high flow applications, when minimizing downtime is of the utmost importance. The Quick-Change clamps allow you to change bags quickly, while also allowing high pressure operation.",
+    "qty": "20",
+    "series": "FSQC",
+    "pricing": {
+      "retail": "320"
+    },
+    "order_information": {
+      "bag_quantity": "6",
+      "bag_size": "2",
+      "material": "SS 304",
+      "max_pressure_psi": "150",
+      "connection": "6",
+      "connection_type": "ANSI Flanged"
+    },
+    "dimensions": [
+    ],
+    "specifications": [
+      "All vessels lids have two 1/2″ npt vent connections",
+      "All vessels have a 1 1/4\" drain plug located on the bottom of both the inlet and outlet pipe.",
+      "Hydraulic Test Pressure: ( 200 psig )",
+      "Design Temperature: ( 176 F )",
+      "Standard Inlet and Outlet sizes are listed. Other sizes and orientation may be ordered.",
+      "All vessels sandblasted inside adn out (SSPC-SP5)"
+    ]
+  },
+  {
+    "model": "FSQC080808S4NR",
+    "title": "FSQC Multi-Bag Filter",
+    "description": "FSCQ Multiple Bag Filter Housings are used in high flow applications, when minimizing downtime is of the utmost importance. The Quick-Change clamps allow you to change bags quickly, while also allowing high pressure operation.",
+    "qty": "20",
+    "series": "FSQC",
+    "pricing": {
+      "retail": "320"
+    },
+    "order_information": {
+      "bag_quantity": "8",
+      "bag_size": "2",
+      "material": "SS 304",
+      "max_pressure_psi": "150",
+      "connection": "8",
+      "connection_type": "ANSI Flanged"
+    },
+    "dimensions": [
+    ],
+    "specifications": [
+      "All vessels lids have two 1/2″ npt vent connections",
+      "All vessels have a 1 1/4\" drain plug located on the bottom of both the inlet and outlet pipe.",
+      "Hydraulic Test Pressure: ( 200 psig )",
+      "Design Temperature: ( 176 F )",
+      "Standard Inlet and Outlet sizes are listed. Other sizes and orientation may be ordered.",
+      "All vessels sandblasted inside adn out (SSPC-SP5)"
+    ]
+  },
+  {
+    "model": "FSQC120808S4NR",
+    "title": "FSQC Multi-Bag Filter",
+    "description": "FSCQ Multiple Bag Filter Housings are used in high flow applications, when minimizing downtime is of the utmost importance. The Quick-Change clamps allow you to change bags quickly, while also allowing high pressure operation.",
+    "qty": "20",
+    "series": "FSQC",
+    "pricing": {
+      "retail": "320"
+    },
+    "order_information": {
+      "bag_quantity": "12",
+      "bag_size": "2",
+      "material": "SS 304",
+      "max_pressure_psi": "150",
+      "connection": "8",
+      "connection_type": "ANSI Flanged"
+    },
+    "dimensions": [
+    ],
+    "specifications": [
+      "All vessels lids have two 1/2″ npt vent connections",
+      "All vessels have a 1 1/4\" drain plug located on the bottom of both the inlet and outlet pipe.",
+      "Hydraulic Test Pressure: ( 200 psig )",
+      "Design Temperature: ( 176 F )",
+      "Standard Inlet and Outlet sizes are listed. Other sizes and orientation may be ordered.",
+      "All vessels sandblasted inside adn out (SSPC-SP5)"
+    ]
+  },
+  {
+    "model": "FSQC171010S4NR",
+    "title": "FSQC Multi-Bag Filter",
+    "description": "FSCQ Multiple Bag Filter Housings are used in high flow applications, when minimizing downtime is of the utmost importance. The Quick-Change clamps allow you to change bags quickly, while also allowing high pressure operation.",
+    "qty": "20",
+    "series": "FSQC",
+    "pricing": {
+      "retail": "320"
+    },
+    "order_information": {
+      "bag_quantity": "17",
+      "bag_size": "2",
+      "material": "SS 304",
+      "max_pressure_psi": "150",
+      "connection": "10",
+      "connection_type": "ANSI Flanged"
+    },
+    "dimensions": [
+    ],
+    "specifications": [
+      "All vessels lids have two 1/2″ npt vent connections",
+      "All vessels have a 1 1/4\" drain plug located on the bottom of both the inlet and outlet pipe.",
+      "Hydraulic Test Pressure: ( 200 psig )",
+      "Design Temperature: ( 176 F )",
+      "Standard Inlet and Outlet sizes are listed. Other sizes and orientation may be ordered.",
+      "All vessels sandblasted inside adn out (SSPC-SP5)"
+    ]
+  },
+  {
+    "model": "FSQC231010S4NR",
+    "title": "FSQC Multi-Bag Filter",
+    "description": "FSCQ Multiple Bag Filter Housings are used in high flow applications, when minimizing downtime is of the utmost importance. The Quick-Change clamps allow you to change bags quickly, while also allowing high pressure operation.",
+    "qty": "20",
+    "series": "FSQC",
+    "pricing": {
+      "retail": "320"
+    },
+    "order_information": {
+      "bag_quantity": "23",
+      "bag_size": "2",
+      "material": "SS 304",
+      "max_pressure_psi": "150",
+      "connection": "10",
+      "connection_type": "ANSI Flanged"
+    },
+    "dimensions": [
+    ],
+    "specifications": [
+      "All vessels lids have two 1/2″ npt vent connections",
+      "All vessels have a 1 1/4\" drain plug located on the bottom of both the inlet and outlet pipe.",
+      "Hydraulic Test Pressure: ( 200 psig )",
+      "Design Temperature: ( 176 F )",
+      "Standard Inlet and Outlet sizes are listed. Other sizes and orientation may be ordered.",
+      "All vessels sandblasted inside adn out (SSPC-SP5)"
+    ]
+  },
+  {
+    "model": "FSQC030303CSVR",
+    "title": "FSQC Multi-Bag Filter",
+    "description": "FSCQ Multiple Bag Filter Housings are used in high flow applications, when minimizing downtime is of the utmost importance. The Quick-Change clamps allow you to change bags quickly, while also allowing high pressure operation.",
+    "qty": "20",
+    "series": "FSQC",
+    "pricing": {
+      "retail": "320"
+    },
+    "order_information": {
+      "bag_quantity": "3",
+      "bag_size": "2",
+      "material": "CS",
+      "max_pressure_psi": "150",
+      "connection": "3",
+      "connection_type": "ANSI Flanged"
+    },
+    "dimensions": [
+    ],
+    "specifications": [
+      "All vessels lids have two 1/2″ npt vent connections",
+      "All vessels have a 1 1/4\" drain plug located on the bottom of both the inlet and outlet pipe.",
+      "Hydraulic Test Pressure: ( 200 psig )",
+      "Design Temperature: ( 176 F )",
+      "Standard Inlet and Outlet sizes are listed. Other sizes and orientation may be ordered.",
+      "All vessels sandblasted inside adn out (SSPC-SP5)"
+    ]
+  },
+  {
+    "model": "FSQC040404CSVR",
+    "title": "FSQC Multi-Bag Filter",
+    "description": "FSCQ Multiple Bag Filter Housings are used in high flow applications, when minimizing downtime is of the utmost importance. The Quick-Change clamps allow you to change bags quickly, while also allowing high pressure operation.",
+    "qty": "20",
+    "series": "FSQC",
+    "pricing": {
+      "retail": "320"
+    },
+    "order_information": {
+      "bag_quantity": "4",
+      "bag_size": "2",
+      "material": "CS",
+      "max_pressure_psi": "150",
+      "connection": "4",
+      "connection_type": "ANSI Flanged"
+    },
+    "dimensions": [
+    ],
+    "specifications": [
+      "All vessels lids have two 1/2″ npt vent connections",
+      "All vessels have a 1 1/4\" drain plug located on the bottom of both the inlet and outlet pipe.",
+      "Hydraulic Test Pressure: ( 200 psig )",
+      "Design Temperature: ( 176 F )",
+      "Standard Inlet and Outlet sizes are listed. Other sizes and orientation may be ordered.",
+      "All vessels sandblasted inside adn out (SSPC-SP5)"
+    ]
+  },
+  {
+    "model": "FSQC060606CSVR",
+    "title": "FSQC Multi-Bag Filter",
+    "description": "FSCQ Multiple Bag Filter Housings are used in high flow applications, when minimizing downtime is of the utmost importance. The Quick-Change clamps allow you to change bags quickly, while also allowing high pressure operation.",
+    "qty": "20",
+    "series": "FSQC",
+    "pricing": {
+      "retail": "320"
+    },
+    "order_information": {
+      "bag_quantity": "6",
+      "bag_size": "2",
+      "material": "CS",
+      "max_pressure_psi": "150",
+      "connection": "6",
+      "connection_type": "ANSI Flanged"
+    },
+    "dimensions": [
+    ],
+    "specifications": [
+      "All vessels lids have two 1/2″ npt vent connections",
+      "All vessels have a 1 1/4\" drain plug located on the bottom of both the inlet and outlet pipe.",
+      "Hydraulic Test Pressure: ( 200 psig )",
+      "Design Temperature: ( 176 F )",
+      "Standard Inlet and Outlet sizes are listed. Other sizes and orientation may be ordered.",
+      "All vessels sandblasted inside adn out (SSPC-SP5)"
+    ]
+  },
+  {
+    "model": "FSQC080808CSVR",
+    "title": "FSQC Multi-Bag Filter",
+    "description": "FSCQ Multiple Bag Filter Housings are used in high flow applications, when minimizing downtime is of the utmost importance. The Quick-Change clamps allow you to change bags quickly, while also allowing high pressure operation.",
+    "qty": "20",
+    "series": "FSQC",
+    "pricing": {
+      "retail": "320"
+    },
+    "order_information": {
+      "bag_quantity": "8",
+      "bag_size": "2",
+      "material": "CS",
+      "max_pressure_psi": "150",
+      "connection": "8",
+      "connection_type": "ANSI Flanged"
+    },
+    "dimensions": [
+    ],
+    "specifications": [
+      "All vessels lids have two 1/2″ npt vent connections",
+      "All vessels have a 1 1/4\" drain plug located on the bottom of both the inlet and outlet pipe.",
+      "Hydraulic Test Pressure: ( 200 psig )",
+      "Design Temperature: ( 176 F )",
+      "Standard Inlet and Outlet sizes are listed. Other sizes and orientation may be ordered.",
+      "All vessels sandblasted inside adn out (SSPC-SP5)"
+    ]
+  },
+  {
+    "model": "FSQC120808CSVR",
+    "title": "FSQC Multi-Bag Filter",
+    "description": "FSCQ Multiple Bag Filter Housings are used in high flow applications, when minimizing downtime is of the utmost importance. The Quick-Change clamps allow you to change bags quickly, while also allowing high pressure operation.",
+    "qty": "20",
+    "series": "FSQC",
+    "pricing": {
+      "retail": "320"
+    },
+    "order_information": {
+      "bag_quantity": "12",
+      "bag_size": "2",
+      "material": "CS",
+      "max_pressure_psi": "150",
+      "connection": "8",
+      "connection_type": "ANSI Flanged"
+    },
+    "dimensions": [
+    ],
+    "specifications": [
+      "All vessels lids have two 1/2″ npt vent connections",
+      "All vessels have a 1 1/4\" drain plug located on the bottom of both the inlet and outlet pipe.",
+      "Hydraulic Test Pressure: ( 200 psig )",
+      "Design Temperature: ( 176 F )",
+      "Standard Inlet and Outlet sizes are listed. Other sizes and orientation may be ordered.",
+      "All vessels sandblasted inside adn out (SSPC-SP5)"
+    ]
+  },
+  {
+    "model": "FSQC171010CSVR",
+    "title": "FSQC Multi-Bag Filter",
+    "description": "FSCQ Multiple Bag Filter Housings are used in high flow applications, when minimizing downtime is of the utmost importance. The Quick-Change clamps allow you to change bags quickly, while also allowing high pressure operation.",
+    "qty": "20",
+    "series": "FSQC",
+    "pricing": {
+      "retail": "320"
+    },
+    "order_information": {
+      "bag_quantity": "17",
+      "bag_size": "2",
+      "material": "CS",
+      "max_pressure_psi": "150",
+      "connection": "10",
+      "connection_type": "ANSI Flanged"
+    },
+    "dimensions": [
+    ],
+    "specifications": [
+      "All vessels lids have two 1/2″ npt vent connections",
+      "All vessels have a 1 1/4\" drain plug located on the bottom of both the inlet and outlet pipe.",
+      "Hydraulic Test Pressure: ( 200 psig )",
+      "Design Temperature: ( 176 F )",
+      "Standard Inlet and Outlet sizes are listed. Other sizes and orientation may be ordered.",
+      "All vessels sandblasted inside adn out (SSPC-SP5)"
+    ]
+  },
+  {
+    "model": "FSQC231010CSVR",
+    "title": "FSQC Multi-Bag Filter",
+    "description": "FSCQ Multiple Bag Filter Housings are used in high flow applications, when minimizing downtime is of the utmost importance. The Quick-Change clamps allow you to change bags quickly, while also allowing high pressure operation.",
+    "qty": "20",
+    "series": "FSQC",
+    "pricing": {
+      "retail": "320"
+    },
+    "order_information": {
+      "bag_quantity": "23",
+      "bag_size": "2",
+      "material": "CS",
+      "max_pressure_psi": "150",
+      "connection": "10",
+      "connection_type": "ANSI Flanged"
+    },
+    "dimensions": [
+    ],
+    "specifications": [
+      "All vessels lids have two 1/2″ npt vent connections",
+      "All vessels have a 1 1/4\" drain plug located on the bottom of both the inlet and outlet pipe.",
+      "Hydraulic Test Pressure: ( 200 psig )",
+      "Design Temperature: ( 176 F )",
+      "Standard Inlet and Outlet sizes are listed. Other sizes and orientation may be ordered.",
+      "All vessels sandblasted inside adn out (SSPC-SP5)"
+    ]
+  },
+  {
+    "model": "FSQC030303S6NR",
+    "title": "FSQC Multi-Bag Filter",
+    "description": "FSCQ Multiple Bag Filter Housings are used in high flow applications, when minimizing downtime is of the utmost importance. The Quick-Change clamps allow you to change bags quickly, while also allowing high pressure operation.",
+    "qty": "20",
+    "series": "FSQC",
+    "pricing": {
+      "retail": "320"
+    },
+    "order_information": {
+      "bag_quantity": "3",
+      "bag_size": "2",
+      "material": "SS 316L",
+      "max_pressure_psi": "150",
+      "connection": "3",
+      "connection_type": "ANSI Flanged"
+    },
+    "dimensions": [
+    ],
+    "specifications": [
+      "All vessels lids have two 1/2″ npt vent connections",
+      "All vessels have a 1 1/4\" drain plug located on the bottom of both the inlet and outlet pipe.",
+      "Hydraulic Test Pressure: ( 200 psig )",
+      "Design Temperature: ( 176 F )",
+      "Standard Inlet and Outlet sizes are listed. Other sizes and orientation may be ordered.",
+      "All vessels sandblasted inside adn out (SSPC-SP5)"
+    ]
+  },
+  {
+    "model": "FSQC040404S6NR",
+    "title": "FSQC Multi-Bag Filter",
+    "description": "FSCQ Multiple Bag Filter Housings are used in high flow applications, when minimizing downtime is of the utmost importance. The Quick-Change clamps allow you to change bags quickly, while also allowing high pressure operation.",
+    "qty": "20",
+    "series": "FSQC",
+    "pricing": {
+      "retail": "320"
+    },
+    "order_information": {
+      "bag_quantity": "4",
+      "bag_size": "2",
+      "material": "SS 316L",
+      "max_pressure_psi": "150",
+      "connection": "4",
+      "connection_type": "ANSI Flanged"
+    },
+    "dimensions": [
+    ],
+    "specifications": [
+      "All vessels lids have two 1/2″ npt vent connections",
+      "All vessels have a 1 1/4\" drain plug located on the bottom of both the inlet and outlet pipe.",
+      "Hydraulic Test Pressure: ( 200 psig )",
+      "Design Temperature: ( 176 F )",
+      "Standard Inlet and Outlet sizes are listed. Other sizes and orientation may be ordered.",
+      "All vessels sandblasted inside adn out (SSPC-SP5)"
+    ]
+  },
+  {
+    "model": "FSQC060606S6NR",
+    "title": "FSQC Multi-Bag Filter",
+    "description": "FSCQ Multiple Bag Filter Housings are used in high flow applications, when minimizing downtime is of the utmost importance. The Quick-Change clamps allow you to change bags quickly, while also allowing high pressure operation.",
+    "qty": "20",
+    "series": "FSQC",
+    "pricing": {
+      "retail": "320"
+    },
+    "order_information": {
+      "bag_quantity": "6",
+      "bag_size": "2",
+      "material": "SS 316L",
+      "max_pressure_psi": "150",
+      "connection": "6",
+      "connection_type": "ANSI Flanged"
+    },
+    "dimensions": [
+    ],
+    "specifications": [
+      "All vessels lids have two 1/2″ npt vent connections",
+      "All vessels have a 1 1/4\" drain plug located on the bottom of both the inlet and outlet pipe.",
+      "Hydraulic Test Pressure: ( 200 psig )",
+      "Design Temperature: ( 176 F )",
+      "Standard Inlet and Outlet sizes are listed. Other sizes and orientation may be ordered.",
+      "All vessels sandblasted inside adn out (SSPC-SP5)"
+    ]
+  },
+  {
+    "model": "FSQC080808S6NR",
+    "title": "FSQC Multi-Bag Filter",
+    "description": "FSCQ Multiple Bag Filter Housings are used in high flow applications, when minimizing downtime is of the utmost importance. The Quick-Change clamps allow you to change bags quickly, while also allowing high pressure operation.",
+    "qty": "20",
+    "series": "FSQC",
+    "pricing": {
+      "retail": "320"
+    },
+    "order_information": {
+      "bag_quantity": "8",
+      "bag_size": "2",
+      "material": "SS 316L",
+      "max_pressure_psi": "150",
+      "connection": "8",
+      "connection_type": "ANSI Flanged"
+    },
+    "dimensions": [
+    ],
+    "specifications": [
+      "All vessels lids have two 1/2″ npt vent connections",
+      "All vessels have a 1 1/4\" drain plug located on the bottom of both the inlet and outlet pipe.",
+      "Hydraulic Test Pressure: ( 200 psig )",
+      "Design Temperature: ( 176 F )",
+      "Standard Inlet and Outlet sizes are listed. Other sizes and orientation may be ordered.",
+      "All vessels sandblasted inside adn out (SSPC-SP5)"
+    ]
+  },
+  {
+    "model": "FSQC120808S6NR",
+    "title": "FSQC Multi-Bag Filter",
+    "description": "FSCQ Multiple Bag Filter Housings are used in high flow applications, when minimizing downtime is of the utmost importance. The Quick-Change clamps allow you to change bags quickly, while also allowing high pressure operation.",
+    "qty": "20",
+    "series": "FSQC",
+    "pricing": {
+      "retail": "320"
+    },
+    "order_information": {
+      "bag_quantity": "12",
+      "bag_size": "2",
+      "material": "SS 316L",
+      "max_pressure_psi": "150",
+      "connection": "8",
+      "connection_type": "ANSI Flanged"
+    },
+    "dimensions": [
+    ],
+    "specifications": [
+      "All vessels lids have two 1/2″ npt vent connections",
+      "All vessels have a 1 1/4\" drain plug located on the bottom of both the inlet and outlet pipe.",
+      "Hydraulic Test Pressure: ( 200 psig )",
+      "Design Temperature: ( 176 F )",
+      "Standard Inlet and Outlet sizes are listed. Other sizes and orientation may be ordered.",
+      "All vessels sandblasted inside adn out (SSPC-SP5)"
+    ]
+  },
+  {
+    "model": "FSSB030303S4NR",
+    "title": "FSSB Multi-Bag Filter",
+    "description": "FSSB Multiple Bag Filter Housings are used in high flow applications, and can operate under high temperature and pressure. They are constructed of either stainless steel or carbon steel.",
+    "qty": "15",
+    "series": "FSSB",
+    "pricing": {
+      "retail": "350"
+    },
+    "order_information": {
+      "bag_quantity": "3",
+      "bag_size": "2",
+      "material": "SS 304",
+      "max_pressure_psi": "150",
+      "connection": "3",
+      "connection_type": "ANSI Flanged"
+    },
+    "dimensions": [
+    ],
+    "specifications": [
+      "All vessels lids have two 1/2″ npt vent connections",
+      "All vessels have a 1 1/4\" drain plug located on the bottom of both the inlet and outlet pipe.",
+      "Hydraulic Test Pressure: ( 200 psig )",
+      "Design Temperature: ( 176 F )",
+      "Standard Inlet and Outlet sizes are listed. Other sizes and orientation may be ordered.",
+      "All vessels sandblasted inside adn out (SSPC-SP5)"
+    ]
+  },
+  {
+    "model": "FSSB040404S4NR",
+    "title": "FSSB Multi-Bag Filter",
+    "description": "FSSB Multiple Bag Filter Housings are used in high flow applications, and can operate under high temperature and pressure. They are constructed of either stainless steel or carbon steel.",
+    "qty": "15",
+    "series": "FSSB",
+    "pricing": {
+      "retail": "350"
+    },
+    "order_information": {
+      "bag_quantity": "4",
+      "bag_size": "2",
+      "material": "SS 304",
+      "max_pressure_psi": "150",
+      "connection": "4",
+      "connection_type": "ANSI Flanged"
+    },
+    "dimensions": [
+    ],
+    "specifications": [
+      "All vessels lids have two 1/2″ npt vent connections",
+      "All vessels have a 1 1/4\" drain plug located on the bottom of both the inlet and outlet pipe.",
+      "Hydraulic Test Pressure: ( 200 psig )",
+      "Design Temperature: ( 176 F )",
+      "Standard Inlet and Outlet sizes are listed. Other sizes and orientation may be ordered.",
+      "All vessels sandblasted inside adn out (SSPC-SP5)"
+    ]
+  },
+  {
+    "model": "FSSB060606S4NR",
+    "title": "FSSB Multi-Bag Filter",
+    "description": "FSSB Multiple Bag Filter Housings are used in high flow applications, and can operate under high temperature and pressure. They are constructed of either stainless steel or carbon steel.",
+    "qty": "15",
+    "series": "FSSB",
+    "pricing": {
+      "retail": "350"
+    },
+    "order_information": {
+      "bag_quantity": "6",
+      "bag_size": "2",
+      "material": "SS 304",
+      "max_pressure_psi": "150",
+      "connection": "6",
+      "connection_type": "ANSI Flanged"
+    },
+    "dimensions": [
+    ],
+    "specifications": [
+      "All vessels lids have two 1/2″ npt vent connections",
+      "All vessels have a 1 1/4\" drain plug located on the bottom of both the inlet and outlet pipe.",
+      "Hydraulic Test Pressure: ( 200 psig )",
+      "Design Temperature: ( 176 F )",
+      "Standard Inlet and Outlet sizes are listed. Other sizes and orientation may be ordered.",
+      "All vessels sandblasted inside adn out (SSPC-SP5)"
+    ]
+  },
+  {
+    "model": "FSSB80808S4NR",
+    "title": "FSSB Multi-Bag Filter",
+    "description": "FSSB Multiple Bag Filter Housings are used in high flow applications, and can operate under high temperature and pressure. They are constructed of either stainless steel or carbon steel.",
+    "qty": "15",
+    "series": "FSSB",
+    "pricing": {
+      "retail": "350"
+    },
+    "order_information": {
+      "bag_quantity": "8",
+      "bag_size": "2",
+      "material": "SS 304",
+      "max_pressure_psi": "150",
+      "connection": "8",
+      "connection_type": "ANSI Flanged"
+    },
+    "dimensions": [
+    ],
+    "specifications": [
+      "All vessels lids have two 1/2″ npt vent connections",
+      "All vessels have a 1 1/4\" drain plug located on the bottom of both the inlet and outlet pipe.",
+      "Hydraulic Test Pressure: ( 200 psig )",
+      "Design Temperature: ( 176 F )",
+      "Standard Inlet and Outlet sizes are listed. Other sizes and orientation may be ordered.",
+      "All vessels sandblasted inside adn out (SSPC-SP5)"
+    ]
+  },
+  {
+    "model": "FSSB120808S4NR",
+    "title": "FSSB Multi-Bag Filter",
+    "description": "FSSB Multiple Bag Filter Housings are used in high flow applications, and can operate under high temperature and pressure. They are constructed of either stainless steel or carbon steel.",
+    "qty": "15",
+    "series": "FSSB",
+    "pricing": {
+      "retail": "350"
+    },
+    "order_information": {
+      "bag_quantity": "12",
+      "bag_size": "2",
+      "material": "SS 304",
+      "max_pressure_psi": "150",
+      "connection": "8",
+      "connection_type": "ANSI Flanged"
+    },
+    "dimensions": [
+    ],
+    "specifications": [
+      "All vessels lids have two 1/2″ npt vent connections",
+      "All vessels have a 1 1/4\" drain plug located on the bottom of both the inlet and outlet pipe.",
+      "Hydraulic Test Pressure: ( 200 psig )",
+      "Design Temperature: ( 176 F )",
+      "Standard Inlet and Outlet sizes are listed. Other sizes and orientation may be ordered.",
+      "All vessels sandblasted inside adn out (SSPC-SP5)"
+    ]
+  },
+  {
+    "model": "FSSB030303CSVR",
+    "title": "FSSB Multi-Bag Filter",
+    "description": "FSSB Multiple Bag Filter Housings are used in high flow applications, and can operate under high temperature and pressure. They are constructed of either stainless steel or carbon steel.",
+    "qty": "15",
+    "series": "FSSB",
+    "pricing": {
+      "retail": "350"
+    },
+    "order_information": {
+      "bag_quantity": "3",
+      "bag_size": "2",
+      "material": "CS",
+      "max_pressure_psi": "150",
+      "connection": "3",
+      "connection_type": "ANSI Flanged"
+    },
+    "dimensions": [
+    ],
+    "specifications": [
+      "All vessels lids have two 1/2″ npt vent connections",
+      "All vessels have a 1 1/4\" drain plug located on the bottom of both the inlet and outlet pipe.",
+      "Hydraulic Test Pressure: ( 200 psig )",
+      "Design Temperature: ( 176 F )",
+      "Standard Inlet and Outlet sizes are listed. Other sizes and orientation may be ordered.",
+      "All vessels sandblasted inside adn out (SSPC-SP5)"
+    ]
+  },
+  {
+    "model": "FSSB040404CSVR",
+    "title": "FSSB Multi-Bag Filter",
+    "description": "FSSB Multiple Bag Filter Housings are used in high flow applications, and can operate under high temperature and pressure. They are constructed of either stainless steel or carbon steel.",
+    "qty": "15",
+    "series": "FSSB",
+    "pricing": {
+      "retail": "350"
+    },
+    "order_information": {
+      "bag_quantity": "4",
+      "bag_size": "2",
+      "material": "CS",
+      "max_pressure_psi": "150",
+      "connection": "4",
+      "connection_type": "ANSI Flanged"
+    },
+    "dimensions": [
+    ],
+    "specifications": [
+      "All vessels lids have two 1/2″ npt vent connections",
+      "All vessels have a 1 1/4\" drain plug located on the bottom of both the inlet and outlet pipe.",
+      "Hydraulic Test Pressure: ( 200 psig )",
+      "Design Temperature: ( 176 F )",
+      "Standard Inlet and Outlet sizes are listed. Other sizes and orientation may be ordered.",
+      "All vessels sandblasted inside adn out (SSPC-SP5)"
+    ]
+  },
+  {
+    "model": "FSSB060606CSVR",
+    "title": "FSSB Multi-Bag Filter",
+    "description": "FSSB Multiple Bag Filter Housings are used in high flow applications, and can operate under high temperature and pressure. They are constructed of either stainless steel or carbon steel.",
+    "qty": "15",
+    "series": "FSSB",
+    "pricing": {
+      "retail": "350"
+    },
+    "order_information": {
+      "bag_quantity": "6",
+      "bag_size": "2",
+      "material": "CS",
+      "max_pressure_psi": "150",
+      "connection": "6",
+      "connection_type": "ANSI Flanged"
+    },
+    "dimensions": [
+    ],
+    "specifications": [
+      "All vessels lids have two 1/2″ npt vent connections",
+      "All vessels have a 1 1/4\" drain plug located on the bottom of both the inlet and outlet pipe.",
+      "Hydraulic Test Pressure: ( 200 psig )",
+      "Design Temperature: ( 176 F )",
+      "Standard Inlet and Outlet sizes are listed. Other sizes and orientation may be ordered.",
+      "All vessels sandblasted inside adn out (SSPC-SP5)"
+    ]
+  },
+  {
+    "model": "FSSB080808CSVR",
+    "title": "FSSB Multi-Bag Filter",
+    "description": "FSSB Multiple Bag Filter Housings are used in high flow applications, and can operate under high temperature and pressure. They are constructed of either stainless steel or carbon steel.",
+    "qty": "15",
+    "series": "FSSB",
+    "pricing": {
+      "retail": "350"
+    },
+    "order_information": {
+      "bag_quantity": "8",
+      "bag_size": "2",
+      "material": "CS",
+      "max_pressure_psi": "150",
+      "connection": "8",
+      "connection_type": "ANSI Flanged"
+    },
+    "dimensions": [
+    ],
+    "specifications": [
+      "All vessels lids have two 1/2″ npt vent connections",
+      "All vessels have a 1 1/4\" drain plug located on the bottom of both the inlet and outlet pipe.",
+      "Hydraulic Test Pressure: ( 200 psig )",
+      "Design Temperature: ( 176 F )",
+      "Standard Inlet and Outlet sizes are listed. Other sizes and orientation may be ordered.",
+      "All vessels sandblasted inside adn out (SSPC-SP5)"
+    ]
+  },
+  {
+    "model": "FSSB120808CSVR",
+    "title": "FSSB Multi-Bag Filter",
+    "description": "FSSB Multiple Bag Filter Housings are used in high flow applications, and can operate under high temperature and pressure. They are constructed of either stainless steel or carbon steel.",
+    "qty": "15",
+    "series": "FSSB",
+    "pricing": {
+      "retail": "350"
+    },
+    "order_information": {
+      "bag_quantity": "12",
+      "bag_size": "2",
+      "material": "CS",
+      "max_pressure_psi": "150",
+      "connection": "8",
+      "connection_type": "ANSI Flanged"
+    },
+    "dimensions": [
+    ],
+    "specifications": [
+      "All vessels lids have two 1/2″ npt vent connections",
+      "All vessels have a 1 1/4\" drain plug located on the bottom of both the inlet and outlet pipe.",
+      "Hydraulic Test Pressure: ( 200 psig )",
+      "Design Temperature: ( 176 F )",
+      "Standard Inlet and Outlet sizes are listed. Other sizes and orientation may be ordered.",
+      "All vessels sandblasted inside adn out (SSPC-SP5)"
+    ]
+  },
+  {
+    "model": "FSSB030303S6NR",
+    "title": "FSSB Multi-Bag Filter",
+    "description": "FSSB Multiple Bag Filter Housings are used in high flow applications, and can operate under high temperature and pressure. They are constructed of either stainless steel or carbon steel.",
+    "qty": "15",
+    "series": "FSSB",
+    "pricing": {
+      "retail": "350"
+    },
+    "order_information": {
+      "bag_quantity": "3",
+      "bag_size": "2",
+      "material": "SS 316L",
+      "max_pressure_psi": "150",
+      "connection": "3",
+      "connection_type": "ANSI Flanged"
+    },
+    "dimensions": [
+    ],
+    "specifications": [
+      "All vessels lids have two 1/2″ npt vent connections",
+      "All vessels have a 1 1/4\" drain plug located on the bottom of both the inlet and outlet pipe.",
+      "Hydraulic Test Pressure: ( 200 psig )",
+      "Design Temperature: ( 176 F )",
+      "Standard Inlet and Outlet sizes are listed. Other sizes and orientation may be ordered.",
+      "All vessels sandblasted inside adn out (SSPC-SP5)"
+    ]
+  },
+  {
+    "model": "FSSB040404S6NR",
+    "title": "FSSB Multi-Bag Filter",
+    "description": "FSSB Multiple Bag Filter Housings are used in high flow applications, and can operate under high temperature and pressure. They are constructed of either stainless steel or carbon steel.",
+    "qty": "15",
+    "series": "FSSB",
+    "pricing": {
+      "retail": "350"
+    },
+    "order_information": {
+      "bag_quantity": "4",
+      "bag_size": "2",
+      "material": "SS 316L",
+      "max_pressure_psi": "150",
+      "connection": "4",
+      "connection_type": "ANSI Flanged"
+    },
+    "dimensions": [
+    ],
+    "specifications": [
+      "All vessels lids have two 1/2″ npt vent connections",
+      "All vessels have a 1 1/4\" drain plug located on the bottom of both the inlet and outlet pipe.",
+      "Hydraulic Test Pressure: ( 200 psig )",
+      "Design Temperature: ( 176 F )",
+      "Standard Inlet and Outlet sizes are listed. Other sizes and orientation may be ordered.",
+      "All vessels sandblasted inside adn out (SSPC-SP5)"
+    ]
+  },
+  {
+    "model": "FSSB060606S6NR",
+    "title": "FSSB Multi-Bag Filter",
+    "description": "FSSB Multiple Bag Filter Housings are used in high flow applications, and can operate under high temperature and pressure. They are constructed of either stainless steel or carbon steel.",
+    "qty": "15",
+    "series": "FSSB",
+    "pricing": {
+      "retail": "350"
+    },
+    "order_information": {
+      "bag_quantity": "6",
+      "bag_size": "2",
+      "material": "SS 316L",
+      "max_pressure_psi": "150",
+      "connection": "6",
+      "connection_type": "ANSI Flanged"
+    },
+    "dimensions": [
+    ],
+    "specifications": [
+      "All vessels lids have two 1/2″ npt vent connections",
+      "All vessels have a 1 1/4\" drain plug located on the bottom of both the inlet and outlet pipe.",
+      "Hydraulic Test Pressure: ( 200 psig )",
+      "Design Temperature: ( 176 F )",
+      "Standard Inlet and Outlet sizes are listed. Other sizes and orientation may be ordered.",
+      "All vessels sandblasted inside adn out (SSPC-SP5)"
+    ]
+  },
+  {
+    "model": "FSSB080808S6NR",
+    "title": "FSSB Multi-Bag Filter",
+    "description": "FSSB Multiple Bag Filter Housings are used in high flow applications, and can operate under high temperature and pressure. They are constructed of either stainless steel or carbon steel.",
+    "qty": "15",
+    "series": "FSSB",
+    "pricing": {
+      "retail": "350"
+    },
+    "order_information": {
+      "bag_quantity": "8",
+      "bag_size": "2",
+      "material": "SS 316L",
+      "max_pressure_psi": "150",
+      "connection": "8",
+      "connection_type": "ANSI Flanged"
+    },
+    "dimensions": [
+    ],
+    "specifications": [
+      "All vessels lids have two 1/2″ npt vent connections",
+      "All vessels have a 1 1/4\" drain plug located on the bottom of both the inlet and outlet pipe.",
+      "Hydraulic Test Pressure: ( 200 psig )",
+      "Design Temperature: ( 176 F )",
+      "Standard Inlet and Outlet sizes are listed. Other sizes and orientation may be ordered.",
+      "All vessels sandblasted inside adn out (SSPC-SP5)"
+    ]
+  },
+  {
+    "model": "FSSB120808S6NR",
+    "title": "FSSB Multi-Bag Filter",
+    "description": "FSSB Multiple Bag Filter Housings are used in high flow applications, and can operate under high temperature and pressure. They are constructed of either stainless steel or carbon steel.",
+    "qty": "15",
+    "series": "FSSB",
+    "pricing": {
+      "retail": "350"
+    },
+    "order_information": {
+      "bag_quantity": "12",
+      "bag_size": "2",
+      "material": "SS 316L",
+      "max_pressure_psi": "150",
+      "connection": "8",
+      "connection_type": "ANSI Flanged"
+    },
+    "dimensions": [
+    ],
+    "specifications": [
+      "All vessels lids have two 1/2″ npt vent connections",
+      "All vessels have a 1 1/4\" drain plug located on the bottom of both the inlet and outlet pipe.",
+      "Hydraulic Test Pressure: ( 200 psig )",
+      "Design Temperature: ( 176 F )",
+      "Standard Inlet and Outlet sizes are listed. Other sizes and orientation may be ordered.",
+      "All vessels sandblasted inside adn out (SSPC-SP5)"
+    ]
+  }
+]
