@@ -18,7 +18,8 @@ var productSchema = mongoose.Schema({
     connection_type: String
   },
   dimensions: Array,
-  specifications: Array
+  specifications: Array,
+  img: String
 })
 
 var Product = mongoose.model('products', productSchema);
