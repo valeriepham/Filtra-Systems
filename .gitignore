@@ -30,3 +30,6 @@ node_modules
 npm-debug.log
 # Database folder
 db
+
+# IOS system file
+.DS_Store
