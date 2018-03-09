@@ -13,26 +13,15 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <style type="text/css">
 
-    html{
-	height: 100% !important;
-}
-
-.content{
-	flex: 1 0 auto;
-	-webkit-flex: 1 0 auto;
-	min-height: 50px;
-}
+    
         body {
-            display: flex;
-    display: -webkit-flex;
-    flex-direction: column;
-    -webkit-flex-direction: column;
-    height: 100%;
             font-family: 'Alegreya Sans', sans-serif;
-            margin: 10px;
-            border: 10px;
             padding-top: 10px;
             padding-bottom: 10px; 
+            margin-left: 10px;
+            margin-right:10px;
+            border-left:10px;
+            border-right:10px;
             padding-left: 80px;
             padding-right: 80px;
           }
@@ -75,44 +64,11 @@
             border-top: 1px solid black;
           
           }
-#massage{
-	display: inline-block;
-	width: 50%;
-}
-#massage2{
-	display: inline-block;
-	width: 200%;
-}
-#massage3{
-	display: inline-block;
-	width: 200%;
-}
-
-#massage4{
-	display: inline-block;
-	width: 50%;
-}
-
-.navbar-bottom {
-min-height: 100px;
-margin-top: 100px;
-background-color: #00004f;
-padding-top: 25px;
-color:#FFFFFF;
-padding-right: 30px
-}
-
-.square {
-	width: 100%;
-	padding-bottom: 30%;
-	float: left;
-	margin: 1.66%;
-}
-
-#myFooter {
+          #myFooter {
 	background-color: #0099CC;
 	color:white;
 	height: 30%;
+
 }
 
 #myFooter .footer-copyright{
@@ -157,8 +113,8 @@ padding-right: 30px
 
 #myFooter .social-networks{
 	text-align: center;
-	padding-top: 30px;
-	padding-bottom: 38px;
+	
+	
 }
 
 #myFooter .social-networks a{
@@ -166,7 +122,7 @@ padding-right: 30px
     margin-right: 5px;
     margin-left: 5px;
     color: #f9f9f9;
-    padding: 10px;
+    
     transition: 0.2s;
 }
 
@@ -193,74 +149,41 @@ padding-right: 30px
 	}
 }
 
-
-
-/* CSS used for positioning the footers at the bottom of the page. */
-/* You can remove this. */
-
-
-html{
-	height: 100% !important;
-}
-
-body{
-    display: flex;
-    display: -webkit-flex;
-    flex-direction: column;
-    -webkit-flex-direction: column;
-    height: 100%;
-}
-
-.content{
-	flex: 1 0 auto;
-	-webkit-flex: 1 0 auto;
-	max-height: 50px;
-
-
-}
-
-#myFooter{
-	flex: 0 0 auto;
-    -webkit-flex: 0 0 auto;
-}
-.bg-primary {
-    background-color: #0099CC !important;
-}
-
-
-
-/* CSS used for positioning the footers at the bottom of the page. */
-/* You can remove this. */
-
-
-
-
-#myFooter{
-	flex: 0 0 auto;
-    -webkit-flex: 0 0 auto;
-}
-.bg-primary {
-    background-color: #0099CC !important;
-}
-
     </style>
     <title>Shopping Cart</title>
 </head>
-<body>
-    <nav>
-        <div class="navbar-header">
-          
-            <a class="navbar-brand" rel="home" href="#" title="Buy Sell Rent Everyting">
-                <img style="max-width:300px; margin-top: -7px;"
-                     src="../image/logo.png">
-      
+
+<header>
+        <!-- navbar -->
+        <nav class="navbar bg-secondary">
+            <a class="navbar-brand" href="/">
+                <img src="http://www.fsbagfilter.com//wp-content/uploads/2016/06/footerlogo.png">
             </a>
-            <span id="massage4"></span>
-            <a class="navbar-brand" href="#">Search</a>
-            <a class="navbar-brand" href="#">My account</a>
-            <a class="navbar-brand" href="#">Cart</a>	
-        </div>
         </nav>
+        
+        <ul class="nav nav-pills nav-fill bg-primary">
+            <li class="nav-item">
+                <a class="nav-link active" href="\">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="\">About Us</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="\">Catalogue</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="\">Request Quote</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="\">News</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="\">Contact Us</a>
+            </li>
+        </ul>
+    </header>
+<body>
+   
     <a><img src="./image/process-16.png" width=1000px></a>
     <div class="row">
             <div class="col-md-6">
@@ -320,54 +243,56 @@ body{
             <img src="./image/product-FSCT2.jpg" width="153px",height="203px">
             </div>
     </div>
+
     <div class="content">
-      </div>
-          <footer id="myFooter">
-              <div class="container">
-                  <div class="row">
-                      <div class="col-sm-3 myCols">
-                          <h5>Get started</h5>
-                          <ul>
-                              <li><a href="#">Home</a></li>
-                              <li><a href="#">Sign up</a></li>
-                              <li><a href="#">Downloads</a></li>
-                          </ul>
-                      </div>
-                      <div class="col-sm-3 myCols">
-                          <h5>About us</h5>
-                          <ul>
-                              <li><a href="#">Company Information</a></li>
-                              <li><a href="#">Contact us</a></li>
-                              <li><a href="#">Reviews</a></li>
-                          </ul>
-                      </div>
-                      <div class="col-sm-3 myCols">
-                          <h5>Support</h5>
-                          <ul>
-                              <li><a href="#">FAQ</a></li>
-                              <li><a href="#">Help desk</a></li>
-                              <li><a href="#">Forums</a></li>
-                          </ul>
-                      </div>
-                      <div class="col-sm-3 myCols">
-                          <h5>Legal</h5>
-                          <ul>
-                              <li><a href="#">Terms of Service</a></li>
-                              <li><a href="#">Terms of Use</a></li>
-                              <li><a href="#">Privacy Policy</a></li>
-                          </ul>
-                      </div>
-                  </div>
-              </div>
-              <div class="social-networks">
-                  <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
-                  <a href="#" class="facebook"><i class="fa fa-facebook-official"></i></a>
-                  <a href="#" class="google"><i class="fa fa-google-plus"></i></a>
-              </div>
-              <div class="footer-copyright">
-                  <p>© 2016 Copyright Text </p>
-              </div>
-          </footer>
+        </div>
+            <footer id="myFooter">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-3 myCols">
+                            <h5>Get started</h5>
+                            <ul>
+                                <li><a href="#">Home</a></li>
+                                <li><a href="#">Sign up</a></li>
+                                <li><a href="#">Downloads</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-3 myCols">
+                            <h5>About us</h5>
+                            <ul>
+                                <li><a href="#">Company Information</a></li>
+                                <li><a href="#">Contact us</a></li>
+                                <li><a href="#">Reviews</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-3 myCols">
+                            <h5>Support</h5>
+                            <ul>
+                                <li><a href="#">FAQ</a></li>
+                                <li><a href="#">Help desk</a></li>
+                                <li><a href="#">Forums</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-3 myCols">
+                            <h5>Legal</h5>
+                            <ul>
+                                <li><a href="#">Terms of Service</a></li>
+                                <li><a href="#">Terms of Use</a></li>
+                                <li><a href="#">Privacy Policy</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="social-networks">
+                    <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+                    <a href="#" class="facebook"><i class="fa fa-facebook-official"></i></a>
+                    <a href="#" class="google"><i class="fa fa-google-plus"></i></a>
+                </div>
+                <div class="footer-copyright">
+                    <p>© 2016 Copyright Text </p>
+                </div>
+            </footer>
     
 </body>
+
 </html>
