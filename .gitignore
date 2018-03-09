@@ -31,3 +31,5 @@ npm-debug.log
 
 # Database folder
 db/
+
+.DS_Store
