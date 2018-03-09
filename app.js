@@ -17,11 +17,6 @@ let users = require('./routes/users');
 var products = require('./routes/products');
 let catalog = require('./routes/catalog');
 
-//throwing error and appears duplicated
-// db.on('error', function(err) {
-//   console.log(`Error connecting to mongo: ${err}`);
-// });
-
 // setup database connection
 mongoose.connect('mongodb://localhost/dev');
 var db = mongoose.connection;
