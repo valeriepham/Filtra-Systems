@@ -1,4 +1,4 @@
-const PRODUCT = require('../models/products');
+const PRODUCT = require('../models/product');
 
 function listProducts(req, res) {
   PRODUCT.find().exec(function (err, products) {
@@ -15,7 +15,7 @@ function listProducts(req, res) {
   });
 };
 
-function findModel(req, res) {
+function findSeries(req, res) {
   let series = req.params.series;
   PRODUCT.find({ 'series': series }).exec(function (err, product) {
     console.log(series);
@@ -32,4 +32,4 @@ function findModel(req, res) {
   });
 };
 
-module.exports = { listProducts, findModel };
+module.exports = { listProducts, findSeries };

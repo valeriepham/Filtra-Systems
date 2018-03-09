@@ -1,0 +1,51 @@
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+* {
+  border: solid black 1px;
+}
+
+.navbar, .footer {
+  background-color: deepskyblue;
+  color: white;
+  padding: 20px;
+}
+
+.selection {
+  float: left;
+  background-color: lightgrey;
+  padding: 10px;
+  margin: 10px;
+  clear: both;
+  width: 300px;
+}
+
+div.search {
+  background-color: white;
+}
+
+button.icon {
+  float: left;
+  top: 50%;
+  background-color: transparent;
+  width: 30px;
+}
+
+.search input#searchbar{
+  border: none;
+  padding-left: 45px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+
+.product-listing {
+  margin-left: 350px;
+  padding: 10px
+}
+
