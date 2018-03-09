@@ -1,0 +1,39 @@
+
+#massage{
+	display: inline-block;
+	width: 50%;
+}
+#massage2{
+	display: inline-block;
+	width: 200%;
+}
+#massage3{
+	display: inline-block;
+	width: 200%;
+}
+
+#massage4{
+	display: inline-block;
+	width: 50%;
+}
+
+.navbar-bottom {
+min-height: 100px;
+margin-top: 100px;
+background-color: #00004f;
+padding-top: 25px;
+color:#FFFFFF;
+padding-right: 30px
+}
+
+.square {
+	width: 100%;
+	padding-bottom: 30%;
+	float: left;
+	margin: 1.66%;
+}
+/*
+#container {
+	margin: 0px auto;
+	max-width: 900px;
+}*/

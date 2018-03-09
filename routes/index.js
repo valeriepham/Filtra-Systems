@@ -31,4 +31,8 @@ router.get('/product', function(req, res, next) {
 router.get('/cart',function(req, res, next){
   res.redirect('../Cart.html');
 });
+router.get('/home', function(req, res, next) {
+  res.render('homepage_2', { title: 'Express' });
+});
+
 module.exports = router;
