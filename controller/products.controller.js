@@ -7,7 +7,7 @@ function listProducts(req, res) {
       res.render('500', { err: err });
     }
     else {
-      res.render('products', {
+      res.render('product', {
         title: 'PRODUCTS',
         products: products
       });
@@ -24,7 +24,7 @@ function findSeries(req, res) {
       res.render('500', { err: err });
     }
     else {
-      res.render('products', {
+      res.render('product', {
         title: 'Product Page',
         products: product
       });
