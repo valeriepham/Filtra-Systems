@@ -28,4 +28,7 @@ router.get('/product', function(req, res, next) {
 });
 });
 
+router.get('/cart',function(req, res, next){
+  res.redirect('../Cart.html');
+});
 module.exports = router;

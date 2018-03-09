@@ -1,17 +1,25 @@
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-var mongoose = require('mongoose');
+require('dotenv').load();
+let express = require('express');
+let path = require('path');
+let favicon = require('serve-favicon');
+let logger = require('morgan');
+let cookieParser = require('cookie-parser');
+let bodyParser = require('body-parser');
+const session = require('express-session');
+const flash = require('connect-flash');
+const mongoose = require('mongoose');
+const passport = require('passport');
+const User = require('./models/user')
+let bcrypt = require('bcrypt');
+let index = require('./routes/index');
+let users = require('./routes/users');
 
-var index = require('./routes/index');
 var products = require('./routes/products');
 let catalog = require('./routes/catalog');
-var users = require('./routes/users');
 
-var app = express();
+db.on('error', function(err) {
+  console.log(`Error connecting to mongo: ${err}`);
+});
 
 // setup database connection
 mongoose.connect('mongodb://localhost/dev');
@@ -24,6 +32,7 @@ db.once('open', function () {
   console.log('Mongoose connection established');
 });
 
+const app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -35,6 +44,48 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+function getDatabaseUrl(){
+  if(process.env.NODE_ENV === "production") {
+    return process.env.PRODUCTION_DATABASE_URL;
+  }else{
+    return process.env.TEST_DATABASE_URL;
+  }
+}
+
+const days = 24 * 60 * 60 * 1000;
+app.use(session({
+  secret: process.env.APP_SESSION_SECRET,
+  resave: false,
+  saveUninitialized: false,
+  cookie: { maxAge: 1 * days }
+}));
+
+app.use(flash());
+app.use(function(req, res, next) {
+  res.locals.message = req.flash();
+  next();
+});
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+passport.serializeUser(function(user, done) {
+  done(null, user.id);
+});
+
+passport.deserializeUser(function(id, done) {
+  User.findById(id, function(err, user) {
+    done(err, user);  
+  });
+});
+
+app.use(function(req, res, next) {
+  res.locals.login = req.isAuthenticated();
+  res.locals.user = req.user;
+  next();
+});
+
 
 app.use('/', index);
 app.use('/products', products);
