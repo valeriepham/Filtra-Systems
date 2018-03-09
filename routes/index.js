@@ -5,7 +5,7 @@ let controller = require('../controller/products.controller');
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-  res.render('index', { title: 'Home', message: 'This is Filtrasystems beautiful homepage.' });
+  res.render('newhomepage');
 });
 
 router.get('/checkout', function (req, res, next) {
@@ -19,7 +19,7 @@ router.get('/cart', function (req, res, next) {
 });
 
 router.get('/home', function (req, res, next) {
-  res.render('homepage_2', { title: 'Express' });
+  res.render('homepage_2');
 });
 
 module.exports = router;
