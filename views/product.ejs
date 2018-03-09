@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>
-        <%=name%>
+        <%=products[0].title%>
     </title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous">
@@ -49,19 +49,20 @@
             <!-- Information -->
             <div class="col-8">
                 <h1>
-                    <%= name %>
+                    <%= products[0].title %>
                 </h1>
                 <img src="http://www.fsbagfilter.com/wp-content/uploads/2016/06/FSC1-Dim.jpg">
                 <div class="card">
                     <h5 class="card-title">Description</h5>
                     <p class="card-text">
-                        <%= description %>
+                        <%= products[0].description %>
                     </p>
                 </div>
                 <div class="card">
                     <h5 class="card-title">Features</h5>
                     <p class="card-text">
-                        <%= features %>
+                        <!-- Change to actual feature list -->
+                        <%= products[0].description %>
                     </p>
                 </div>
 
@@ -72,7 +73,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Price:
-                            <%= price %>
+                            <%= products[0].pricing.retail %>
                         </h5>
                     </div>
 
@@ -105,32 +106,34 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <% products.forEach(function(product) { %>
                     <tr>
                         <th scope="col">
-                            <%=series%>
+                            <%=product.series%>
                         </th>
                         <th scope="col">
-                            <%=modelnum%>
+                            <%=product.model%>
                         </th>
                         <th scope="col">
-                            <%=quantity%>
+                            <%=product.order_information.bag_quantity%>
                         </th>
                         <th scope="col">
-                            <%=size%>
+                            <%=product.order_information.bag_size%>
                         </th>
                         <th scope="col">
-                            <%=material%>
+                            <%=product.order_information.material%>
                         </th>
                         <th scope="col">
-                            <%=pressure%>
+                            <%=product.order_information.max_pressure_psi%>
                         </th>
                         <th scope="col">
-                            <%=inletoutlet%>
+                            <%=product.order_information.connection%>
                         </th>
                         <th scope="col">
-                            <%=type%>
+                            <%=product.order_information.connection_type%>
                         </th>
                     </tr>
+                    <% }) %>
                 </tbody>
             </table>
         </div>
