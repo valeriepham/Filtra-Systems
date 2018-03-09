@@ -1,10 +1,12 @@
 #myFooter {
-	background-color: #0099CC;
+	background-color: #00aeef;
 	color:white;
+	height: 20%;
+
 }
 
 #myFooter .footer-copyright{
-	background-color: #428bca;
+	background-color: #00aeef;
 	padding-top:3px;
 	padding-bottom:3px;
 	text-align: center;
@@ -45,8 +47,8 @@
 
 #myFooter .social-networks{
 	text-align: center;
-	padding-top: 30px;
-	padding-bottom: 38px;
+	
+	
 }
 
 #myFooter .social-networks a{
@@ -54,7 +56,7 @@
     margin-right: 5px;
     margin-left: 5px;
     color: #f9f9f9;
-    padding: 10px;
+    
     transition: 0.2s;
 }
 
@@ -98,17 +100,28 @@ body{
     -webkit-flex-direction: column;
     height: 100%;
 }
-
 .content{
 	flex: 1 0 auto;
 	-webkit-flex: 1 0 auto;
-	min-height: 50px;
+	
 }
+
 
 #myFooter{
 	flex: 0 0 auto;
     -webkit-flex: 0 0 auto;
+
 }
 .bg-primary {
-    background-color: #0099CC !important;
+    background-color: #00aeef !important;
+}
+.nav_size{
+	height: 100px;
+}
+
+.nav_link_size{
+	height: 100px;
+	font-size: 30px;
+	padding-top: 30px;
+	
 }
