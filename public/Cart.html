@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-    <script src="http://www.w3schools.com/lib/w3data.js"></script>
-    <script>
-       w3IncludeHTML();
-    </script>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <style type="text/css">
 
     
         body {
-            font-family: 'Alegreya Sans', sans-serif;
-            padding-top: 10px;
+            font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: column;
+  -webkit-flex-direction: column;
+  height: 100%;
+  padding-top: 10px;
             padding-bottom: 10px; 
             margin-left: 10px;
             margin-right:10px;
@@ -64,6 +64,45 @@
             border-top: 1px solid black;
           
           }
+          
+#massage{
+	display: inline-block;
+	width: 50%;
+}
+#massage2{
+	display: inline-block;
+	width: 200%;
+}
+#massage3{
+	display: inline-block;
+	width: 200%;
+}
+
+#massage4{
+	display: inline-block;
+	width: 50%;
+}
+
+.navbar-bottom {
+min-height: 100px;
+margin-top: 100px;
+background-color: #00004f;
+padding-top: 25px;
+color:#FFFFFF;
+padding-right: 30px
+}
+
+.square {
+	width: 100%;
+	padding-bottom: 30%;
+	float: left;
+	margin: 1.66%;
+}
+/*
+#container {
+	margin: 0px auto;
+	max-width: 900px;
+}*/
           #myFooter {
 	background-color: #0099CC;
 	color:white;
@@ -154,34 +193,35 @@
 </head>
 
 <header>
-        <!-- navbar -->
-        <nav class="navbar bg-secondary">
-            <a class="navbar-brand" href="/">
-                <img src="http://www.fsbagfilter.com//wp-content/uploads/2016/06/footerlogo.png">
-            </a>
-        </nav>
-        
-        <ul class="nav nav-pills nav-fill bg-primary">
-            <li class="nav-item">
-                <a class="nav-link active" href="\">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active" href="\">About Us</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active" href="\">Catalogue</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active" href="\">Request Quote</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active" href="\">News</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active" href="\">Contact Us</a>
-            </li>
-        </ul>
-    </header>
+    <!-- navbar -->
+    <nav class="navbar bg-primary" background-color: #00aeef height:15%>
+        <a class="navbar-brand" href="/">
+            <img src="https://i.imgur.com/SH2CsNV.png" height:100%>
+        </a>
+    </nav>
+    <div class="nav_size">
+    <ul class="nav nav-pills nav-fill bg-primary" id="nav">
+        <li class="nav-item">
+            <a class="nav-link active nav_link_size" href="\">Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active nav_link_size" href="\">About Us</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active nav_link_size" href="\catalog">Catalogue</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active nav_link_size" href="\">Request Quote</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active nav_link_size" href="\">News</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active nav_link_size" href="\">Contact Us</a>
+        </li>
+    </ul>
+	</div>
+	</header>
 <body>
    
     <a><img src="./image/process-16.png" width=1000px></a>
@@ -195,10 +235,10 @@
                     <th></th>
                     </tr>
                     <tr>
-                    <td class="div-td-1"><img src="./image/product-FSCS.jpg" width="50px" height="100px">FSCS Filter</td>
-                    <td class="div-td-2">6</td>
-                    <td class="div-td-3">$900</td>
-                    <td class="div-td-4">$5400</td>
+                    <td class="div-td-1"><img src="./image/product-FSCS.jpg" width="50px" height="100px">FSC1 Filter</td>
+                    <td class="div-td-2">9</td>
+                    <td class="div-td-3">$60</td>
+                    <td class="div-td-4">$540</td>
                     </tr>                    
                 </table>
                     
@@ -212,19 +252,19 @@
                     </tr>                    
                     <tr class="div-ordersummary-tr-1">
                     <td class="div-ordersummary-td-1">Subtotal</td>
-                    <td class="div-ordersummary-td-2">$5400</td>
+                    <td class="div-ordersummary-td-2">$540</td>
                     </tr>
                     <tr>
                        <td>Estimated Shipping</td> 
-                       <td>$200</td>
+                       <td>$50</td>
                     </tr>
                     <tr>
                         <td>Sales Tax</td>
-                        <td>$300</td>
+                        <td>$44.50</td>
                     </tr>
                     <tr class="div-order-total">
                         <td>Total</td>
-                        <td>$5700</td>
+                        <td>$634.50</td>
                     </tr>
                 </table></div>
     </div>
@@ -244,8 +284,8 @@
             </div>
     </div>
 
-    <div class="content">
-        </div>
+    <!-- <div class="content">
+        </div> -->
             <footer id="myFooter">
                 <div class="container">
                     <div class="row">
@@ -283,16 +323,17 @@
                         </div>
                     </div>
                 </div>
-                <div class="social-networks">
+                <!-- <div class="social-networks">
                     <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
                     <a href="#" class="facebook"><i class="fa fa-facebook-official"></i></a>
                     <a href="#" class="google"><i class="fa fa-google-plus"></i></a>
-                </div>
+                </div> -->
                 <div class="footer-copyright">
                     <p>© 2016 Copyright Text </p>
                 </div>
             </footer>
-    
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 
 </html>

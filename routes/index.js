@@ -19,7 +19,7 @@ router.get('/cart', function (req, res, next) {
 });
 
 router.get('/home', function (req, res, next) {
-  res.render('homepage_2', { title: 'Express' });
+  res.redirect('../newhomepage.html');
 });
 
 module.exports = router;
