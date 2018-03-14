@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+    <script src="http://www.w3schools.com/lib/w3data.js"></script>
+    <script>
+       w3IncludeHTML();
+    </script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <style type="text/css">
+        body {
+            font-family: 'Alegreya Sans', sans-serif;
+            margin: 10px;
+            border: 10px;
+            padding-top: 10px;
+            padding-bottom: 10px; 
+            padding-left: 80px;
+            padding-right: 80px;
+          }
+          
+          h4{
+            font-weight: bold;
+          }
+          a{
+              align-self: center
+          }
+          table.order{
+            width:100%;
+          }
+          .div-ordersummary-tr-1{
+            font-weight:bold;
+          }
+          th {
+            font-size: 20px;
+            border-bottom: 1px solid black;
+          }
+          
+          td{
+            font-size: 15px;
+          }
+          .div-td-1{
+            width:400px;
+          }
+          .div-td-2{
+            width:300px;
+          }
+          .div-td-3{
+            width:400px;
+          }
+          .div-td-4{
+            width:100px;
+          }
+          
+          .div-order-total{
+            font-weight:bold;
+            border-top: 1px solid black;
+          
+          }
+#massage{
+	display: inline-block;
+	width: 50%;
+}
+#massage2{
+	display: inline-block;
+	width: 200%;
+}
+#massage3{
+	display: inline-block;
+	width: 200%;
+}
+
+#massage4{
+	display: inline-block;
+	width: 50%;
+}
+
+.navbar-bottom {
+min-height: 100px;
+margin-top: 100px;
+background-color: #00004f;
+padding-top: 25px;
+color:#FFFFFF;
+padding-right: 30px
+}
+
+.square {
+	width: 100%;
+	padding-bottom: 30%;
+	float: left;
+	margin: 1.66%;
+}
+
+#myFooter {
+	background-color: #0099CC;
+	color:white;
+}
+
+#myFooter .footer-copyright{
+	background-color: #428bca;
+	padding-top:3px;
+	padding-bottom:3px;
+	text-align: center;
+}
+
+#myFooter .footer-copyright p{
+	margin:10px;
+	color: #ccc;
+}
+
+#myFooter ul{
+	list-style-type: none;
+    padding-left: 0;
+    line-height: 1.7;
+
+}
+
+#myFooter h5{
+	font-size: 18px;
+    color: white;
+    font-weight: bold;
+    margin-top: 30px;
+}
+
+#myFooter a{
+	color:#d2d1d1;
+	text-decoration: none;
+}
+
+#myFooter a:hover, #myFooter a:focus{
+	text-decoration: none;
+	color:white;
+}
+
+#myFooter .myCols{
+	text-align: center;
+}
+
+#myFooter .social-networks{
+	text-align: center;
+	padding-top: 30px;
+	padding-bottom: 38px;
+}
+
+#myFooter .social-networks a{
+    font-size: 32px;
+    margin-right: 5px;
+    margin-left: 5px;
+    color: #f9f9f9;
+    padding: 10px;
+    transition: 0.2s;
+}
+
+#myFooter .social-networks a:hover{
+	text-decoration: none;
+
+}
+
+#myFooter .facebook:hover{
+	color:#0077e2;
+}
+
+#myFooter .google:hover{
+	color:#ef1a1a;
+}
+
+#myFooter .twitter:hover{
+	color: #00aced;
+}
+
+@media screen and (max-width: 767px){
+	#myFooter {
+		text-align: center;
+	}
+}
+
+
+
+/* CSS used for positioning the footers at the bottom of the page. */
+/* You can remove this. */
+
+
+html{
+	height: 100% !important;
+}
+
+body{
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    -webkit-flex-direction: column;
+    height: 100%;
+}
+
+.content{
+	flex: 1 0 auto;
+	-webkit-flex: 1 0 auto;
+	min-height: 50px;
+}
+
+#myFooter{
+	flex: 0 0 auto;
+    -webkit-flex: 0 0 auto;
+}
+.bg-primary {
+    background-color: #0099CC !important;
+}
+
+    </style>
+    <title>Shopping Cart</title>
+</head>
+<body>
+    <nav>
+        <div class="navbar-header">
+          
+            <a class="navbar-brand" rel="home" href="#" title="Buy Sell Rent Everyting">
+                <img style="max-width:300px; margin-top: -7px;"
+                     src="../image/logo.png">
+      
+            </a>
+            <span id="massage4"></span>
+            <a class="navbar-brand" href="#">Search</a>
+            <a class="navbar-brand" href="#">My account</a>
+            <a class="navbar-brand" href="#">Cart</a>	
+        </div>
+        </nav>
+    <a><img src="./image/process-16.png" width=1000px></a>
+    <div class="row">
+            <div class="col-md-6">
+                <table class="order">
+                    <tr>
+                    <th>Items</th>
+                    <th>Qty</th>
+                    <th>Price</th>
+                    <th></th>
+                    </tr>
+                    <tr>
+                    <td class="div-td-1"><img src="./image/product-FSCS.jpg" width="50px" height="100px">FSCS Filter</td>
+                    <td class="div-td-2">6</td>
+                    <td class="div-td-3">$900</td>
+                    <td class="div-td-4">$5400</td>
+                    </tr>                    
+                </table>
+                    
+            </div>
+            <div class="col-md-6"><table class="order">
+                    <tr>
+                    <th>Order Summary</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>                    
+                    </tr>                    
+                    <tr class="div-ordersummary-tr-1">
+                    <td class="div-ordersummary-td-1">Subtotal</td>
+                    <td class="div-ordersummary-td-2">$5400</td>
+                    </tr>
+                    <tr>
+                       <td>Estimated Shipping</td> 
+                       <td>$200</td>
+                    </tr>
+                    <tr>
+                        <td>Sales Tax</td>
+                        <td>$300</td>
+                    </tr>
+                    <tr class="div-order-total">
+                        <td>Total</td>
+                        <td>$5700</td>
+                    </tr>
+                </table></div>
+    </div>
+    <br><br><br><br>
+    <h4>Other Product</h4>
+    <div style="width:100%;height:1px;margin:0px auto;padding:0px;background-color:#D5D5D5;overflow:hidden;"></div>
+    <div class="row"></div>
+    <div class="row">
+            <div class="col-md-3">
+            <img src="./image/product-FSCT.jpg" width="153px",height="203px">        
+            </div>
+            <div class="col-md-3">
+            <img src="./image/product-FSCS.jpg" width="153px",height="203px">
+            </div>
+            <div class="col-md-3">
+            <img src="./image/product-FSCT2.jpg" width="153px",height="203px">
+            </div>
+    </div>
+    <div class="content">
+      </div>
+          <footer id="myFooter">
+              <div class="container">
+                  <div class="row">
+                      <div class="col-sm-3 myCols">
+                          <h5>Get started</h5>
+                          <ul>
+                              <li><a href="#">Home</a></li>
+                              <li><a href="#">Sign up</a></li>
+                              <li><a href="#">Downloads</a></li>
+                          </ul>
+                      </div>
+                      <div class="col-sm-3 myCols">
+                          <h5>About us</h5>
+                          <ul>
+                              <li><a href="#">Company Information</a></li>
+                              <li><a href="#">Contact us</a></li>
+                              <li><a href="#">Reviews</a></li>
+                          </ul>
+                      </div>
+                      <div class="col-sm-3 myCols">
+                          <h5>Support</h5>
+                          <ul>
+                              <li><a href="#">FAQ</a></li>
+                              <li><a href="#">Help desk</a></li>
+                              <li><a href="#">Forums</a></li>
+                          </ul>
+                      </div>
+                      <div class="col-sm-3 myCols">
+                          <h5>Legal</h5>
+                          <ul>
+                              <li><a href="#">Terms of Service</a></li>
+                              <li><a href="#">Terms of Use</a></li>
+                              <li><a href="#">Privacy Policy</a></li>
+                          </ul>
+                      </div>
+                  </div>
+              </div>
+              <div class="social-networks">
+                  <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+                  <a href="#" class="facebook"><i class="fa fa-facebook-official"></i></a>
+                  <a href="#" class="google"><i class="fa fa-google-plus"></i></a>
+              </div>
+              <div class="footer-copyright">
+                  <p>© 2016 Copyright Text </p>
+              </div>
+          </footer>
+    
+</body>
+</html>

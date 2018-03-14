@@ -5,93 +5,136 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title><%=name%></title>
+    <title>
+        <%=products[0].title%>
+    </title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
 </head>
+<header>
+    <!-- navbar -->
+    <nav class="navbar bg-secondary">
+        <a class="navbar-brand" href="/">
+            <img src="http://www.fsbagfilter.com//wp-content/uploads/2016/06/footerlogo.png">
+        </a>
+    </nav>
+    
+    <ul class="nav nav-pills nav-fill bg-primary">
+        <li class="nav-item">
+            <a class="nav-link active" href="\">Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" href="#">About Us</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" href="/catalog">Catalogue</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" href="#">Request Quote</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" href="#">News</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" href="#">Contact Us</a>
+        </li>
+    </ul>
+</header>
 
 <body>
-    <!-- main container -->
+    <!-- content -->
     <div class="container">
-        <!-- navbar -->
-        <ul class="nav">
-            <li class="nav-item">
-                <a class="nav-link" href="/">Home</a>
-            </li>
-        </ul>
-
-        <!-- content -->
-        <div class="container">
-            <!-- body -->
-            <div class="row container">
-                <!-- Information -->
-                <div class="col-8">
-                    <h1><%=name%></h1>
-                    <img src="http://www.fsbagfilter.com/wp-content/uploads/2016/06/FSC1-Dim.jpg">
-                    <div class="card">
-                        <h5 class="card-title">Description</h5>
-                        <p class="card-text"><%= description %></p>
-                    </div>
-                    <div class="card">
-                            <h5 class="card-title">Features</h5>
-                            <p class="card-text"><%= features %></p>
-                    </div>
-
+        <!-- body -->
+        <div class="row container">
+            <!-- Information -->
+            <div class="col-8">
+                <h1>
+                    <%= products[0].title %>
+                </h1>
+                <img src="http://www.fsbagfilter.com/wp-content/uploads/2016/06/FSC1-Dim.jpg">
+                <div class="card">
+                    <h5 class="card-title">Description</h5>
+                    <p class="card-text">
+                        <%= products[0].description %>
+                    </p>
                 </div>
-                <!-- payment -->
-                <div class="col-4">
+                <div class="card">
+                    <h5 class="card-title">Features</h5>
+                    <p class="card-text">
+                        <!-- Change to actual feature list -->
+                        <%= products[0].description %>
+                    </p>
+                </div>
 
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Price:
-                                <%= price %>
-                            </h5>
+            </div>
+            <!-- payment -->
+            <div class="col-4">
+
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Price:
+                            <%= products[0].pricing.retail %>
+                        </h5>
+                    </div>
+
+                    <form action="/checkout">
+                        <!-- Quantity -->
+                        <div class="form-group">
+                            <label for="quantity">Quantity: </label>
+                            <input type="number" class="form-control" id="quantity">
                         </div>
-    
-                        <form action="/checkout">
-                            <!-- Quantity -->
-                            <div class="form-group">
-                                <label for="quantity">Quantity: </label>
-                                <input type="number" class="form-control" id="quantity">
-                            </div>
-                            <button type="submit" class="btn btn-primary">Order</button>
-                        </form>
-                    </div>
-
+                        <button type="submit" class="btn btn-primary">Order</button>
+                    </form>
                 </div>
             </div>
+        </div>
 
-            <!-- specs table -->
-            <div class="container">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">Series</th>
-                            <th scope="col">Model #</th>
-                            <th scope="col">Bag Quantity</th>
-                            <th scope="col">Bag Size</th>
-                            <th scope="col">Material</th>
-                            <th scope="col">Max Pressure (PSI)</th>
-                            <th scope="col">Connection Inlet/Outlet</th>
-                            <th scope="col">Connection Type</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="col"><%=series%></th>
-                            <th scope="col"><%=modelnum%></th>
-                            <th scope="col"><%=quantity%></th>
-                            <th scope="col"><%=size%></th>
-                            <th scope="col"><%=material%></th>
-                            <th scope="col"><%=pressure%></th>
-                            <th scope="col"><%=inletoutlet%></th>
-                            <th scope="col"><%=type%></th>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+        <!-- specs table -->
+        <div class="container">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Series</th>
+                        <th scope="col">Model #</th>
+                        <th scope="col">Bag Quantity</th>
+                        <th scope="col">Bag Size</th>
+                        <th scope="col">Material</th>
+                        <th scope="col">Max Pressure (PSI)</th>
+                        <th scope="col">Connection Inlet/Outlet</th>
+                        <th scope="col">Connection Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% products.forEach(function(product) { %>
+                    <tr>
+                        <th scope="col">
+                            <%=product.series%>
+                        </th>
+                        <th scope="col">
+                            <%=product.model%>
+                        </th>
+                        <th scope="col">
+                            <%=product.order_information.bag_quantity%>
+                        </th>
+                        <th scope="col">
+                            <%=product.order_information.bag_size%>
+                        </th>
+                        <th scope="col">
+                            <%=product.order_information.material%>
+                        </th>
+                        <th scope="col">
+                            <%=product.order_information.max_pressure_psi%>
+                        </th>
+                        <th scope="col">
+                            <%=product.order_information.connection%>
+                        </th>
+                        <th scope="col">
+                            <%=product.order_information.connection_type%>
+                        </th>
+                    </tr>
+                    <% }) %>
+                </tbody>
+            </table>
         </div>
     </div>
 
@@ -103,5 +146,26 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
 </body>
+
+<footer>
+    <nav class="navbar navbar-info bg-info">
+        <div class="row">
+            <!-- contact -->
+            <div class="col-sm">
+                <img src="http://www.fsbagfilter.com//wp-content/uploads/2016/06/footerlogo.png">
+                <h4>Contact</h4>
+            </div>
+            <!-- nav and connections -->
+            <div class="col-sm">
+                <h4>Navigation</h4>
+
+            </div>
+            <!-- Hours -->
+            <div class="col-sm">
+                <h4>Hours</h4>
+            </div>
+        </div>
+    </nav>
+</footer>
 
 </html>

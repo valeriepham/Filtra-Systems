@@ -7,7 +7,7 @@ a {
 }
 
 * {
-  border: solid black 1px;
+  /* border: solid black 1px; */
 }
 
 .navbar, .footer {
@@ -35,6 +35,22 @@ button.icon {
   background-color: transparent;
   width: 30px;
 }
+button {
+  padding: 0;
+  border: none
+}
+
+.product a {
+  text-align: center;
+  margin-bottom: 5px;
+  padding-top: 5px;
+  display: block;
+  height: 30px;
+  width: 300px;
+  background-color: #00aeef;
+  color: white;
+
+}
 
 .search input#searchbar{
   border: none;
@@ -49,3 +65,83 @@ button.icon {
   padding: 10px
 }
 
+#myFooter {
+	background-color: #00aeef;
+	color:white;
+	height: 20%;
+
+}
+
+#myFooter .footer-copyright{
+	background-color: #00aeef;
+	padding-top:3px;
+	padding-bottom:3px;
+	text-align: center;
+}
+
+#myFooter .footer-copyright p{
+	margin:10px;
+	color: #ccc;
+}
+
+#myFooter ul{
+	list-style-type: none;
+    padding-left: 0;
+    line-height: 1.7;
+
+}
+
+#myFooter h5{
+	font-size: 18px;
+    color: white;
+    font-weight: bold;
+    margin-top: 30px;
+}
+
+#myFooter a{
+	color:#d2d1d1;
+	text-decoration: none;
+}
+
+#myFooter a:hover, #myFooter a:focus{
+	text-decoration: none;
+	color:white;
+}
+
+#myFooter .myCols{
+	text-align: center;
+}
+
+#myFooter .social-networks{
+	text-align: center;
+}
+
+#myFooter .social-networks a{
+    font-size: 32px;
+    margin-right: 5px;
+    margin-left: 5px;
+    color: #f9f9f9;
+    transition: 0.2s;
+}
+
+#myFooter .social-networks a:hover{
+	text-decoration: none;
+}
+
+#myFooter .facebook:hover{
+	color:#0077e2;
+}
+
+#myFooter .google:hover{
+	color:#ef1a1a;
+}
+
+#myFooter .twitter:hover{
+	color: #00aced;
+}
+
+@media screen and (max-width: 767px){
+	#myFooter {
+		text-align: center;
+	}
+}

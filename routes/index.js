@@ -1,31 +1,25 @@
-var express = require('express');
-var router = express.Router();
+let express = require('express');
+let router = express.Router();
+let controller = require('../controller/products.controller');
+
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Home', message: 'This is Filtrasystems beautiful homepage.' });
+router.get('/', function (req, res, next) {
+  res.render('newhomepage');
 });
 
-router.get('/checkout', function(req, res, next) {
+router.get('/checkout', function (req, res, next) {
   res.render('index', { title: 'Checkout', message: 'This is Filtrasystems beautiful cart.' });
 });
 
-router.get('/product', function(req, res, next) {
-  res.render('product', { 
-  price: '100', 
-  name: 'name',
-  image: 'http://www.fsbagfilter.com/wp-content/uploads/2016/06/FSC1-Dim.jpg',
-  description: 'description',
-  features: 'features',
-  series: 'series',
-  modelnum: 'model',
-  quantity: 'quantity',
-  size: 'size',
-  material: 'material',
-  pressure: 'pressure',
-  inletoutlet: 'inletoutlet',
-  type: 'type'
+router.get('/product/:series', controller.findSeries);
+
+router.get('/cart', function (req, res, next) {
+  res.redirect('../Cart.html');
 });
+
+router.get('/home', function (req, res, next) {
+  res.render('homepage_2');
 });
 
 module.exports = router;
