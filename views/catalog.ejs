@@ -91,19 +91,27 @@
       </div>
       <div class="product-listing">
         LISTING
-        <% products.forEach(function(product){ %>
-          <div class="product">
-            <a href="products/<%= product %>">
-              <%= product %>
-            </a>
+        <% chunks.forEach(function(chunk){ %>
+          <div class="row">
+            <% chunk.forEach(function(series){ %>
+              <div class="col-sm-6 col-md-3">
+                <div class="thumbnail">
+                  <a href="products/<%= series %>">
+                    <img src="images/<%=series%>.jpg" class="img-responsive" alt="<%=series%>">
+                    <div class="caption">
+                      <%= series %>
+                        <p class="description">Blah Blah Blah</p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <%}) %>
           </div>
           <%}) %>
       </div>
     </div>
-    <!--footer-->
 
-    <div class="content">
-    </div>
+    <!--footer-->
     <footer id="myFooter">
       <div class="container">
         <div class="row">
@@ -180,8 +188,10 @@
         <p>© 2016 Copyright Text </p>
       </div>
     </footer>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 </body>
 
 </html>

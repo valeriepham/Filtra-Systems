@@ -5,16 +5,17 @@ let favicon = require('serve-favicon');
 let logger = require('morgan');
 let cookieParser = require('cookie-parser');
 let bodyParser = require('body-parser');
+
 const session = require('express-session');
 const flash = require('connect-flash');
 const mongoose = require('mongoose');
 const passport = require('passport');
 const User = require('./models/user')
+
 let bcrypt = require('bcrypt');
 let index = require('./routes/index');
 let users = require('./routes/users');
-
-var products = require('./routes/products');
+let products = require('./routes/products');
 let catalog = require('./routes/catalog');
 
 // setup database connection
@@ -41,10 +42,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-function getDatabaseUrl(){
-  if(process.env.NODE_ENV === "production") {
+function getDatabaseUrl() {
+  if (process.env.NODE_ENV === "production") {
     return process.env.PRODUCTION_DATABASE_URL;
-  }else{
+  } else {
     return process.env.TEST_DATABASE_URL;
   }
 }
@@ -58,7 +59,7 @@ app.use(session({
 }));
 
 app.use(flash());
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   res.locals.message = req.flash();
   next();
 });
@@ -66,17 +67,17 @@ app.use(function(req, res, next) {
 app.use(passport.initialize());
 app.use(passport.session());
 
-passport.serializeUser(function(user, done) {
+passport.serializeUser(function (user, done) {
   done(null, user.id);
 });
 
-passport.deserializeUser(function(id, done) {
-  User.findById(id, function(err, user) {
-    done(err, user);  
+passport.deserializeUser(function (id, done) {
+  User.findById(id, function (err, user) {
+    done(err, user);
   });
 });
 
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   res.locals.login = req.isAuthenticated();
   res.locals.user = req.user;
   next();

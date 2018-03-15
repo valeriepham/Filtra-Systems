@@ -14,7 +14,7 @@ class Cart{
   }
 
   cartItems() {
-    const arr = [];
+    let arr = [];
     for(const id in this.items) {
       arr.push(this.items[id]);
     }
