@@ -6,11 +6,14 @@ let logger = require('morgan');
 let cookieParser = require('cookie-parser');
 let bodyParser = require('body-parser');
 
-const session = require('express-session');
-const flash = require('connect-flash');
-const mongoose = require('mongoose');
-const passport = require('passport');
-const User = require('./models/user')
+let mongoose = require('mongoose');
+let session = require('express-session');
+let flash = require('connect-flash');
+let passport = require('passport');
+let User = require('./models/user');
+let Cart = require('./models/cart');
+
+let MongoStore = require('connect-mongo')(session);
 
 let bcrypt = require('bcrypt');
 let index = require('./routes/index');
@@ -21,6 +24,7 @@ let catalog = require('./routes/catalog');
 // setup database connection
 mongoose.connect('mongodb://localhost/dev');
 var db = mongoose.connection;
+
 // check for successful connection
 db.on('error', function (msg) {
   console.log('Mongoose connection error %s', msg);
@@ -55,7 +59,8 @@ app.use(session({
   secret: process.env.APP_SESSION_SECRET,
   resave: false,
   saveUninitialized: false,
-  cookie: { maxAge: 1 * days }
+  cookie: { maxAge: 1 * days },
+  store: new MongoStore({ mongooseConnection: db }),
 }));
 
 app.use(flash());
@@ -80,6 +85,7 @@ passport.deserializeUser(function (id, done) {
 app.use(function (req, res, next) {
   res.locals.login = req.isAuthenticated();
   res.locals.user = req.user;
+  res.locals.session = req.session;
   next();
 });
 
