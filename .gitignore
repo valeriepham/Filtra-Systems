@@ -32,4 +32,4 @@ node_modules
 npm-debug.log
 
 # Database Folder
-db
+db/
