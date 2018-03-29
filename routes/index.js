@@ -27,7 +27,7 @@ router.get('/home', function (req, res, next) {
 router.get('/add-to-cart/:id', function (req, res, next) {
   let series = req.params.id;
   let cart = new Cart(req.session.cart ? req.session.cart : {});
-  
+
   PRODUCT.findOne({ 'series': series }).exec(function (err, product) {
     if (err) {
       return res.redirect('/');
@@ -40,14 +40,30 @@ router.get('/add-to-cart/:id', function (req, res, next) {
   });
 });
 
-router.get('/shopping-cart', function(req, res, next) {
+router.get('/shopping-cart', function (req, res, next) {
   if (!req.session.cart) {
-    return res.render('simplecart', {products: null});
+    return res.render('simplecart', { products: null });
   }
   let cart = new Cart(req.session.cart);
   // console.log(cart);
   // console.log(cart.cartItems());
   res.render('simplecart', { products: cart.cartItems(), totalPrice: cart.price() });
 });
+
+router.get('/simplecheckout', function (req, res, next) {
+  if (!req.session.cart) {
+    return res.redirect('/shopping-cart');
+  }
+  let cart = new Cart(req.session.cart);
+  res.render('simplecheckout', { totalPrice: cart.price() });
+})
+
+router.post('/checkout', function (req, res, next) {
+  if (!req.session.cart) {
+    return res.redirect('/shopping-cart');
+  }
+  let stripe = Stripe('sk_test_uxg0FRXwXVLJidLOj1Xvm6AJ');
+
+})
 
 module.exports = router;
