@@ -21,7 +21,7 @@ router.get('/cart', function (req, res, next) {
 });
 
 router.get('/home', function (req, res, next) {
-  res.render('homepage_2');
+  res.redirect('../newhomepage.html');
 });
 
 router.get('/add-to-cart/:id', function (req, res, next) {
