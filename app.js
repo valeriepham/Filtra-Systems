@@ -22,7 +22,7 @@ let products = require('./routes/products');
 let catalog = require('./routes/catalog');
 
 // setup database connection
-mongoose.connect('mongodb://localhost/dev');
+mongoose.connect('mongodb://michael:michael1@ds127139.mlab.com:27139/soba-filtra');
 var db = mongoose.connection;
 
 // check for successful connection
