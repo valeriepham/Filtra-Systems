@@ -123,8 +123,6 @@ button {
 
 #myFooter .social-networks{
 	text-align: center;
-	
-	
 }
 
 #myFooter .social-networks a{
@@ -132,13 +130,11 @@ button {
     margin-right: 5px;
     margin-left: 5px;
     color: #f9f9f9;
-    
     transition: 0.2s;
 }
 
 #myFooter .social-networks a:hover{
 	text-decoration: none;
-
 }
 
 #myFooter .facebook:hover{
@@ -160,10 +156,8 @@ button {
 }
 
 
-
 /* CSS used for positioning the footers at the bottom of the page. */
 /* You can remove this. */
-
 
 html{
 	height: 100% !important;
@@ -172,9 +166,7 @@ html{
 .content{
 	flex: 1 0 auto;
 	-webkit-flex: 1 0 auto;
-	
 }
-
 
 #myFooter{
 	flex: 0 0 auto;

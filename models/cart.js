@@ -9,12 +9,14 @@ class Cart{
       storedItem = this.items[id] = { item: item, quantity: 0, price: 0 };
     }
     storedItem.quantity += 1;
-    storedItem.price = storedItem.item.price * storedItem.item.quantity;
+    // console.log('storedItem.price = ', storedItem.price);
+    // console.log('storedItem.item.pricing.retail = ', storedItem.item.pricing.retail);
+    storedItem.price = storedItem.item.pricing.retail * storedItem.quantity;
 
   }
 
   cartItems() {
-    const arr = [];
+    let arr = [];
     for(const id in this.items) {
       arr.push(this.items[id]);
     }
@@ -26,6 +28,7 @@ class Cart{
     for(const id in this.items) {
       price += this.items[id].price;
     }
+    // console.log(price);
     return price;
   }
 
@@ -34,6 +37,7 @@ class Cart{
     for(const id in this.items) {
       quantity += this.items[id].quantity;
     }
+    // console.log(quantity);
     return quantity;
   }
 }

@@ -1,26 +1,19 @@
 const PRODUCT = require('../models/product');
 
-function allProducts(req, res) {
-  PRODUCT.distinct( "series" ).exec(function (err, serieslist) {
+function allSeries(req, res) {
+  PRODUCT.distinct("series").exec(function (err, seriesList) {
     if (err) {
       console.log('Error creating distinct list');
     }
     else {
-      console.log(serieslist);
-      let series = []
-      for (let serie of serieslist) {
-        PRODUCT.findOne({ 'series': serie }).exec(function (err, product) {
-          if (err) {
-            console.log('Error finding product for series: ' + serie);
-          }
-          else {
-            console.log(product.series, ' appended');
-            series.push(product);
-          }
-        });
+      let chunks = [];
+      let chunkSize = 3;
+      for (let i = 0; i < seriesList.length; i += chunkSize) {
+        chunks.push(seriesList.slice(i, i + chunkSize));
       }
-      console.log(series);
-      res.render('catalog', {products: serieslist});
+      console.log(seriesList);
+      console.log(chunks);
+      res.render('catalog', { seriesList: seriesList, chunks: chunks });
     }
   });
 };
@@ -42,4 +35,4 @@ function findSeries(req, res) {
   });
 };
 
-module.exports = { allProducts, findSeries };
+module.exports = { allSeries, findSeries };
