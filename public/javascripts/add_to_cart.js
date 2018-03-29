@@ -1,3 +1,5 @@
+// Code adapted from mongoDB tutorial... not being used.
+
 let add_to_cart = function (cart_id, model, details) {
   let now = Date.now();
 
