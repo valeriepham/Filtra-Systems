@@ -8,7 +8,7 @@ class Cart{
     if(!storedItem) {
       storedItem = this.items[id] = { item: item, quantity: 0, price: 0 };
     }
-    storedItem.quantity += qty;
+    storedItem.quantity += parseInt(qty, 10);
     // console.log('storedItem.price = ', storedItem.price);
     // console.log('storedItem.item.pricing.retail = ', storedItem.item.pricing.retail);
     storedItem.price = storedItem.item.pricing.retail * storedItem.quantity;
