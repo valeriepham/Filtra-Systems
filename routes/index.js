@@ -23,13 +23,10 @@ router.get('/home', function (req, res, next) {
 });
 
 router.get('/cart', function (req, res, next) {
-  console.log('looking for cart')
   if (!req.session.cart) {
     return res.render('cart', { products: null, totalPrice: 0 });
   }
   let cart = new Cart(req.session.cart);
-  // console.log(cart);
-  // console.log(cart.cartItems());
   res.render('cart', { products: cart.cartItems(), totalPrice: cart.price() });
 });
 
@@ -49,8 +46,8 @@ router.post('/cart/:id', function(req, res, next) {
     if (err) {
       return res.redirect('/');
     }
-    console.log(req.body.qty);
-    cart.add(product, product.id, req.body.qty || 1);
+    let qty = parseInt(req.body.qty, 10);
+    cart.add(product, product.id, qty || 1);
     req.session.cart = cart;
     // console.log(req.session.cart)
     // console.log(req.session.cart.cartItems());
@@ -102,7 +99,14 @@ router.post('/charge', function (req, res, next) {
 });
 
 router.get('/remove-from-cart/:id', function (req, res, next) {
-
+  if (!req.session.cart) {
+    return res.redirect('/cart');
+  }
+  //create a new cart object from the saved cart in session memory
+  let id = req.params.id
+  let cart = new Cart(req.session.cart);
+  cart.remove(id);
+  res.redirect('/cart')
 });
 
 router.get('/update-quantity/:id', function (req, res, next) {

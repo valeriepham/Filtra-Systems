@@ -137,7 +137,7 @@
         <img src="./images/process-16.png" width=1000px>
     </a>
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-8">
             <table class="order">
                 <% if (products != null) { %>
                     <tr>
@@ -145,6 +145,7 @@
                         <th>Quantity</th>
                         <th>Unit Price</th>
                         <th>Total Price</th>
+                        <th></th>
                     </tr>
                     <% products.forEach(function(product) { %>
                         <tr>
@@ -163,6 +164,9 @@
                                 $
                                 <%= product.price %>
                             </td>
+                            <td class="div-td-5">
+                              <a href="/remove-from-cart/<%= product.item._id %>" class="btn btn-danger">Remove</a>
+                            </td>
                         </tr>
                         <% }) %>
                             <% } else { %>
@@ -171,7 +175,7 @@
             </table>
 
         </div>
-        <div class="col-md-6">
+        <div class="col-md-4">
             <table class="order">
                 <tr>
                     <th>Order Summary</th>

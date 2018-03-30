@@ -12,7 +12,10 @@ class Cart{
     // console.log('storedItem.price = ', storedItem.price);
     // console.log('storedItem.item.pricing.retail = ', storedItem.item.pricing.retail);
     storedItem.price = storedItem.item.pricing.retail * storedItem.quantity;
+  }
 
+  remove(id) {
+    delete this.items[id];
   }
 
   cartItems() {
