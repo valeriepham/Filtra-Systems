@@ -10,6 +10,8 @@
     crossorigin="anonymous">
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"></script>
+  <script src="jquery-3.3.1.min.js"></script>
+  <link rel="stylesheet" href="stylesheets/navbar.css">
   <style>
     .StripeElement {
       background-color: white;
@@ -37,82 +39,52 @@
 </head>
 
 <body>
+  <header>
+    <!-- navbar -->
+    <nav class="navbar bg-primary">
+      <a class="navbar-brand" href="/">
+        <img src="https://i.imgur.com/SH2CsNV.png" height:100%>
+      </a>
+    </nav>
+    <div class="nav_size">
+      <ul class="nav nav-pills nav-fill bg-primary">
+        <li class="nav-item">
+          <a class="nav-link active nav_link_size" href="\">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active nav_link_size" href="\">About Us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active nav_link_size" href="\catalog">Catalogue</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active nav_link_size" href="\">Request Quote</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active nav_link_size" href="\cart">Shopping Cart</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active nav_link_size" href="\">Contact Us</a>
+        </li>
+      </ul>
+    </div>
+  </header>
   <div class="container">
-    <!-- <div class="row">
-      <div class="col-md-4 col-md-offset-4">
-        <h1>Checkout</h1>
-        <h4>Your Total: $
-          <%= totalPrice %>
-        </h4>
-        <form action="/" method="POST" id="checkout-form">
-          <div class="row">
-            <div class="col-xs-12">
-              <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" name="name" id="name" class="form-control" required>
-              </div>
-            </div>
-            <div class="col-xs-12">
-              <div class="form-group">
-                <label for="address">Address</label>
-                <input type="text" name="address" id="address" class="form-control" required>
-              </div>
-            </div>
-            <div class="col-xs-12">
-              <div class="form-group">
-                <label for="card-name">Card Holder Name</label>
-                <input type="text" name="card-name " id="card-name" class="form-control" required>
-              </div>
-            </div>
-            <div class="col-xs-12">
-              <div class="form-group">
-                <label for="card-number">Credit Card Number</label>
-                <input type="text" name="card-number" id="card-number" class="form-control" required>
-              </div>
-            </div>
-            <div class="col-xs-12">
-              <div class="row">
-                <div class="col-xs-6">
-                  <div class="form-group">
-                    <label for="card-expiry-month">Expiration Month</label>
-                    <input type="text" name="card-expiry-month" id="card-expiry-month" class="form-control" required>
-                  </div>
-                </div>
-                <div class="col-xs-6">
-                  <div class="form-group">
-                    <label for="card-expiry-year">Expiration Year</label>
-                    <input type="text" name="card-expiry-year" id="card-expiry-year" class="form-control" required>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-xs-12">
-              <div class="form-group">
-                <label for="card-cvc">CVC</label>
-                <input type="text" name="card-cvc" id="card-cvc" class="form-control" required>
-              </div>
-            </div>
-          </div>
-          <button type="submit" class="btn btn-success">Buy Now</button>
-        </form>
-      </div>
-    </div> -->
-    <script src="jquery-3.3.1.min.js"></script>
     <form action="/charge" method="post" id="payment-form">
       <div class="form-row">
         <label for="name">Name</label>
         <input type="text" name="name" id="name" class="form-control" required>
       </div>
-      <div class="row">
-        <div class="col-xs-6">
+      <div class="form-row">
+        <div class="col-6">
           <label for="address">Street Address</label>
           <input type="text" name="address" id="address" class="form-control" required>
         </div>
-        <div class="col-xs-3">
+        <div class="col-2">
           <label for="state">State</label>
           <input type="text" name="state" id="state" class="form-control" required>
         </div>
-        <div class="col-xs-3">
+        <div class="col-4">
           <label for="zip">Zip Code</label>
           <input type="text" name="zip" id="zip" class="form-control" required>
         </div>
@@ -122,9 +94,7 @@
         <input type="text" name="card-name " id="card-name" class="form-control" required>
       </div>
       <div class="form-row">
-        <label for="card-element">
-          Credit or debit card
-        </label>
+        <label for="card-element">Credit or debit card</label><br>
         <div style="width: 500px;" id="card-element">
           <!-- A Stripe Element will be inserted here. -->
         </div>
@@ -133,7 +103,7 @@
         <div id="card-errors" role="alert"></div>
       </div>
 
-      <button type="submit" class="btn btn-success">Submit Payment</button>
+      <button type="submit" class="btn btn-primary">Submit Payment</button>
     </form>
 
   </div>
@@ -142,6 +112,72 @@
   <script src="javascripts/checkout.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-3">
+          <h5>Get started</h5>
+          <ul>
+            <li>
+              <a href="#">Home</a>
+            </li>
+            <li>
+              <a href="#">Sign up</a>
+            </li>
+            <li>
+              <a href="#">Downloads</a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-sm-3">
+          <h5>About us</h5>
+          <ul>
+            <li>
+              <a href="#">Company Information</a>
+            </li>
+            <li>
+              <a href="#">Contact us</a>
+            </li>
+            <li>
+              <a href="#">Reviews</a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-sm-3">
+          <h5>Support</h5>
+          <ul>
+            <li>
+              <a href="#">FAQ</a>
+            </li>
+            <li>
+              <a href="#">Help desk</a>
+            </li>
+            <li>
+              <a href="#">Forums</a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-sm-3">
+          <h5>Legal</h5>
+          <ul>
+            <li>
+              <a href="#">Terms of Service</a>
+            </li>
+            <li>
+              <a href="#">Terms of Use</a>
+            </li>
+            <li>
+              <a href="#">Privacy Policy</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <p>© 2016 Copyright Text </p>
+    </div>
+  </footer>
 </body>
 
 </html>
