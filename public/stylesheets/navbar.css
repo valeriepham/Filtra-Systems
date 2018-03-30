@@ -1,4 +1,4 @@
-header css
+/* header css */
 .navbar {
 	height:15%;
 }
@@ -35,7 +35,6 @@ body{
 }
 /* footer css */
 footer {
-	margin-top: 100px;
 	background-color: #00aeef;
 	color:white;
 	height: 20%;
@@ -59,7 +58,6 @@ footer ul{
 	list-style-type: none;
     padding-left: 0;
     line-height: 1.7;
-
 }
 
 footer h5{
