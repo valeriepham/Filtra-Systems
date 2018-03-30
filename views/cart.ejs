@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="stylesheets/navbar.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <style type="text/css">
+        body {
+            font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+            display: flex;
+            display: -webkit-flex;
+            flex-direction: column;
+            -webkit-flex-direction: column;
+            height: 100%;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            margin-left: 10px;
+            margin-right: 10px;
+            border-left: 10px;
+            border-right: 10px;
+            padding-left: 80px;
+            padding-right: 80px;
+        }
+
+        h4 {
+            font-weight: bold;
+        }
+
+        a {
+            align-self: center
+        }
+
+        table.order {
+            width: 100%;
+        }
+
+        .div-ordersummary-tr-1 {
+            font-weight: bold;
+        }
+
+        th {
+            font-size: 20px;
+            border-bottom: 1px solid black;
+        }
+
+        td {
+            font-size: 15px;
+        }
+
+        .div-td-1 {
+            width: 400px;
+        }
+
+        .div-td-2 {
+            width: 300px;
+        }
+
+        .div-td-3 {
+            width: 400px;
+        }
+
+        .div-td-4 {
+            width: 100px;
+        }
+
+        .div-order-total {
+            font-weight: bold;
+            border-top: 1px solid black;
+
+        }
+
+        #massage {
+            display: inline-block;
+            width: 50%;
+        }
+
+        #massage2 {
+            display: inline-block;
+            width: 200%;
+        }
+
+        #massage3 {
+            display: inline-block;
+            width: 200%;
+        }
+
+        #massage4 {
+            display: inline-block;
+            width: 50%;
+        }
+
+        
+    </style>
+    <title>Shopping Cart</title>
+</head>
+
+<header>
+    <!-- navbar -->
+    <nav class="navbar bg-primary" background-color: #00aeef height:15%>
+        <a class="navbar-brand" href="/">
+            <img src="https://i.imgur.com/SH2CsNV.png" height:100%>
+        </a>
+    </nav>
+    <div class="nav_size">
+        <ul class="nav nav-pills nav-fill bg-primary" id="nav">
+            <li class="nav-item">
+                <a class="nav-link active nav_link_size" href="\">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active nav_link_size" href="\">About Us</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active nav_link_size" href="\catalog">Catalogue</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active nav_link_size" href="\">Request Quote</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active nav_link_size" href="\cart">Shopping Cart</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active nav_link_size" href="\">Contact Us</a>
+            </li>
+        </ul>
+    </div>
+</header>
+
+<body>
+
+    <a>
+        <img src="./images/process-16.png" width=1000px>
+    </a>
+    <div class="row">
+        <div class="col-md-6">
+            <table class="order">
+                <% if (products != null) { %>
+                    <tr>
+                        <th>Items</th>
+                        <th>Quantity</th>
+                        <th>Unit Price</th>
+                        <th>Total Price</th>
+                    </tr>
+                    <% products.forEach(function(product) { %>
+                        <tr>
+                            <td class="div-td-1">
+                                <!-- <img src="./images/product-FSCS.jpg" width="50px" height="100px"> -->
+                                <%= product.item.title %>
+                            </td>
+                            <td class="div-td-2">
+                                <%= parseInt(product.quantity, 10) %>
+                            </td>
+                            <td class="div-td-3">
+                                $
+                                <%= product.item.pricing.retail %> ea.
+                            </td>
+                            <td class="div-td-4">
+                                $
+                                <%= product.price %>
+                            </td>
+                        </tr>
+                        <% }) %>
+                            <% } else { %>
+                                <h2>No items in cart</h2>
+                                <% } %>
+            </table>
+
+        </div>
+        <div class="col-md-6">
+            <table class="order">
+                <tr>
+                    <th>Order Summary</th>
+                    <th></th>
+                </tr>
+                <tr class="div-ordersummary-tr-1">
+                    <td class="div-ordersummary-td-1">Subtotal</td>
+                    <td class="div-ordersummary-td-2">
+                        $
+                        <%= totalPrice %>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Estimated Shipping</td>
+                    <td>$
+                        <%= (totalPrice * 0.15).toFixed(2) %>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Sales Tax</td>
+                    <td>$
+                        <%= (totalPrice * 0.0875).toFixed(2) %>
+                    </td>
+                </tr>
+                <tr class="div-order-total">
+                    <td>Total</td>
+                    <td>$
+                        <%= (totalPrice * 1.2375).toFixed(2) %>
+                    </td>
+                </tr>
+            </table>
+            <% if (products != null) { %>
+                <a href="/simplecheckout" class="btn btn-primary">Checkout</a>
+                <% } %>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h4>Other Products</h4>
+    <!-- <div style="width:100%;height:1px;margin:0px;padding:0px;background-color:#D5D5D5;overflow:hidden;"></div>
+    <div class="row">
+        <div class="col-md-3">
+            <img src="./images/product-FSCT.jpg" width="153px" ,height="203px">
+        </div>
+        <div class="col-md-3">
+            <img src="./images/product-FSCS.jpg" width="153px" ,height="203px">
+        </div>
+        <div class="col-md-3">
+            <img src="./images/product-FSCT2.jpg" width="153px" ,height="203px">
+        </div>
+    </div> -->
+
+    <!-- <div class="content">
+        </div> -->
+    <footer id="myFooter">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3 myCols">
+                    <h5>Get started</h5>
+                    <ul>
+                        <li>
+                            <a href="#">Home</a>
+                        </li>
+                        <li>
+                            <a href="#">Sign up</a>
+                        </li>
+                        <li>
+                            <a href="#">Downloads</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-sm-3 myCols">
+                    <h5>About us</h5>
+                    <ul>
+                        <li>
+                            <a href="#">Company Information</a>
+                        </li>
+                        <li>
+                            <a href="#">Contact us</a>
+                        </li>
+                        <li>
+                            <a href="#">Reviews</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-sm-3 myCols">
+                    <h5>Support</h5>
+                    <ul>
+                        <li>
+                            <a href="#">FAQ</a>
+                        </li>
+                        <li>
+                            <a href="#">Help desk</a>
+                        </li>
+                        <li>
+                            <a href="#">Forums</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-sm-3 myCols">
+                    <h5>Legal</h5>
+                    <ul>
+                        <li>
+                            <a href="#">Terms of Service</a>
+                        </li>
+                        <li>
+                            <a href="#">Terms of Use</a>
+                        </li>
+                        <li>
+                            <a href="#">Privacy Policy</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="social-networks">
+                    <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+                    <a href="#" class="facebook"><i class="fa fa-facebook-official"></i></a>
+                    <a href="#" class="google"><i class="fa fa-google-plus"></i></a>
+                </div> -->
+        <div class="footer-copyright">
+            <p>© 2016 Copyright Text </p>
+        </div>
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
