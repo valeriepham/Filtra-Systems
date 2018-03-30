@@ -3,12 +3,12 @@ class Cart{
     this.items = previousCart.items || {};
   }
 
-  add(item, id) {
+  add(item, id, qty) {
     let storedItem = this.items[id];
     if(!storedItem) {
       storedItem = this.items[id] = { item: item, quantity: 0, price: 0 };
     }
-    storedItem.quantity += 1;
+    storedItem.quantity += qty;
     // console.log('storedItem.price = ', storedItem.price);
     // console.log('storedItem.item.pricing.retail = ', storedItem.item.pricing.retail);
     storedItem.price = storedItem.item.pricing.retail * storedItem.quantity;
