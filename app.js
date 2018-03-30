@@ -23,7 +23,7 @@ let catalog = require('./routes/catalog');
 
 // setup database connection
 mongoose.connect('mongodb://michael:michael1@ds127139.mlab.com:27139/soba-filtra');
-var db = mongoose.connection;
+let db = mongoose.connection;
 
 // check for successful connection
 db.on('error', function (msg) {
@@ -55,11 +55,12 @@ function getDatabaseUrl() {
 }
 
 const days = 24 * 60 * 60 * 1000;
+const minutes = 60 * 1000
 app.use(session({
   secret: process.env.APP_SESSION_SECRET,
   resave: false,
   saveUninitialized: false,
-  cookie: { maxAge: 1 * days },
+  cookie: { maxAge: 5 * minutes },
   store: new MongoStore({ mongooseConnection: db }),
 }));
 

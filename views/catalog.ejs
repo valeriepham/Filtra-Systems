@@ -8,6 +8,7 @@
   <!-- <link rel="stylesheet" href="/stylesheets/Footer-with-social-icons.css">
     <link rel="stylesheet" href="/stylesheets/home.css"> -->
   <link rel="stylesheet" href="/stylesheets/catalog.css">
+  <link rel="stylesheet" href="stylesheets/navbar.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -39,7 +40,7 @@
                 <a class="nav-link active nav_link_size" href="\">Request Quote</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link active nav_link_size" href="\">News</a>
+                <a class="nav-link active nav_link_size" href="\cart">Shopping Cart</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link active nav_link_size" href="\">Contact Us</a>
@@ -98,9 +99,9 @@
                 <div class="thumbnail">
                   <a href="products/<%= series %>">
                     <img src="images/<%=series%>.jpg" class="img-responsive" alt="<%=series%>">
-                    <div class="caption">
+                    <div style="text-align: center;" class="caption">
                       <%= series %>
-                        <p class="description">Blah Blah Blah</p>
+                        <p class="description"></p>
                     </div>
                   </a>
                 </div>
