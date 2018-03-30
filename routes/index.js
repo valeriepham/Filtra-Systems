@@ -23,6 +23,7 @@ router.get('/home', function (req, res, next) {
 });
 
 router.get('/cart', function (req, res, next) {
+  console.log('looking for cart')
   if (!req.session.cart) {
     return res.render('cart', { products: null, totalPrice: 0 });
   }
