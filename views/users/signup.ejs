@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>SignUp</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+    <%- include('../partials/navbar') %>
+    <% if (message.danger) { %>
+        <div class="alert alert-danger" role="alert">
+          <%=message.danger%>
+        </div>
+      <% } %>
+      
+      <h1>User Sign Up</h1>
+      <form role="form" action="/users/signup" method="post">
+      
+        <div class="form-group">
+          <label for="email" >Email address</label>
+          <input type="email" id="email" name="email" class="form-control" placeholder="Valid email address" >
+        </div>
+      
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" class="form-control" placeholder="Password" >
+        </div>
+    
+        <div class="form-group">
+            <label for="confirm_password">Re-enter Password</label>
+            <input type="password" id="confirm_password" name="confirm_password" class="form-control" placeholder="confirm_password" >
+        </div>
+        <input type="hidden" name="level" value="0">
+      
+        <button type="submit" class="btn btn-primary">Sign Up</button>
+      </form>
+      
+</body>
+</html>

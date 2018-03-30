@@ -1,21 +1,10 @@
-var express = require('express');
-var router = express.Router();
-const PRODUCT = require('../models/products');
+let express = require('express');
+let router = express.Router();
+let controller = require('../controller/products.controller');
 
-/* GET home page. */
-router.get('/', function (req, res, next) {
-  PRODUCT.find().exec(function (err, products) {
-    if (err) {
-      console.log('Error when fetching products');
-      res.render('500', { err: err });
-    }
-    else {
-      res.render('products', {
-        title: 'PRODUCTS',
-        products: products
-      });
-    }
-  });
-});
+/* GET product listing. */
+router.get('/', controller.listProducts);
+
+router.get('/:series', controller.findSeries);
 
 module.exports = router;

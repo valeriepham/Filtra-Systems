@@ -2,19 +2,20 @@
 <html>
 
 <head>
+
   <title>
     <%= title %>
   </title>
-  <link rel='stylesheet' href='/stylesheets/style.css' />
-</head>
-
-<body>
+  
+      <body>
   <h1>
   <%= title %>
   </h1>
   <% products.forEach(function(product) { %>
     <h2><%= product.title %></h2>
     <h4><%= product.model %></h4>
+    <%= product.img %>
+    <h4><img src="<%= product.img %>.jpg"></h4>
     <p><%= product.description %></p>
     <h4>Series: <%= product.series %></h4>
     <h4>Quantity: <%= product.qty %></h4>
@@ -37,6 +38,7 @@
 
     <br>
   <% }) %>
+  
 </body>
 
 </html>

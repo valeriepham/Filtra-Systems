@@ -1,5 +1,3 @@
-.DS_Store
-
 # Logs
 logs
 *.log
@@ -31,5 +29,7 @@ node_modules
 # Debug log from npm
 npm-debug.log
 
-# Database Folder
+# Database folder
 db/
+
+.DS_Store
