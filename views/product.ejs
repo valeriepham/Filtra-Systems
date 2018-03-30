@@ -258,11 +258,11 @@
                         </h5>
                     </div>
 
-                    <form action="/cart">
+                    <form action="/cart/<%=products[0].series%>" method="post">
                         <!-- Quantity -->
                         <div class="form-group">
                             <label for="quantity">Quantity: </label>
-                            <input type="number" class="form-control" id="quantity">
+                            <input type="number" class="form-control" id="quantity" name="qty">
                         </div>
                         <button type="submit" class="btn btn-primary">Order</button>
                         <a href="/add-to-cart/<%=products[0].series%>">Add to Cart</a>
