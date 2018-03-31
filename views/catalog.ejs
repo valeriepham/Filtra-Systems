@@ -5,186 +5,91 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="/stylesheets/catalog.css">
-    <link rel="stylesheet" href="stylesheets/navbar.css">
+    <link rel="stylesheet" href="stylesheets/catalog.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
-
+    <link rel="stylesheet" href="stylesheets/navbar.css">
     <title>Product Catalog</title>
 </head>
 
 
-<header>
-    <!-- navbar -->
-    <nav class="navbar bg-primary">
-        <a class="navbar-brand" href="/">
-            <img src="https://i.imgur.com/SH2CsNV.png" height:100%>
-        </a>
-    </nav>
-    <div class="nav_size">
-        <ul class="nav nav-pills nav-fill bg-primary">
-            <li class="nav-item">
-                <a class="nav-link active nav_link_size" href="\">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active nav_link_size" href="\">About Us</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active nav_link_size" href="\catalog">Catalogue</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active nav_link_size" href="\">Request Quote</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active nav_link_size" href="\cart">Shopping Cart</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active nav_link_size" href="\">Contact Us</a>
-            </li>
-        </ul>
-    </div>
-</header>
+<%- include('./partials/header.ejs') %>
 
-<body>
-    <!-- <img src="http://www.go-dove.com/shared/auction/images/photos/85779/85778895.jpg" style="width:100%; height:80%"> -->
+    <body>
+        <!-- <img src="http://www.go-dove.com/shared/auction/images/photos/85779/85778895.jpg" style="width:100%; height:80%"> -->
 
-    <!-- <div class="jumbotron">
+        <!-- <div class="jumbotron">
       JUMBOTRON
     </div> -->
-    <div class="content container">
-        <!-- CONTENT -->
-        <div class="selection">
-            SELECTION PANE
-            <div class="search">
-                <form>
-                    <button class="icon">
-                        <i class="fa fa-search"></i>
-                    </button>
-                    <input type="search" name="search" id="searchbar" placeholder="Search..." />
-                </form>
-            </div>
-            <div class="filter">
-                FILTERING
-                <ul class="categories">
-                    <li>Category 1</li>
-                    <ul class="filters">
-                        <li>Filter 1.1</li>
-                        <li>Filter 1.2</li>
-                        <li>Filter 1.3</li>
-                    </ul>
-                    <li>Category 2</li>
-                    <ul class="filters">
-                        <li>Filter 2.1</li>
-                        <li>Filter 2.2</li>
-                        <li>Filter 2.3</li>
-                    </ul>
-                    <li>Category 3</li>
-                    <ul class="filters">
-                        <li>Filter 3.1</li>
-                        <li>Filter 3.2</li>
-                        <li>Filter 3.3</li>
-                    </ul>
-                </ul>
-            </div>
-        </div>
-        <div class="product-listing">
-            LISTING
-            <% chunks.forEach(function(chunk){ %>
-                <div class="row">
-                    <% chunk.forEach(function(series){ %>
-                        <div class="col-sm-6 col-md-3">
-                            <div class="thumbnail">
-                                <a href="products/<%= series %>">
-                                    <img src="images/<%=series%>.jpg" class="img-responsive" alt="<%=series%>">
-                                    <div style="text-align: center;" class="caption">
-                                        <%= series %>
-                                            <p class="description"></p>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <%}) %>
+        <div class="content container">
+            <!-- CONTENT -->
+            <div class="selection">
+                SELECTION PANE
+                <div class="search">
+                    <form>
+                        <button class="icon">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        <input type="search" name="search" id="searchbar" placeholder="Search..." />
+                    </form>
                 </div>
-                <%}) %>
+                <div class="filter">
+                    FILTERING
+                    <ul class="categories">
+                        <li>Category 1</li>
+                        <ul class="filters">
+                            <li>Filter 1.1</li>
+                            <li>Filter 1.2</li>
+                            <li>Filter 1.3</li>
+                        </ul>
+                        <li>Category 2</li>
+                        <ul class="filters">
+                            <li>Filter 2.1</li>
+                            <li>Filter 2.2</li>
+                            <li>Filter 2.3</li>
+                        </ul>
+                        <li>Category 3</li>
+                        <ul class="filters">
+                            <li>Filter 3.1</li>
+                            <li>Filter 3.2</li>
+                            <li>Filter 3.3</li>
+                        </ul>
+                    </ul>
+                </div>
+            </div>
+            <div class="product-listing">
+                LISTING
+                <% chunks.forEach(function(chunk){ %>
+                    <div class="row">
+                        <% chunk.forEach(function(series){ %>
+                            <div class="col-sm-6 col-md-3">
+                                <div class="thumbnail">
+                                    <a href="products/<%= series %>">
+                                        <img src="images/<%=series%>.jpg" class="img-responsive" alt="<%=series%>">
+                                        <div style="text-align: center;" class="caption">
+                                            <%= series %>
+                                                <p class="description"></p>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <%}) %>
+                    </div>
+                    <%}) %>
+            </div>
         </div>
-    </div>
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
-</body>
-<!--footer-->
-<footer>
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-3">
-                <h5>Get started</h5>
-                <ul>
-                    <li>
-                        <a href="\">Home</a>
-                    </li>
-                    <li>
-                        <a href="#">Sign up</a>
-                    </li>
-                    <li>
-                        <a href="#">Downloads</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="col-sm-3">
-                <h5>About us</h5>
-                <ul>
-                    <li>
-                        <a href="#">Company Information</a>
-                    </li>
-                    <li>
-                        <a href="#">Contact us</a>
-                    </li>
-                    <li>
-                        <a href="#">Reviews</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="col-sm-3">
-                <h5>Support</h5>
-                <ul>
-                    <li>
-                        <a href="#">FAQ</a>
-                    </li>
-                    <li>
-                        <a href="#">Help desk</a>
-                    </li>
-                    <li>
-                        <a href="#">Forums</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="col-sm-3">
-                <h5>Legal</h5>
-                <ul>
-                    <li>
-                        <a href="#">Terms of Service</a>
-                    </li>
-                    <li>
-                        <a href="#">Terms of Use</a>
-                    </li>
-                    <li>
-                        <a href="#">Privacy Policy</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="footer-copyright">
-        <p>© 2016 Copyright Text </p>
-    </div>
-</footer>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+    </body>
+    <!--footer-->
+    <%- include('./partials/footer.ejs') %>
 
 </html>

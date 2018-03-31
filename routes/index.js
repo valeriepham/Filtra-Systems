@@ -23,7 +23,7 @@ router.get('/home', function (req, res, next) {
 });
 
 router.get('/cart', function (req, res, next) {
-  if (!req.session.cart) {
+  if (!req.session.cart || req.session.cart == null) {
     return res.render('cart', { products: null, totalPrice: 0 });
   }
   let cart = new Cart(req.session.cart);
@@ -80,7 +80,7 @@ router.post('/charge', function (req, res, next) {
   }, function (err, charge) {
     // asynchronously called
     if (err) {
-      req.flash('error', err.message);
+      req.flash('danger', err.message);
       return res.redirect('/simplecheckout');
     }
     let order = new Order({
@@ -93,7 +93,7 @@ router.post('/charge', function (req, res, next) {
     order.save(function(err, result) {
       req.flash('success', 'Checkout was successful!');
       req.session.cart = null;
-      res.redirect('/');    
+      res.redirect('/cart');    
     });
   });
 });

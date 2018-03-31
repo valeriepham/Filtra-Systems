@@ -204,36 +204,8 @@
     </style>
 
 </head>
-<header>
-    <!-- navbar -->
-    <nav class="navbar bg-primary">
-        <a class="navbar-brand" href="/">
-            <img src="https://i.imgur.com/SH2CsNV.png" height:100%>
-        </a>
-    </nav>
-    <div class="nav_size">
-        <ul class="nav nav-pills nav-fill bg-primary">
-            <li class="nav-item">
-                <a class="nav-link active nav_link_size" href="\">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active nav_link_size" href="\">About Us</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active nav_link_size" href="\catalog">Catalogue</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active nav_link_size" href="\">Request Quote</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active nav_link_size" href="\cart">Shopping Cart</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active nav_link_size" href="\">Contact Us</a>
-            </li>
-        </ul>
-    </div>
-</header>
+
+<%- include('./partials/header.ejs') %>
 
 <body>
     <!-- content -->
@@ -341,70 +313,6 @@
         crossorigin="anonymous"></script>
 </body>
 
-<footer>
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-3">
-                <h5>Get started</h5>
-                <ul>
-                    <li>
-                        <a href="\">Home</a>
-                    </li>
-                    <li>
-                        <a href="#">Sign up</a>
-                    </li>
-                    <li>
-                        <a href="#">Downloads</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="col-sm-3">
-                <h5>About us</h5>
-                <ul>
-                    <li>
-                        <a href="#">Company Information</a>
-                    </li>
-                    <li>
-                        <a href="#">Contact us</a>
-                    </li>
-                    <li>
-                        <a href="#">Reviews</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="col-sm-3">
-                <h5>Support</h5>
-                <ul>
-                    <li>
-                        <a href="#">FAQ</a>
-                    </li>
-                    <li>
-                        <a href="#">Help desk</a>
-                    </li>
-                    <li>
-                        <a href="#">Forums</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="col-sm-3">
-                <h5>Legal</h5>
-                <ul>
-                    <li>
-                        <a href="#">Terms of Service</a>
-                    </li>
-                    <li>
-                        <a href="#">Terms of Use</a>
-                    </li>
-                    <li>
-                        <a href="#">Privacy Policy</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="footer-copyright">
-        <p>© 2016 Copyright Text </p>
-    </div>
-</footer>
+<%- include('./partials/footer.ejs') %>
 
 </html>
