@@ -28,8 +28,8 @@ node_modules
 
 # Debug log from npm
 npm-debug.log
-# Database folder
-db
 
-# IOS system file
+# Database folder
+db/
+
 .DS_Store

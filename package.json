@@ -6,10 +6,12 @@
     "start": "nodemon ./bin/www"
   },
   "dependencies": {
+    "angular": "^1.6.9",
     "bcrypt": "^1.0.3",
     "bcrypt-node": "^0.1.0",
     "body-parser": "~1.18.2",
     "connect-flash": "^0.1.1",
+    "connect-mongo": "^2.0.1",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
     "dotenv": "^5.0.1",
@@ -19,7 +21,11 @@
     "mongodb": "^3.0.4",
     "mongoose": "^5.0.6",
     "morgan": "~1.9.0",
+    "npm": "^5.7.1",
     "passport": "^0.4.0",
     "serve-favicon": "~2.4.5"
+  },
+  "devDependencies": {
+    "stripe": "^5.6.1"
   }
 }
