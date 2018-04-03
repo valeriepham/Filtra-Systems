@@ -1,6 +1,6 @@
-var mongoose = require('mongoose');
+let mongoose = require('mongoose');
 
-var productSchema = mongoose.Schema({
+let productSchema = mongoose.Schema({
   model: String,
   title: String,
   description: String,
@@ -22,6 +22,6 @@ var productSchema = mongoose.Schema({
   img: String
 })
 
-var Product = mongoose.model('Product', productSchema);
+let Product = mongoose.model('Product', productSchema);
 
 module.exports = Product;
