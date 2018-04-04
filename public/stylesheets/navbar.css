@@ -12,6 +12,9 @@
 	font-size: 15px;
 	padding-top: 15px;
 }
+.navbar img{
+	height: 100%;
+}
 /* body css */
 html{
 	height: 100% !important;
@@ -24,7 +27,7 @@ body{
     flex-direction: column;
     -webkit-flex-direction: column;
 	height: 100%;
-	padding-top: 10px;
+	padding-top: 0px;
     padding-bottom: 10px; 
     margin-left: 10px;
 	margin-right:10px;
@@ -37,19 +40,18 @@ body{
 footer {
 	background-color: #00aeef;
 	color:white;
-	height: 20%;
 	flex: 0 0 auto;
     -webkit-flex: 0 0 auto;
 }
 
-footer .footer-copyright{
+footer .copyright{
 	background-color: #00aeef;
 	padding-top:3px;
 	padding-bottom:3px;
 	text-align: center;
 }
 
-footer .footer-copyright p{
+footer .copyright p{
 	margin:10px;
 	color: #ccc;
 }
@@ -109,8 +111,8 @@ footer .twitter:hover{
 	color: #00aced;
 }
 
-@media screen and (max-width: 767px){
+/* @media screen and (max-width: 767px){
 	footer {
 		text-align: center;
 	}
-}
+} */
