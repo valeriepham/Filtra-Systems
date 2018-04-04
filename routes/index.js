@@ -9,7 +9,7 @@ let Stripe = require('stripe');
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-  res.redirect('newhomepage.html');
+  res.render('home');
 });
 
 // router.get('/checkout', function (req, res, next) {
