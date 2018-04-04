@@ -12,6 +12,18 @@ router.get('/', function (req, res, next) {
   res.render('home');
 });
 
+router.get('/about-us', function(req, res, next) {
+  res.render('about-us', { title: 'About Us', message: 'More information to come soon!' });
+});
+
+router.get('/request-quote', function(req, res, next) {
+  res.render('request-quote', { title: 'Request Quote', message: 'More information to come soon!' });
+});
+
+router.get('/contact-us', function(req, res, next) {
+  res.render('contact-us', { title: 'Contact Us', message: 'More information to come soon!' });
+});
+
 // router.get('/checkout', function (req, res, next) {
 //   res.render('index', { title: 'Checkout', message: 'This is Filtrasystems beautiful cart.' });
 // });
