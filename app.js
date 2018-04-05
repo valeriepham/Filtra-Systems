@@ -19,7 +19,6 @@ let bcrypt = require('bcrypt');
 let index = require('./routes/index');
 let users = require('./routes/users');
 let products = require('./routes/products');
-let catalog = require('./routes/catalog');
 
 // setup database connection
 mongoose.connect('mongodb://michael:michael1@ds127139.mlab.com:27139/soba-filtra');
@@ -93,7 +92,6 @@ app.use(function (req, res, next) {
 
 app.use('/', index);
 app.use('/products', products);
-app.use('/catalog', catalog);
 app.use('/users', users);
 
 // catch 404 and forward to error handler
@@ -106,7 +104,7 @@ app.use(function (req, res, next) {
 // error handler
 app.use(function (err, req, res, next) {
   // set locals, only providing error in development
-  res.locals.message = err.message;
+  res.locals.errorMessage = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
   // render the error page

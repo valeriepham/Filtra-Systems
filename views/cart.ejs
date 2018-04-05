@@ -58,15 +58,19 @@
         }
 
         .div-td-2 {
-            width: 300px;
+            width: 200px;
         }
 
         .div-td-3 {
-            width: 400px;
+            width: 200px;
         }
 
         .div-td-4 {
             width: 100px;
+        }
+
+        .div-td-5 {
+            width: 300px;
         }
 
         .div-order-total {
@@ -94,44 +98,18 @@
             display: inline-block;
             width: 50%;
         }
-
-        
     </style>
     <title>Shopping Cart</title>
 </head>
 
-<header>
-    <!-- navbar -->
-    <nav class="navbar bg-primary" background-color: #00aeef height:15%>
-        <a class="navbar-brand" href="/">
-            <img src="https://i.imgur.com/SH2CsNV.png" height:100%>
-        </a>
-    </nav>
-    <div class="nav_size">
-        <ul class="nav nav-pills nav-fill bg-primary" id="nav">
-            <li class="nav-item">
-                <a class="nav-link active nav_link_size" href="\">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active nav_link_size" href="\">About Us</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active nav_link_size" href="\catalog">Catalogue</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active nav_link_size" href="\">Request Quote</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active nav_link_size" href="\cart">Shopping Cart</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active nav_link_size" href="\">Contact Us</a>
-            </li>
-        </ul>
-    </div>
-</header>
+<%- include('./partials/header.ejs') %>
 
 <body>
+    <% if (message.success) { %>
+        <div class="alert alert-success" role="alert">
+          <%= message.success %>
+        </div>
+      <% } %>
 
     <a>
         <img src="./images/process-16.png" width=1000px>
@@ -150,7 +128,7 @@
                     <% products.forEach(function(product) { %>
                         <tr>
                             <td class="div-td-1">
-                                <!-- <img src="./images/product-FSCS.jpg" width="50px" height="100px"> -->
+                                <img src="<%= product.item.img %>" width="50px" height="100px">
                                 <%= product.item.title %>
                             </td>
                             <td class="div-td-2">
@@ -165,7 +143,10 @@
                                 <%= product.price %>
                             </td>
                             <td class="div-td-5">
-                              <a href="/remove-from-cart/<%= product.item._id %>" class="btn btn-danger">Remove</a>
+                                <a href="/update-quantity/<%= product.item._id %>/-1" class="btn btn-primary">-1</a>
+                                <a href="/remove-from-cart/<%= product.item._id %>" class="btn btn-danger">Remove</a>
+                                <a href="/update-quantity/<%= product.item._id %>/+1" class="btn btn-primary">+1</a>
+
                             </td>
                         </tr>
                         <% }) %>
@@ -208,7 +189,7 @@
                 </tr>
             </table>
             <% if (products != null) { %>
-                <a href="/simplecheckout" class="btn btn-primary">Checkout</a>
+                <a href="/simplecheckout" class="btn btn-success" style="float: right; margin-right: 50px">Checkout</a>
                 <% } %>
         </div>
     </div>
@@ -232,77 +213,9 @@
 
     <!-- <div class="content">
         </div> -->
-    <footer id="myFooter">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-3 myCols">
-                    <h5>Get started</h5>
-                    <ul>
-                        <li>
-                            <a href="#">Home</a>
-                        </li>
-                        <li>
-                            <a href="#">Sign up</a>
-                        </li>
-                        <li>
-                            <a href="#">Downloads</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-sm-3 myCols">
-                    <h5>About us</h5>
-                    <ul>
-                        <li>
-                            <a href="#">Company Information</a>
-                        </li>
-                        <li>
-                            <a href="#">Contact us</a>
-                        </li>
-                        <li>
-                            <a href="#">Reviews</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-sm-3 myCols">
-                    <h5>Support</h5>
-                    <ul>
-                        <li>
-                            <a href="#">FAQ</a>
-                        </li>
-                        <li>
-                            <a href="#">Help desk</a>
-                        </li>
-                        <li>
-                            <a href="#">Forums</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-sm-3 myCols">
-                    <h5>Legal</h5>
-                    <ul>
-                        <li>
-                            <a href="#">Terms of Service</a>
-                        </li>
-                        <li>
-                            <a href="#">Terms of Use</a>
-                        </li>
-                        <li>
-                            <a href="#">Privacy Policy</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <!-- <div class="social-networks">
-                    <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
-                    <a href="#" class="facebook"><i class="fa fa-facebook-official"></i></a>
-                    <a href="#" class="google"><i class="fa fa-google-plus"></i></a>
-                </div> -->
-        <div class="footer-copyright">
-            <p>© 2016 Copyright Text </p>
-        </div>
-    </footer>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <%- include('./partials/footer.ejs') %>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
 </body>
