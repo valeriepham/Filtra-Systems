@@ -1,11 +1,11 @@
-class Cart{
+class Cart {
   constructor(previousCart) {
     this.items = previousCart.items || {};
   }
 
   add(item, id, qty) {
     let storedItem = this.items[id];
-    if(!storedItem) {
+    if (!storedItem) {
       storedItem = this.items[id] = { item: item, quantity: 0, price: 0 };
     }
     storedItem.quantity += parseInt(qty, 10);
@@ -18,9 +18,28 @@ class Cart{
     delete this.items[id];
   }
 
+  updateQuantity(id, qty) {
+    let storedItem = this.items[id]
+    switch (qty) {
+      case '+1':
+        storedItem.quantity += 1;
+        break;
+      case '-1':
+        if (storedItem.quantity <= 1) {
+          delete this.items[id];
+        } else {
+          storedItem.quantity -= 1;
+        }
+        break;
+      default:
+        storedItem.quantity = qty
+    }
+    storedItem.price = storedItem.item.pricing.retail * storedItem.quantity
+  }
+
   cartItems() {
     let arr = [];
-    for(const id in this.items) {
+    for (const id in this.items) {
       arr.push(this.items[id]);
     }
     return arr;
@@ -28,7 +47,7 @@ class Cart{
 
   price() {
     let price = 0.0;
-    for(const id in this.items) {
+    for (const id in this.items) {
       price += this.items[id].price;
     }
     // console.log(price);
@@ -37,7 +56,7 @@ class Cart{
 
   quantity() {
     let quantity = 0;
-    for(const id in this.items) {
+    for (const id in this.items) {
       quantity += this.items[id].quantity;
     }
     // console.log(quantity);
