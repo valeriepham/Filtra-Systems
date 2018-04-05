@@ -58,15 +58,19 @@
         }
 
         .div-td-2 {
-            width: 300px;
+            width: 200px;
         }
 
         .div-td-3 {
-            width: 400px;
+            width: 200px;
         }
 
         .div-td-4 {
             width: 100px;
+        }
+
+        .div-td-5 {
+            width: 300px;
         }
 
         .div-order-total {
@@ -124,7 +128,7 @@
                     <% products.forEach(function(product) { %>
                         <tr>
                             <td class="div-td-1">
-                                <!-- <img src="./images/product-FSCS.jpg" width="50px" height="100px"> -->
+                                <img src="<%= product.item.img %>" width="50px" height="100px">
                                 <%= product.item.title %>
                             </td>
                             <td class="div-td-2">
@@ -139,7 +143,10 @@
                                 <%= product.price %>
                             </td>
                             <td class="div-td-5">
+                                <a href="/update-quantity/<%= product.item._id %>/-1" class="btn btn-primary">-1</a>
                                 <a href="/remove-from-cart/<%= product.item._id %>" class="btn btn-danger">Remove</a>
+                                <a href="/update-quantity/<%= product.item._id %>/+1" class="btn btn-primary">+1</a>
+
                             </td>
                         </tr>
                         <% }) %>
@@ -182,7 +189,7 @@
                 </tr>
             </table>
             <% if (products != null) { %>
-                <a href="/simplecheckout" class="btn btn-primary">Checkout</a>
+                <a href="/simplecheckout" class="btn btn-success" style="float: right; margin-right: 50px">Checkout</a>
                 <% } %>
         </div>
     </div>
