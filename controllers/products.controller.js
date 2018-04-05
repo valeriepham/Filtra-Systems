@@ -1,7 +1,7 @@
-const PRODUCT = require('../models/product');
+const Product = require('../models/product');
 
 function listProducts(req, res) {
-  PRODUCT.find().exec(function (err, products) {
+  Product.find().exec(function (err, products) {
     if (err) {
       console.log('Error when fetching products');
       res.render('500', { err: err });
@@ -17,7 +17,7 @@ function listProducts(req, res) {
 
 function findSeries(req, res) {
   let series = req.params.series;
-  PRODUCT.find({ 'series': series }).exec(function (err, product) {
+  Product.find({ 'series': series }).exec(function (err, product) {
     console.log(series);
     if (err) {
       console.log('Error when fetching product');

@@ -13,15 +13,15 @@ router.get('/', function (req, res, next) {
   res.render('home');
 });
 
-router.get('/about-us', function(req, res, next) {
+router.get('/about-us', function (req, res, next) {
   res.render('about-us', { title: 'About Us', message: 'More information to come soon!' });
 });
 
-router.get('/request-quote', function(req, res, next) {
+router.get('/request-quote', function (req, res, next) {
   res.render('request-quote', { title: 'Request Quote', message: 'More information to come soon!' });
 });
 
-router.get('/contact-us', function(req, res, next) {
+router.get('/contact-us', function (req, res, next) {
   res.render('contact-us', { title: 'Contact Us', message: 'More information to come soon!' });
 });
 
@@ -38,9 +38,10 @@ router.get('/home', function (req, res, next) {
 router.get('/cart', function (req, res, next) {
   if (!req.session.cart || req.session.cart == null) {
     return res.render('newcart', { products: null, totalPrice: 0 });
+  } else {
+    let cart = new Cart(req.session.cart);
+    res.render('newcart', { products: cart.cartItems(), totalPrice: cart.price() });
   }
-  let cart = new Cart(req.session.cart);
-  res.render('cart', { products: cart.cartItems(), totalPrice: cart.price() });
 });
 
 router.get('/simplecheckout', function (req, res, next) {
@@ -59,19 +60,37 @@ router.get('/remove-from-cart/:id', cartController.remove);
 
 router.get('/update-quantity/:id/:qty', cartController.updateQuantity);
 
-router.get('/test', function(req, res) {
+router.get('/test', function (req, res) {
   res.render('test');
 });
 
-router.get('/api/products', function(req, res) {
-  PRODUCT.find().exec(function (err, products) {
+router.get('/api/cart', function (req, res) {
+  if (!req.session.cart || req.session.cart == null) {
+    res.send('cart empty');
+  } else {
+    let cart = new Cart(req.session.cart);
+    res.send(cart);
+  }
+})
+
+router.get('/api/cart/update', function (req, res) {
+  if (!req.session.cart || req.session.cart == null) {
+    res.send('cart empty');
+  } else {
+    res.send('cart updated');
+  }
+})
+
+
+
+router.get('/api/products', function (req, res) {
+  Product.find().exec(function (err, products) {
     if (err) {
       console.log('Error when fetching products');
-      res.send('500', { err: err });
+      res.render('500', { err: err });
     }
     else {
-      console.log('fetching');
-      res.status(200).send(products);
+      res.send(products);
     }
   });
 });

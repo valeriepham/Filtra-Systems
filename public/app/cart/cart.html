@@ -1,5 +1,29 @@
-<h1>Angular Test</h1>
-<h4>Hello from cart.html</h4>
-{{ $ctrl.name }}
-{{ $ctrl.products }}
-<cart-product></cart-product>
+<h1>Angular {{ $ctrl.name }}</h1>
+<table class="order">
+  <tr>
+    <th>Items</th>
+    <th>Quantity</th>
+    <th>Unit Price</th>
+    <th>Total Price</th>
+    <th></th>
+  </tr>
+  <tr ng-repeat="product in $ctrl.cart.items">
+    <td>
+      <img src="{{ product.item.img }}" width="50px" height="100px">
+      <span>{{ product.item.title }}</span>
+    </td>
+    <td class="div-td-2">
+      <input type="number" ng-model="product.quantity">
+    </td>
+    <td class="div-td-3">
+      ${{ product.item.pricing.retail }} ea.
+    </td>
+    <td class="div-td-4">
+      ${{ product.quantity * product.item.pricing.retail }}
+    </td>
+    <td class="div-td-5">
+      <!-- <button class="btn-success btn" ng-click="$ctrl.updateQty(product.item._id, '-1')">+1</button> -->
+    </td>
+  </tr>
+  <button class="btn btn-primary" ng-click="$ctrl.update()" style="float: right; margin-right: 50px">Update Cart</button>
+</table>
