@@ -37,7 +37,7 @@ router.get('/home', function (req, res, next) {
 
 router.get('/cart', function (req, res, next) {
   if (!req.session.cart || req.session.cart == null) {
-    return res.render('cart', { products: null, totalPrice: 0 });
+    return res.render('newcart', { products: null, totalPrice: 0 });
   }
   let cart = new Cart(req.session.cart);
   res.render('cart', { products: cart.cartItems(), totalPrice: cart.price() });
@@ -58,5 +58,22 @@ router.post('/charge', cartController.charge);
 router.get('/remove-from-cart/:id', cartController.remove);
 
 router.get('/update-quantity/:id/:qty', cartController.updateQuantity);
+
+router.get('/test', function(req, res) {
+  res.render('test');
+});
+
+router.get('/api/products', function(req, res) {
+  PRODUCT.find().exec(function (err, products) {
+    if (err) {
+      console.log('Error when fetching products');
+      res.send('500', { err: err });
+    }
+    else {
+      console.log('fetching');
+      res.status(200).send(products);
+    }
+  });
+});
 
 module.exports = router;

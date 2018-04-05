@@ -116,6 +116,9 @@
     </a>
     <div class="row">
         <div class="col-md-8">
+          <div ng-app="cart">
+            <cart> </cart>
+          </div>
             <table class="order">
                 <% if (products != null) { %>
                     <tr>
@@ -150,9 +153,9 @@
                             </td>
                         </tr>
                         <% }) %>
-                            <% } else { %>
-                                <h2>No items in cart</h2>
-                                <% } %>
+                      <% } else { %>
+                        <h2>No items in cart</h2>
+                      <% } %>
             </table>
 
         </div>
@@ -219,8 +222,11 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
         <script src="./lib/angular/angular.min.js"></script>
-        <script src="./app/cart.component.js"></script>
-        <script src="./app/cart.controller.js"></script>
+        <script src="./app/cart/cart.component.js"></script>
+        <script src="./app/cart/cart.controller.js"></script>
+        <script src="./app/cart/product.component.js"></script>
+        <script src="./app/cart/product.controller.js"></script>
+        <script src="./app/_services/products.service.js"></script>
       </body>
 
 </html>
