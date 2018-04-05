@@ -14,15 +14,15 @@ router.get('/', function (req, res, next) {
 });
 
 router.get('/about-us', function(req, res, next) {
-  res.render('about-us', { title: 'About Us', message: 'More information to come soon!' });
+  res.render('information/about-us', { title: 'About Us', message: 'More information to come soon!' });
 });
 
 router.get('/request-quote', function(req, res, next) {
-  res.render('request-quote', { title: 'Request Quote', message: 'More information to come soon!' });
+  res.render('information/request-quote', { title: 'Request Quote', message: 'More information to come soon!' });
 });
 
 router.get('/contact-us', function(req, res, next) {
-  res.render('contact-us', { title: 'Contact Us', message: 'More information to come soon!' });
+  res.render('information/contact-us', { title: 'Contact Us', message: 'More information to come soon!' });
 });
 
 // router.get('/checkout', function (req, res, next) {

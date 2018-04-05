@@ -19,7 +19,6 @@ let bcrypt = require('bcrypt');
 let index = require('./routes/index');
 let users = require('./routes/users');
 let products = require('./routes/products');
-let catalog = require('./routes/catalog');
 
 // setup database connection
 mongoose.connect('mongodb://michael:michael1@ds127139.mlab.com:27139/soba-filtra');
@@ -93,7 +92,6 @@ app.use(function (req, res, next) {
 
 app.use('/', index);
 app.use('/products', products);
-app.use('/catalog', catalog);
 app.use('/users', users);
 
 // catch 404 and forward to error handler
