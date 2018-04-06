@@ -2,22 +2,28 @@
   angular.module('cart')
     .controller('cartController', cartController);
 
-  cartController.$inject = ['$log', '$http', 'cartService']
+  cartController.$inject = ['$log', '$http', 'cartService'];
   function cartController($log, $http, cartService) {
     let vm = this;
-    getCart()
+    getCart();
     vm.name = 'cart';
     vm.options = {
 
     };
     vm.cart;
-    vm.remove = function (id) {
+    vm.remove = remove;
+    vm.update = update;
+    vm.checkout = checkout;
+    
+    function remove(id) {
 
     }
-    vm.update = function () {
-      cartService.update().then(function(data, err) {
-        vm.name = data;
-      })
+    function update() {
+      cartService.update(vm.cart);
+    }
+    function checkout() {
+      cartService.update(vm.cart);
+      cartService.checkout();
     }
     function getCart() {
       cartService.get().then(function (data, err) {

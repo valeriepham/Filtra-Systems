@@ -6,7 +6,8 @@
   function cartService(http) {
     return {
       get: get,
-      update: update
+      update: update,
+      checkout: checkout
     };
 
     function get() {
@@ -14,10 +15,16 @@
         return result.data;
       });
     }
-    function update() {
-      return http.get('/api/cart/update').then(function (result) {
-        return result.data
-      })
+
+    function update(cart) {
+      http.put('/api/cart/update', cart)
+        .catch(function (err) {
+          console.log(err);
+        });
+    }
+
+    function checkout() {
+      http.get('/simplecheckout');
     }
   }
 })();
