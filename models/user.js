@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const schema = mongoose.Schema({  
   email: {type: String, require: true, trim: true, unique: true},
   password: {type: String, require: true},
-  level: {type: Number ,require:false, default:0}
+  level: {type: Number ,require: false, default:0}
 });
 
 schema.methods.generateHash = function(password) {

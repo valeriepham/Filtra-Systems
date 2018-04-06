@@ -48,7 +48,7 @@ router.post('/signup', function(req, res) {
       const user = new User();
       user.email = req.body.email;
       user.password = user.generateHash(req.body.password);
-      user.level = req.body.level;
+      user.level = 0;
       user.save(function(err) {
         if(err) {
           res.send(`There was an error: ${err}`);
