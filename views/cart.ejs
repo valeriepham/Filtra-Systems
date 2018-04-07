@@ -191,13 +191,16 @@
             <% if (products != null) { %>
                 <a href="/simplecheckout" class="btn btn-success" style="float: right; margin-right: 50px">Checkout</a>
                 <% } %>
+            <% if (user) { %>
+                <a href="/api/cart/save" class="btn btn-primary" style="float: right; margin-right: 50px">Save for Later</a>
+            <% } %>
         </div>
     </div>
     <br>
     <br>
     <br>
     <br>
-    <h4>Other Products</h4>
+    <!-- <h4>Other Products</h4> -->
     <!-- <div style="width:100%;height:1px;margin:0px;padding:0px;background-color:#D5D5D5;overflow:hidden;"></div>
     <div class="row">
         <div class="col-md-3">
@@ -216,8 +219,11 @@
         <%- include('./partials/footer.ejs') %>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
-</body>
+        <script src="./lib/angular/angular.min.js"></script>
+        <script src="./app/cart.component.js"></script>
+        <script src="./app/cart.controller.js"></script>
+      </body>
 
 </html>

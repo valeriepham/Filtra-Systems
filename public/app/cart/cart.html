@@ -1,0 +1,67 @@
+<h1>Angular {{ $ctrl.name }}</h1>
+<div class="row">
+  <div class="col-sm-8">
+    <table class="order">
+      <tr>
+        <th>Items</th>
+        <th>Quantity</th>
+        <th>Unit Price</th>
+        <th>Total Price</th>
+        <th></th>
+      </tr>
+      <tr ng-repeat="product in $ctrl.cart.items">
+        <td>
+          <img src="{{ product.item.img }}" width="50px" height="100px">
+          <span>{{ product.item.title }}</span>
+        </td>
+        <td class="div-td-2">
+          <input type="number" ng-model="product.quantity">
+        </td>
+        <td class="div-td-3">
+          ${{ product.item.pricing.retail }} ea.
+        </td>
+        <td class="div-td-4">
+          ${{ product.quantity * product.item.pricing.retail }}
+        </td>
+        <td class="div-td-5">
+          <!-- <button class="btn-success btn" ng-click="$ctrl.updateQty(product.item._id, '-1')">+1</button> -->
+        </td>
+      </tr>
+      <button class="btn btn-primary" ng-click="$ctrl.update()">Update Cart</button>
+    </table>
+  </div>
+    <div class="col-md-4">
+      <table class="order">
+        <tr>
+          <th>Order Summary</th>
+          <th></th>
+        </tr>
+        <tr class="div-ordersummary-tr-1">
+          <td class="div-ordersummary-td-1">Subtotal</td>
+          <td class="div-ordersummary-td-2">
+            $
+            subTotal
+          </td>
+        </tr>
+        <tr>
+          <td>Estimated Shipping</td>
+          <td>$
+            shipping
+          </td>
+        </tr>
+        <tr>
+          <td>Sales Tax</td>
+          <td>$
+            sales tax
+          </td>
+        </tr>
+        <tr class="div-order-total">
+          <td>Total</td>
+          <td>$
+            total total
+          </td>
+        </tr>
+        <button class="btn btn-success" ng-click="$ctrl.checkout()">Checkout</button>
+      </table>
+    </div>
+</div>

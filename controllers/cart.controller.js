@@ -1,9 +1,9 @@
 const Cart = require('../models/cart');
 const Order = require('../models/order');
-const Product = require('../models/product')
+const Product = require('../models/product');
 const Stripe = require('stripe');
 
-function addToCart(req, res, next) {
+function addToCart(req, res) {
   let series = req.params.id;
   let cart = new Cart(req.session.cart ? req.session.cart : {});
 
@@ -20,13 +20,13 @@ function addToCart(req, res, next) {
   });
 }
 
-function updateQuantity(req, res, next) {
+function updateQuantity(req, res) {
   if (!req.session.cart) {
     return res.redirect('/cart');
   }
   //create a new cart object from the saved cart in session memory
-  let id = req.params.id
-  let qty = req.params.qty
+  let id = req.params.id;
+  let qty = req.params.qty;
   let cart = new Cart(req.session.cart);
   console.log(cart.cartItems());
   cart.updateQuantity(id, qty);
@@ -34,18 +34,18 @@ function updateQuantity(req, res, next) {
   res.redirect('/cart');
 }
 
-function remove(req, res, next) {
+function remove(req, res) {
   if (!req.session.cart) {
     return res.redirect('/cart');
   }
   //create a new cart object from the saved cart in session memory
-  let id = req.params.id
+  let id = req.params.id;
   let cart = new Cart(req.session.cart);
   cart.remove(id);
   res.redirect('/cart');
 }
 
-function charge(req, res, next) {
+function charge(req, res) {
   //ensure that the cart is still saved in session memory
   if (!req.session.cart) {
     return res.redirect('/cart');
@@ -54,7 +54,7 @@ function charge(req, res, next) {
   let cart = new Cart(req.session.cart);
 
   // Set stripe key to secret test key (test version)
-  let stripe = Stripe("sk_test_uxg0FRXwXVLJidLOj1Xvm6AJ");
+  let stripe = Stripe('sk_test_uxg0FRXwXVLJidLOj1Xvm6AJ');
 
   // Token is created using Elements
   // Get the payment token ID submitted by the form:
@@ -63,8 +63,8 @@ function charge(req, res, next) {
   // Charge the user's card:
   stripe.charges.create({
     amount: cart.price() * 100,
-    currency: "usd",
-    description: "Test Charge",
+    currency: 'usd',
+    description: 'Test Charge',
     source: token,
   }, function (err, charge) {
     // asynchronously called
@@ -73,18 +73,31 @@ function charge(req, res, next) {
       return res.redirect('/simplecheckout');
     }
     let order = new Order({
-      user: req.user || null,
+      user: req.user ? req.user : null,
       cart: cart,
-      address: req.body.address,
+      shippingAddress: {
+        street: req.body.address,
+        state: 'TX',
+        zip: 11111,
+      },
+      billingAddress: {
+        street: req.body.address,
+        state: 'OK',
+        zip: 22222,
+      },
       name: req.body.name,
       paymentId: charge.id,
     });
-    order.save(function(err, result) {
-      req.flash('success', 'Checkout was successful!');
-      req.session.cart = null;
-      res.redirect('/cart');    
+    order.save(function (err, result) {
+      if (err) {
+        console.log(err);
+      } else {
+        req.flash('success', 'Checkout was successful!');
+        req.session.cart = null;
+        res.redirect('/cart');
+      }
     });
   });
 }
 
-module.exports = { addToCart, updateQuantity, remove, charge }
+module.exports = { addToCart, updateQuantity, remove, charge };
