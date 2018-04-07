@@ -8,7 +8,7 @@ function listProducts(req, res) {
     }
     else {
       res.render('product', {
-        title: 'PRODUCTS',
+        title: 'Products',
         products: products
       });
     }

@@ -57,6 +57,14 @@ router.get('/simplecheckout', function (req, res) {
   res.render('simplecheckout', { totalPrice: cart.price() });
 });
 
+router.get('/api/cart/save', function(req, res, next) {
+  if (!req.session.cart) {
+    return res.redirect('/cart');
+  }
+  let cart = new Cart(req.session.cart);
+  res.render('simplecheckout', { totalPrice: cart.price() });
+})
+
 router.post('/add-to-cart/:id', cartController.addToCart);
 
 router.post('/charge', cartController.charge);

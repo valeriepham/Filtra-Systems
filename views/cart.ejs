@@ -191,6 +191,9 @@
             <% if (products != null) { %>
                 <a href="/simplecheckout" class="btn btn-success" style="float: right; margin-right: 50px">Checkout</a>
                 <% } %>
+            <% if (user) { %>
+                <a href="/api/cart/save" class="btn btn-primary" style="float: right; margin-right: 50px">Save for Later</a>
+            <% } %>
         </div>
     </div>
     <br>

@@ -73,16 +73,29 @@ function charge(req, res) {
       return res.redirect('/simplecheckout');
     }
     let order = new Order({
-      user: req.user || null,
+      user: req.user ? req.user : null,
       cart: cart,
-      address: req.body.address,
+      shippingAddress: {
+        street: req.body.address,
+        state: 'TX',
+        zip: 11111,
+      },
+      billingAddress: {
+        street: req.body.address,
+        state: 'OK',
+        zip: 22222,
+      },
       name: req.body.name,
       paymentId: charge.id,
     });
-    order.save(function(err, result) {
-      req.flash('success', 'Checkout was successful!');
-      req.session.cart = null;
-      res.redirect('/cart');    
+    order.save(function (err, result) {
+      if (err) {
+        console.log(err);
+      } else {
+        req.flash('success', 'Checkout was successful!');
+        req.session.cart = null;
+        res.redirect('/cart');
+      }
     });
   });
 }
