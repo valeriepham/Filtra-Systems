@@ -4,7 +4,7 @@ const productController = require('../controllers/products.controller');
 const cartController = require('../controllers/cart.controller');
 const Cart = require('../models/cart');
 const Product = require('../models/product');
-// const Order = require('../models/order');
+const Order = require('../models/order');
 // const Stripe = require('stripe');
 
 
@@ -57,13 +57,13 @@ router.get('/simplecheckout', function (req, res) {
   res.render('simplecheckout', { totalPrice: cart.price() });
 });
 
-router.get('/api/cart/save', function(req, res, next) {
+router.get('/api/cart/save', function(req, res) {
   if (!req.session.cart) {
     return res.redirect('/cart');
   }
   let cart = new Cart(req.session.cart);
   res.render('simplecheckout', { totalPrice: cart.price() });
-})
+});
 
 router.post('/add-to-cart/:id', cartController.addToCart);
 
@@ -106,6 +106,18 @@ router.get('/api/products', function (req, res) {
     }
     else {
       res.send(products);
+    }
+  });
+});
+
+router.get('api/orders/user/:uid', function(req, res) {
+  Order.find({ user: req.params.uid }).exec(function (err, orders) {
+    if (err) {
+      console.log('Error when fetching orders');
+      res.status(400).send(err);
+    } else {
+      console.log('Orders:', orders);
+      res.status(200).send(orders);
     }
   });
 });

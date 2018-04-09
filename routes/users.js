@@ -19,7 +19,7 @@ router.post('/login', function (req, res) {
         if (err) {
           res.send(`There was an error: ${err}`);
         } else {
-          req.flash('success', "You're now logged in.");
+          req.flash('success', 'You\'re now logged in.');
           res.redirect('/users/profile');
         }
       });
@@ -28,14 +28,15 @@ router.post('/login', function (req, res) {
 });
 
 router.get('/profile', function (req, res) {
-  console.log(req.user);
+  console.log('user', req.user);
   console.log('orders', req.user.pullOrders());
-  req.user.pullOrders().then(function (orders, err) {
+  req.user.pullOrders().then(function (orders) {
+    console.log('then orders', orders);
     res.render('users/profile', { orders: orders });
-  });
+  });  
 });
 
-router.get('/signup', function (req, res, next) {
+router.get('/signup', function (req, res) {
   res.render('users/signup');
 });
 
@@ -60,7 +61,7 @@ router.post('/signup', function (req, res) {
             if (err) {
               res.send(`There was an error: ${err}`);
             } else {
-              req.flash('success', "You're now logged in.");
+              req.flash('success', 'You\'re now logged in.');
               res.redirect('/users/profile');
             }
           });
@@ -72,7 +73,7 @@ router.post('/signup', function (req, res) {
 
 router.get('/logout', function (req, res) {
   req.logout();
-  req.flash('success', "You've logged out!");
+  req.flash('success', 'You\'ve logged out!');
   res.redirect('/users/login');
 });
 

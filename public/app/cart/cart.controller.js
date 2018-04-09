@@ -15,7 +15,7 @@
     vm.update = update;
     vm.checkout = checkout;
     
-    function remove(id) {
+    function remove() {
 
     }
     function update() {

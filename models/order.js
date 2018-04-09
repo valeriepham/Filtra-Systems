@@ -15,7 +15,7 @@ let orderSchema = mongoose.Schema({
   },
   name: {type: String, required: true},
   paymentId: {type: String, required: true}
-})
+});
 
 let Order = mongoose.model('Order', orderSchema);
 

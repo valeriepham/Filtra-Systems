@@ -18,19 +18,17 @@ schema.methods.isValidPassword = function (password) {
 };
 
 schema.methods.pullOrders = function () {
-  console.log(this._id);
-  Order.find({ user: this._id }).exec(function (err, orders) {
+  console.log('pullOrders is', this._id);
+  return Order.find({ user: this._id }).exec(function (err, orders) {
     if (err) {
       console.log('Error when fetching products');
       return 'error';
     } else {
-      console.log('orders fetched')
-      // console.log(orders);
+      console.log('orders fetched', orders);
       return orders;
     }
   });
-  // return orders;
-}
+};
 
 const User = mongoose.model('users', schema);
 module.exports = User;
