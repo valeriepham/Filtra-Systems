@@ -18,7 +18,7 @@ schema.methods.isValidPassword = function (password) {
 };
 
 schema.methods.pullOrders = function () {
-  console.log('pullOrders is', this._id);
+  console.log('pullOrders id:', this._id);
   return Order.find({ user: this._id }).exec(function (err, orders) {
     if (err) {
       console.log('Error when fetching products');

@@ -27,14 +27,21 @@ router.post('/login', function (req, res) {
   });
 });
 
-router.get('/profile', function (req, res) {
-  console.log('user', req.user);
-  console.log('orders', req.user.pullOrders());
-  req.user.pullOrders().then(function (orders) {
-    console.log('then orders', orders);
-    res.render('users/profile', { orders: orders });
-  });  
-});
+router.get('/profile',
+  function (req, res, next) {
+    console.log('user: ', req.user);
+    // console.log('orders', req.user.pullOrders());
+    // req.user.pullOrders().then(function (orders) {
+    //   console.log('then orders', orders);
+    //   res.render('users/profile', { orders: orders });
+    // });  
+    req.user.pullOrders();
+    next();
+  },
+  function(req, res) {
+    res.render('users/profile', { orders: 'Feature coming soon' });
+  }
+);
 
 router.get('/signup', function (req, res) {
   res.render('users/signup');
