@@ -27,7 +27,10 @@
   <h1>My Account</h1>
 
   <h4>Email Address: <%= user.email %> </h4>
-  <h3> Orders: <%= orders %></h3>
+  <h3> Past Orders:</h3>
+  <% orders.forEach(function(order) { %>
+    <p><%= order.name %> purchased <%= order._id %> using payment <%= order.paymentId %> on <%= order.date %></p>
+  <% }) %>
 
   <%- include('../partials/footer') %>
 
