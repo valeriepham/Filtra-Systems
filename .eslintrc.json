@@ -1,0 +1,26 @@
+{
+  "env": {
+    "es6": true,
+    "node": true
+  },
+  "extends": "eslint:recommended",
+  "parserOptions": {
+    "sourceType": "module"
+  },
+  "globals": {
+    "angular": true
+  },
+  "rules": {
+    "no-console": "off",
+    "indent": ["error", 2],
+    "eqeqeq": ["warn", "smart"],
+    "space-before-blocks": "warn",
+    "linebreak-style": ["error", "unix"],
+    "quotes": ["warn", "single"],
+    "semi": ["error", "always"],
+    "no-unused-vars": [
+      "error",
+      { "varsIgnorePattern": "^_(.?)+", "argsIgnorePattern": "^_(.?)+" }
+    ]
+  }
+}

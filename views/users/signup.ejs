@@ -15,7 +15,7 @@
   </style>
 </head>
 <body>
-    <%- include('../partials/navbar') %>
+    
     <% if (message.danger) { %>
         <div class="alert alert-danger" role="alert">
           <%=message.danger%>
@@ -40,7 +40,7 @@
     
         <div class="form-group">
             <label for="confirm_password">Re-enter Password</label>
-            <input type="password" id="confirm_password" name="confirm_password" class="form-control" placeholder="confirm_password" >
+            <input type="password" id="confirm_password" name="confirm_password" class="form-control" placeholder="Password_Confirm" >
         </div>
       
         <button type="submit" class="btn btn-primary">Sign Up</button> Or <a href="/users/login">Sign in</a>
@@ -51,8 +51,8 @@
     </div>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
       
 </body>
 </html>
