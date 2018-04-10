@@ -18,6 +18,7 @@ let MongoStore = require('connect-mongo')(session);
 let bcrypt = require('bcrypt');
 let index = require('./routes/index');
 let users = require('./routes/users');
+let admin = require('./routes/admin');
 let products = require('./routes/products');
 let catalog = require('./routes/catalog');
 
@@ -94,7 +95,9 @@ app.use(function (req, res, next) {
 app.use('/', index);
 app.use('/products', products);
 app.use('/catalog', catalog);
+app.use('/admin', admin)
 app.use('/users', users);
+
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
