@@ -12,7 +12,10 @@ router.post('/login', function(req, res) {
     if(err) {
       res.send(`There was an error: ${err}`);
     } else if(!user) { // User login check failed
-      req.flash('danger', 'Email or Password is incorrect');
+      req.flash('danger', 'Email does not exist');
+      res.redirect('/users/login');
+    } else if (!user.isValidPassword(req.body.password)) {
+      req.flash('danger', 'Password is incorrect');
       res.redirect('/users/login');
     } else { // User login
       req.login(user, function(err) {
@@ -28,9 +31,14 @@ router.post('/login', function(req, res) {
 });
 
 router.get('/profile', function(req, res) {
-  console.log(req.user.email);
-  res.render('users/profile');
+  if(req.user) {
+    res.render('users/profile');
+  } else {
+    req.flash('danger',"Please logged in first")
+    res.redirect('/users/login');
+  }
 });
+
 
 router.get('/signup', function(req, res, next) {
   res.render('users/signup');
@@ -74,17 +82,25 @@ router.get('/logout', function(req, res) {
 });
 
 router.get('/pwchange', function(req, res) {
-  res.render('/users/pwchange');
+  if(req.user) {
+    res.render('users/pwchange');
+  } else {
+    req.flash('danger',"Please logged in first")
+    res.redirect('/users/login');
+  }
 });
 
 router.post('/pwchange', function(req, res) {
   User.findOne({email: req.body.email }, function(err, user) {
     if(err) {
       res.send(`There was an error: ${err}`);
-    } else if(user & user.password == user.generateHash(req.body.password)) { 
-      req.flash('danger', 'Email or password is already in use');
-      res.redirect('/users/signup');
-    } else { // User doesn't exist. Save to DB
+    } else if(!user) { 
+      req.flash('danger', 'Email is not correct');
+      res.redirect('/users/pwchange');
+    } else if(!user.isValidPassword(req.body.password)) {
+      req.flash('danger', 'Password is not correct');
+      res.redirect('/users/pwchange');      
+    } else{ // User doesn't exist. Save to DB
       user.password = user.generateHash(req.body.newpassword);
       user.save(function(err) {
         if(err) {
@@ -94,7 +110,7 @@ router.post('/pwchange', function(req, res) {
             if(err) {
               res.send(`There was an error: ${err}`);
             } else {
-              req.flash('success', "You're now logged in.");
+              req.flash('success', "Your password has been changed.");
               res.redirect('/users/profile');
             }
           });
