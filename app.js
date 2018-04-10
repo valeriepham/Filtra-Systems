@@ -23,7 +23,7 @@ let catalog = require('./routes/catalog');
 
 // setup database connection
 mongoose.connect('mongodb://michael:michael1@ds127139.mlab.com:27139/soba-filtra');
-var db = mongoose.connection;
+let db = mongoose.connection;
 
 // check for successful connection
 db.on('error', function (msg) {
@@ -55,11 +55,12 @@ function getDatabaseUrl() {
 }
 
 const days = 24 * 60 * 60 * 1000;
+const minutes = 60 * 1000
 app.use(session({
   secret: process.env.APP_SESSION_SECRET,
   resave: false,
   saveUninitialized: false,
-  cookie: { maxAge: 1 * days },
+  cookie: { maxAge: 5 * minutes },
   store: new MongoStore({ mongooseConnection: db }),
 }));
 
@@ -105,7 +106,7 @@ app.use(function (req, res, next) {
 // error handler
 app.use(function (err, req, res, next) {
   // set locals, only providing error in development
-  res.locals.message = err.message;
+  res.locals.errorMessage = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
   // render the error page

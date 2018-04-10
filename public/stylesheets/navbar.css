@@ -40,7 +40,6 @@ footer {
 	height: 20%;
 	flex: 0 0 auto;
     -webkit-flex: 0 0 auto;
-
 }
 
 footer .footer-copyright{
@@ -59,7 +58,6 @@ footer ul{
 	list-style-type: none;
     padding-left: 0;
     line-height: 1.7;
-
 }
 
 footer h5{
@@ -85,8 +83,6 @@ footer .col-sm-3{
 
 footer .social-networks{
 	text-align: center;
-	
-	
 }
 
 footer .social-networks a{
@@ -94,7 +90,6 @@ footer .social-networks a{
     margin-right: 5px;
     margin-left: 5px;
     color: #f9f9f9;
-    
     transition: 0.2s;
 }
 
