@@ -4,18 +4,19 @@ const Product = require('../models/product');
 const Stripe = require('stripe');
 
 function addToCart(req, res) {
-  let series = req.params.id;
+  let series = req.body.model;
   let cart = new Cart(req.session.cart ? req.session.cart : {});
 
-  Product.findOne({ 'series': series }).exec(function (err, product) {
+  console.log('adding', series, 'to cart');
+
+  Product.findOne({ model: series }).exec(function (err, product) {
     if (err) {
       return res.redirect('/');
     }
+    console.log('product found:', product);
     let qty = parseInt(req.body.qty, 10);
     cart.add(product, product.id, qty || 1);
     req.session.cart = cart;
-    // console.log(req.session.cart)
-    // console.log(req.session.cart.cartItems());
     res.redirect('/cart');
   });
 }
@@ -31,6 +32,15 @@ function updateQuantity(req, res) {
   console.log(cart.cartItems());
   cart.updateQuantity(id, qty);
   console.log(cart.cartItems());
+  res.redirect('/cart');
+}
+
+function update(req, res) {
+  let cart = new Cart(req.body);
+  console.log('passed cart:',cart);
+  console.log('session cart:',req.session.cart);
+  req.session.cart = cart;
+  console.log('updated cart:',req.session.cart);
   res.redirect('/cart');
 }
 
@@ -76,16 +86,16 @@ function charge(req, res) {
       user: req.user ? req.user : null,
       cart: cart,
       shippingAddress: {
-        street: req.body.address,
-        state: 'TX',
-        zip: 11111,
+        street: req.body.shippingAdd,
+        state: req.body.shippingSt,
+        zip: req.body.shippingZip,
       },
       billingAddress: {
-        street: req.body.address,
-        state: 'OK',
-        zip: 22222,
+        street: req.body.billingAdd,
+        state: req.body.billingSt,
+        zip: req.body.billingZip,
       },
-      name: req.body.name,
+      name: req.body.cardHolderName,
       paymentId: charge.id,
     });
     order.save(function (err, result) {
@@ -100,4 +110,4 @@ function charge(req, res) {
   });
 }
 
-module.exports = { addToCart, updateQuantity, remove, charge };
+module.exports = { addToCart, updateQuantity, update, remove, charge };

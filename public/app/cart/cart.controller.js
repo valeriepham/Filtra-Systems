@@ -19,6 +19,12 @@
 
     }
     function update() {
+      for (const id in vm.cart.items) {
+        console.log('checking item:', vm.cart.items[id]);
+        if (vm.cart.items[id].quantity < 1) {
+          delete vm.cart.items[id];
+        }
+      }
       cartService.update(vm.cart);
     }
     function checkout() {

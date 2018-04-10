@@ -4,6 +4,7 @@ class Cart {
     for (let id in this.items) {
       this.items[id].price = this.items[id].item.pricing.retail * this.items[id].quantity;
     }
+    this.price = this.getPrice();
   }
 
   add(item, id, qty) {
@@ -48,7 +49,7 @@ class Cart {
     return arr;
   }
 
-  price() {
+  getPrice() {
     let price = 0.0;
     for (let id in this.items) {
       // this.items[id].price = parseFloat(this.items[id].item.pricing.retail) * parseFloat(this.items[id].quantity);

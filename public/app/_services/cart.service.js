@@ -7,7 +7,8 @@
     return {
       get: get,
       update: update,
-      checkout: checkout
+      checkout: checkout,
+      getStoredPrice: getStoredPrice
     };
 
     function get() {
@@ -25,6 +26,9 @@
 
     function checkout() {
       http.get('/simplecheckout');
+    }
+    function getStoredPrice() {
+      return http.get('api/cart/get');
     }
   }
 })();

@@ -207,112 +207,121 @@
 
 <%- include('./partials/header.ejs') %>
 
-<body>
-    <!-- content -->
-    <div class="container">
-        <!-- body -->
-        <div class="row container">
-            <!-- Information -->
-            <div class="col-8">
-                <h1>
-                    <%= products[0].title %>
-                </h1>
-                <img src="../images/<%=products[0].series%>.jpg">
-                <div class="card">
-                    <h5 class="card-title">Description</h5>
-                    <p class="card-text">
-                        <%= products[0].description %>
-                    </p>
-                </div>
-                <div class="card">
-                    <h5 class="card-title">Features</h5>
-                    <p class="card-text">
-                        <!-- Change to actual feature list -->
-                        <%= products[0].description %>
-                    </p>
-                </div>
-
-            </div>
-            <!-- payment -->
-            <div class="col-4">
-
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Price:
-                            <%= products[0].pricing.retail %>
-                        </h5>
+    <body>
+        <!-- content -->
+        <div class="container">
+            <!-- body -->
+            <div class="row container">
+                <!-- Information -->
+                <div class="col-8">
+                    <h1>
+                        <%= products[0].title %>
+                    </h1>
+                    <img src="../images/<%=products[0].series%>.jpg">
+                    <div class="card">
+                        <h5 class="card-title">Description</h5>
+                        <p class="card-text">
+                            <%= products[0].description %>
+                        </p>
+                    </div>
+                    <div class="card">
+                        <h5 class="card-title">Features</h5>
+                        <p class="card-text">
+                            <!-- Change to actual feature list -->
+                            <%= products[0].description %>
+                        </p>
                     </div>
 
-                    <form action="/add-to-cart/<%=products[0].series%>" method="post">
-                        <!-- Quantity -->
-                        <div class="form-group">
-                            <label for="quantity">Quantity: </label>
-                            <input type="number" class="form-control" id="quantity" name="qty">
-                        </div>
-                        <button type="submit" class="btn btn-primary">Add to Cart</button>
-                    </form>
                 </div>
+                <!-- payment -->
+                <div class="col-4">
+
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Price:
+                                <%= products[0].pricing.retail %>
+                            </h5>
+                        </div>
+
+                        <form action="/api/cart/add" method="post">
+                            <!-- Quantity -->
+                            <div class="form-group">
+                                <label for="quantity">Quantity: </label>
+                                <input type="number" class="form-control" id="quantity" name="qty">
+                            </div>
+                            <!-- Model -->
+                            <div class="form-group">
+                                <label for="sel1">Select list:</label>
+                                <select class="form-control" id="model" name="model">
+                                    <% products.forEach(function(product) { %>
+                                    <option><%= product.model %></option>
+                                    <% }) %>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Add to Cart</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- specs table -->
+            <div class="container">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Series</th>
+                            <th scope="col">Model #</th>
+                            <th scope="col">Bag Quantity</th>
+                            <th scope="col">Bag Size</th>
+                            <th scope="col">Material</th>
+                            <th scope="col">Max Pressure (PSI)</th>
+                            <th scope="col">Connection Inlet/Outlet</th>
+                            <th scope="col">Connection Type</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% products.forEach(function(product) { %>
+                            <tr>
+                                <th scope="col">
+                                    <%=product.series%>
+                                </th>
+                                <th scope="col">
+                                    <%=product.model%>
+                                </th>
+                                <th scope="col">
+                                    <%=product.order_information.bag_quantity%>
+                                </th>
+                                <th scope="col">
+                                    <%=product.order_information.bag_size%>
+                                </th>
+                                <th scope="col">
+                                    <%=product.order_information.material%>
+                                </th>
+                                <th scope="col">
+                                    <%=product.order_information.max_pressure_psi%>
+                                </th>
+                                <th scope="col">
+                                    <%=product.order_information.connection%>
+                                </th>
+                                <th scope="col">
+                                    <%=product.order_information.connection_type%>
+                                </th>
+                            </tr>
+                            <% }) %>
+                    </tbody>
+                </table>
             </div>
         </div>
 
-        <!-- specs table -->
-        <div class="container">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">Series</th>
-                        <th scope="col">Model #</th>
-                        <th scope="col">Bag Quantity</th>
-                        <th scope="col">Bag Size</th>
-                        <th scope="col">Material</th>
-                        <th scope="col">Max Pressure (PSI)</th>
-                        <th scope="col">Connection Inlet/Outlet</th>
-                        <th scope="col">Connection Type</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <% products.forEach(function(product) { %>
-                        <tr>
-                            <th scope="col">
-                                <%=product.series%>
-                            </th>
-                            <th scope="col">
-                                <%=product.model%>
-                            </th>
-                            <th scope="col">
-                                <%=product.order_information.bag_quantity%>
-                            </th>
-                            <th scope="col">
-                                <%=product.order_information.bag_size%>
-                            </th>
-                            <th scope="col">
-                                <%=product.order_information.material%>
-                            </th>
-                            <th scope="col">
-                                <%=product.order_information.max_pressure_psi%>
-                            </th>
-                            <th scope="col">
-                                <%=product.order_information.connection%>
-                            </th>
-                            <th scope="col">
-                                <%=product.order_information.connection_type%>
-                            </th>
-                        </tr>
-                        <% }) %>
-                </tbody>
-            </table>
-        </div>
-    </div>
+        <!-- Scripts -->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+    </body>
 
-    <!-- Scripts -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
-</body>
-
-<%- include('./partials/footer.ejs') %>
+    <%- include('./partials/footer.ejs') %>
 
 </html>

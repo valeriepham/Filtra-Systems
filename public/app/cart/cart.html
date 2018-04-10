@@ -15,7 +15,7 @@
           <span>{{ product.item.title }}</span>
         </td>
         <td class="div-td-2">
-          <input type="number" ng-model="product.quantity">
+          <input type="number" min="1" max="999" ng-model="product.quantity">
         </td>
         <td class="div-td-3">
           ${{ product.item.pricing.retail }} ea.
@@ -39,29 +39,24 @@
         <tr class="div-ordersummary-tr-1">
           <td class="div-ordersummary-td-1">Subtotal</td>
           <td class="div-ordersummary-td-2">
-            $
-            subTotal
+            ${{ $ctrl.cart.price }}
           </td>
         </tr>
         <tr>
           <td>Estimated Shipping</td>
-          <td>$
-            shipping
+          <td>${{ ($ctrl.cart.price * 0.15).toFixed(2) }}
           </td>
         </tr>
         <tr>
           <td>Sales Tax</td>
-          <td>$
-            sales tax
+          <td>${{ ($ctrl.cart.price * 0.0875).toFixed(2) }}
           </td>
         </tr>
         <tr class="div-order-total">
           <td>Total</td>
-          <td>$
-            total total
+          <td>${{ ($ctrl.cart.price * 1.2375).toFixed(2) }}
           </td>
         </tr>
-        <button class="btn btn-success" ng-click="$ctrl.checkout()">Checkout</button>
       </table>
     </div>
 </div>

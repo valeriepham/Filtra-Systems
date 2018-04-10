@@ -6,7 +6,7 @@ const Cart = require('../models/cart');
 const Product = require('../models/product');
 const Order = require('../models/order');
 // const Stripe = require('stripe');
-
+const apiRoutes = require('./api');
 
 /* GET home page. */
 router.get('/', function (req, res) {
@@ -42,8 +42,8 @@ router.get('/cart', function (req, res) {
     console.log('req cart', req.session.cart);
     let cart = new Cart(req.session.cart);
     console.log('cart object', cart);
-    console.log('price', cart.price());
-    res.render('newcart', { products: cart.cartItems(), totalPrice: cart.price() });
+    console.log('price', cart.getPrice());
+    res.render('newcart', { products: cart.cartItems(), totalPrice: cart.getPrice() });
   }
 });
 
@@ -77,27 +77,6 @@ router.get('/test', function (req, res) {
   res.render('test');
 });
 
-router.get('/api/cart', function (req, res) {
-  if (!req.session.cart || req.session.cart == null) {
-    res.send('cart empty');
-  } else {
-    let cart = new Cart(req.session.cart);
-    res.send(cart);
-  }
-});
-
-router.put('/api/cart/update', function (req, res) {
-  if (!req.session.cart || req.session.cart == null) {
-    console.log('cart empty');
-    res.send('cart empty');
-  } else {
-    console.log('session cart', req.session.cart);
-    req.session.cart = new Cart(req.body);
-    console.log('session cart updated', req.session.cart);
-    res.send(req.session.cart);
-  }
-});
-
 router.get('/api/products', function (req, res) {
   Product.find().exec(function (err, products) {
     if (err) {
@@ -121,5 +100,7 @@ router.get('api/orders/user/:uid', function(req, res) {
     }
   });
 });
+
+router.use('/api/', apiRoutes);
 
 module.exports = router;
