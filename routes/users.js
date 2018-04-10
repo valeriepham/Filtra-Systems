@@ -11,10 +11,10 @@ router.post('/login', function(req, res) {
   User.findOne({ email: req.body.email }, function(err, user) {
     if(err) {
       res.send(`There was an error: ${err}`);
-    } else if(!user) { // User already exists
+    } else if(!user) { // User login check failed
       req.flash('danger', 'Email or Password is incorrect');
       res.redirect('/users/login');
-    } else { // User doesn't exist. Save to DB
+    } else { // User login
       req.login(user, function(err) {
         if(err) {
           res.send(`There was an error: ${err}`);
@@ -28,7 +28,7 @@ router.post('/login', function(req, res) {
 });
 
 router.get('/profile', function(req, res) {
-  console.log(req.user);
+  console.log(req.user.email);
   res.render('users/profile');
 });
 
@@ -71,6 +71,38 @@ router.get('/logout', function(req, res) {
   req.logout();
   req.flash('success', "You've logged out!");
   res.redirect('/users/login');
+});
+
+router.get('/pwchange', function(req, res) {
+  res.render('/users/pwchange');
+});
+
+router.post('/pwchange', function(req, res) {
+  User.findOne({email: req.body.email }, function(err, user) {
+    if(err) {
+      res.send(`There was an error: ${err}`);
+    } else if(user & user.password == user.generateHash(req.body.password)) { 
+      req.flash('danger', 'Email or password is already in use');
+      res.redirect('/users/signup');
+    } else { // User doesn't exist. Save to DB
+      user.password = user.generateHash(req.body.newpassword);
+      user.save(function(err) {
+        if(err) {
+          res.send(`There was an error: ${err}`);
+        } else {
+          req.login(user, function(err) {
+            if(err) {
+              res.send(`There was an error: ${err}`);
+            } else {
+              req.flash('success', "You're now logged in.");
+              res.redirect('/users/profile');
+            }
+          });
+        }
+      });
+    }
+  });
+
 });
 
 module.exports = router;
