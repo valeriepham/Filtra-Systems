@@ -2,24 +2,25 @@ const express = require('express');
 const router = express.Router();
 
 const User = require('../models/user');
+const Order = require('../models/order');
 
-router.get('/login', function(req, res) {
+router.get('/login', function (req, res) {
   res.render('users/login');
 });
 
-router.post('/login', function(req, res) {
-  User.findOne({ email: req.body.email }, function(err, user) {
-    if(err) {
+router.post('/login', function (req, res) {
+  User.findOne({ email: req.body.email }, function (err, user) {
+    if (err) {
       res.send(`There was an error: ${err}`);
-    } else if(!user) { // User already exists
+    } else if (!user) { // User already exists
       req.flash('danger', 'Email or Password is incorrect');
       res.redirect('/users/login');
     } else { // User doesn't exist. Save to DB
-      req.login(user, function(err) {
-        if(err) {
+      req.login(user, function (err) {
+        if (err) {
           res.send(`There was an error: ${err}`);
         } else {
-          req.flash('success', "You're now logged in.");
+          req.flash('success', 'You\'re now logged in.');
           res.redirect('/users/profile');
         }
       });
@@ -27,21 +28,42 @@ router.post('/login', function(req, res) {
   });
 });
 
-router.get('/profile', function(req, res) {
-  console.log(req.user);
-  res.render('users/profile');
-});
+router.get('/profile',
+  function (req, res, next) {
+    console.log('user: ', req.user);
+    Order.find({ user: req.user._id }).exec(function(err, orders) {
+      if (err) {
+        console.log('Error finding user\'s orders');
+        console.error(err);
+      } else if (orders === []) {
+        res.render('users/profile', { orders: 'You have not made any purchases yet!' });
+      } else {
+        res.render('users/profile', { orders: orders });
+      }
+    });
+    // console.log('orders', req.user.pullOrders());
+    // req.user.pullOrders().then(function (orders) {
+    //   console.log('then orders', orders);
+    //   res.render('users/profile', { orders: orders });
+    // });  
+  //   req.user.pullOrders();
+  //   next();
+  // },
+  // function(req, res) {
+  //   res.render('users/profile', { orders: 'Feature coming soon' });
+  }
+);
 
-router.get('/signup', function(req, res, next) {
+router.get('/signup', function (req, res) {
   res.render('users/signup');
 });
 
-router.post('/signup', function(req, res) {
+router.post('/signup', function (req, res) {
   console.log(req.body);
-  User.findOne({email: req.body.email }, function(err, user) {
-    if(err) {
+  User.findOne({ email: req.body.email }, function (err, user) {
+    if (err) {
       res.send(`There was an error: ${err}`);
-    } else if(user) { // User already exists
+    } else if (user) { // User already exists
       req.flash('danger', 'Email or password is already in use');
       res.redirect('/users/signup');
     } else { // User doesn't exist. Save to DB
@@ -49,15 +71,15 @@ router.post('/signup', function(req, res) {
       user.email = req.body.email;
       user.password = user.generateHash(req.body.password);
       user.level = req.body.level;
-      user.save(function(err) {
-        if(err) {
+      user.save(function (err) {
+        if (err) {
           res.send(`There was an error: ${err}`);
         } else {
-          req.login(user, function(err) {
-            if(err) {
+          req.login(user, function (err) {
+            if (err) {
               res.send(`There was an error: ${err}`);
             } else {
-              req.flash('success', "You're now logged in.");
+              req.flash('success', 'You\'re now logged in.');
               res.redirect('/users/profile');
             }
           });
@@ -67,9 +89,9 @@ router.post('/signup', function(req, res) {
   });
 });
 
-router.get('/logout', function(req, res) {
+router.get('/logout', function (req, res) {
   req.logout();
-  req.flash('success', "You've logged out!");
+  req.flash('success', 'You\'ve logged out!');
   res.redirect('/users/login');
 });
 

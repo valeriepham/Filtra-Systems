@@ -20,7 +20,7 @@ let productSchema = mongoose.Schema({
   dimensions: Array,
   specifications: Array,
   img: String
-})
+});
 
 let Product = mongoose.model('Product', productSchema);
 
