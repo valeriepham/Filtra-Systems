@@ -14,15 +14,15 @@ router.get('/', function (req, res) {
 });
 
 router.get('/about-us', function (req, res) {
-  res.render('site-info/about-us', { title: 'About Us', message: 'More information to come soon!' });
+  res.render('about-us', { title: 'About Us', message: 'More information to come soon!' });
 });
 
 router.get('/request-quote', function (req, res) {
-  res.render('site-info/request-quote', { title: 'Request Quote', message: 'More information to come soon!' });
+  res.render('request-quote', { title: 'Request Quote', message: 'More information to come soon!' });
 });
 
 router.get('/contact-us', function (req, res) {
-  res.render('site-info/contact-us', { title: 'Contact Us', message: 'More information to come soon!' });
+  res.render('contact-us', { title: 'Contact Us', message: 'More information to come soon!' });
 });
 
 // router.get('/checkout', function (req, res) {
@@ -37,13 +37,13 @@ router.get('/product/:series', productController.findSeries);
 
 router.get('/cart', function (req, res) {
   if (!req.session.cart || req.session.cart == null) {
-    return res.render('cart', { products: null, totalPrice: 0 });
+    return res.render('newcart', { products: null, totalPrice: 0 });
   } else {
     console.log('req cart', req.session.cart);
     let cart = new Cart(req.session.cart);
     console.log('cart object', cart);
     console.log('price', cart.getPrice());
-    res.render('cart', { products: cart.cartItems(), totalPrice: cart.getPrice() });
+    res.render('newcart', { products: cart.cartItems(), totalPrice: cart.getPrice() });
   }
 });
 
@@ -52,9 +52,17 @@ router.get('/simplecheckout', function (req, res) {
     console.log('no cart in session');
     return res.redirect('/cart');
   }
-  console.log('checkout cart:', req.session.cart);
+  console.log('checkout cart', req.session.cart);
   let cart = new Cart(req.session.cart);
-  res.render('simplecheckout', { totalPrice: cart.getPrice() * 1.2375 });
+  res.render('simplecheckout', { totalPrice: cart.price() });
+});
+
+router.get('/api/cart/save', function(req, res) {
+  if (!req.session.cart) {
+    return res.redirect('/cart');
+  }
+  let cart = new Cart(req.session.cart);
+  res.render('simplecheckout', { totalPrice: cart.price() });
 });
 
 router.post('/add-to-cart/:id', cartController.addToCart);

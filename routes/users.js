@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 
 const User = require('../models/user');
-const Order = require('../models/order');
 
 router.get('/login', function (req, res) {
   res.render('users/login');
@@ -28,31 +27,14 @@ router.post('/login', function (req, res) {
   });
 });
 
-router.get('/profile',
-  function (req, res, next) {
-    console.log('user: ', req.user);
-    Order.find({ user: req.user._id }).exec(function(err, orders) {
-      if (err) {
-        console.log('Error finding user\'s orders');
-        console.error(err);
-      } else if (orders === []) {
-        res.render('users/profile', { orders: 'You have not made any purchases yet!' });
-      } else {
-        res.render('users/profile', { orders: orders });
-      }
-    });
-    // console.log('orders', req.user.pullOrders());
-    // req.user.pullOrders().then(function (orders) {
-    //   console.log('then orders', orders);
-    //   res.render('users/profile', { orders: orders });
-    // });  
-  //   req.user.pullOrders();
-  //   next();
-  // },
-  // function(req, res) {
-  //   res.render('users/profile', { orders: 'Feature coming soon' });
-  }
-);
+router.get('/profile', function (req, res) {
+  console.log('user', req.user);
+  console.log('orders', req.user.pullOrders());
+  req.user.pullOrders().then(function (orders) {
+    console.log('then orders', orders);
+    res.render('users/profile', { orders: orders });
+  });  
+});
 
 router.get('/signup', function (req, res) {
   res.render('users/signup');
