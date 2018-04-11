@@ -37,13 +37,13 @@ router.get('/product/:series', productController.findSeries);
 
 router.get('/cart', function (req, res) {
   if (!req.session.cart || req.session.cart == null) {
-    return res.render('newcart', { products: null, totalPrice: 0 });
+    return res.render('ngcart', { products: null, totalPrice: 0 });
   } else {
     console.log('req cart', req.session.cart);
     let cart = new Cart(req.session.cart);
     console.log('cart object', cart);
     console.log('price', cart.getPrice());
-    res.render('newcart', { products: cart.cartItems(), totalPrice: cart.getPrice() });
+    res.render('ngcart', { products: cart.cartItems(), totalPrice: cart.getPrice() });
   }
 });
 
@@ -54,7 +54,7 @@ router.get('/simplecheckout', function (req, res) {
   }
   console.log('checkout cart', req.session.cart);
   let cart = new Cart(req.session.cart);
-  res.render('simplecheckout', { totalPrice: cart.price() });
+  res.render('simplecheckout', { totalPrice: cart.getPrice() });
 });
 
 router.get('/api/cart/save', function(req, res) {
@@ -62,7 +62,7 @@ router.get('/api/cart/save', function(req, res) {
     return res.redirect('/cart');
   }
   let cart = new Cart(req.session.cart);
-  res.render('simplecheckout', { totalPrice: cart.price() });
+  res.render('simplecheckout', { totalPrice: cart.getPrice() });
 });
 
 router.post('/add-to-cart/:id', cartController.addToCart);
