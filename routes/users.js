@@ -41,6 +41,9 @@ router.get('/profile', function(req, res) {
 
 
 router.get('/signup', function(req, res, next) {
+  if(req.user) {
+    req.logout();
+  }
   res.render('users/signup');
 });
 
@@ -118,7 +121,6 @@ router.post('/pwchange', function(req, res) {
       });
     }
   });
-
 });
 
 module.exports = router;

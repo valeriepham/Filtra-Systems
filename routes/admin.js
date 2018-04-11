@@ -42,6 +42,15 @@ router.get('/adminhome', function(req, res) {
     }
 });
 
+router.get('/userlist', function(req, res) {
+  if(req.user) {
+    res.render('admin/userlist');
+  } else {
+    req.flash('danger',"Please logged in first")
+    res.redirect('/admin/adminlogin');
+  }
+});
+
 router.get('/adminlogout', function(req, res) {
     req.logout();
     req.flash('success', "You've logged out!");
