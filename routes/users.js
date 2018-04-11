@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const User = require('../models/user');
+const Order = require('../models/order');
 
 router.get('/login', function(req, res) {
   res.render('users/login');
@@ -30,9 +31,19 @@ router.post('/login', function(req, res) {
   });
 });
 
-router.get('/profile', function(req, res) {
+router.get('/profile', function(req, res, next) {
   if(req.user) {
-    res.render('users/profile');
+    console.log('user: ', req.user);
+      Order.find({ user: req.user._id }).exec(function(err, orders) {
+        if (err) {
+          console.log('Error finding user\'s orders');
+          console.error(err);
+        } else if (orders === []) {
+          res.render('users/profile', { orders: 'You have not made any purchases yet!' });
+        } else {
+          res.render('users/profile', { orders: orders });
+        }
+      });
   } else {
     req.flash('danger',"Please logged in first")
     res.redirect('/users/login');
@@ -49,11 +60,11 @@ router.get('/signup', function(req, res, next) {
 
 router.post('/signup', function(req, res) {
   console.log(req.body);
-  User.findOne({email: req.body.email }, function(err, user) {
+  User.findOne({email: req.body.email}, function(err, user) {
     if(err) {
       res.send(`There was an error: ${err}`);
     } else if(user) { // User already exists
-      req.flash('danger', 'Email or password is already in use');
+      req.flash('danger', 'Email is already in use');
       res.redirect('/users/signup');
     } else { // User doesn't exist. Save to DB
       const user = new User();
