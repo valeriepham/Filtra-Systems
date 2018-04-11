@@ -33,6 +33,19 @@ router.post('/adminlogin', function(req, res) {
   });
 });
 
+router.get('/adminhome', function(req, res) {
+    if(req.user) {
+      res.render('admin/adminhome');
+    } else {
+      req.flash('danger',"Please logged in first")
+      res.redirect('/admin/adminlogin');
+    }
+});
 
+router.get('/adminlogout', function(req, res) {
+    req.logout();
+    req.flash('success', "You've logged out!");
+    res.redirect('/admin/adminlogin');
+  });
 
 module.exports = router;
