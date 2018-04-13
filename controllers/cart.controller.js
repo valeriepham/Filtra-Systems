@@ -41,7 +41,8 @@ function update(req, res) {
   console.log('session cart:',req.session.cart);
   req.session.cart = cart;
   console.log('updated cart:',req.session.cart);
-  res.redirect('/cart');
+  res.send(cart);
+  // res.redirect('/cart');
 }
 
 function remove(req, res) {
