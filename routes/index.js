@@ -14,15 +14,15 @@ router.get('/', function (req, res) {
 });
 
 router.get('/about-us', function (req, res) {
-  res.render('about-us', { title: 'About Us', message: 'More information to come soon!' });
+  res.render('site-info/about-us', { title: 'About Us', message: 'More information to come soon!' });
 });
 
 router.get('/request-quote', function (req, res) {
-  res.render('request-quote', { title: 'Request Quote', message: 'More information to come soon!' });
+  res.render('site-info/request-quote', { title: 'Request Quote', message: 'More information to come soon!' });
 });
 
 router.get('/contact-us', function (req, res) {
-  res.render('contact-us', { title: 'Contact Us', message: 'More information to come soon!' });
+  res.render('site-info/contact-us', { title: 'Contact Us', message: 'More information to come soon!' });
 });
 
 // router.get('/checkout', function (req, res) {
@@ -54,7 +54,7 @@ router.get('/simplecheckout', function (req, res) {
   }
   console.log('checkout cart', req.session.cart);
   let cart = new Cart(req.session.cart);
-  res.render('simplecheckout', { totalPrice: cart.getPrice() });
+  res.render('simplecheckout', { totalPrice: cart.getPrice() * 1.2375 });
 });
 
 router.get('/api/cart/save', function(req, res) {

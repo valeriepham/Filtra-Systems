@@ -1,4 +1,4 @@
-<h1>Angular {{ $ctrl.name }}</h1>
+<h1>Shopping Cart</h1>
 <div class="row">
   <div class="col-sm-8">
     <table class="order">
@@ -56,6 +56,9 @@
           <td>Total</td>
           <td>${{ ($ctrl.cart.price * 1.2375).toFixed(2) }}
           </td>
+        </tr>
+        <tr>
+          <td><a href="/simplecheckout" class="btn btn-success">Checkout for ${{ ($ctrl.cart.price * 1.2375).toFixed(2) }}</a></td>
         </tr>
       </table>
     </div>
