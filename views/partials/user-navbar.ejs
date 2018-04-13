@@ -3,14 +3,19 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
+        <ul class="navbar-nav ml-auto">
             <% if(login ) { %>
             <li class="nav-item active">
                 <a class="nav-link" href="/users/profile">User Profile</a>
             </li>
-            <li class="nav-item">
+            <li>
+                <a class="nav-link" href="/users/pwchange">Change Password</a>
+            </li>
+            <li>
                 <a class="nav-link" href="/users/logout">Logout</a>
             </li>
+
+
             <% } else { %>
             <li class="nav-item active">
                 <a class="nav-link" href="/users/signup">Signup</a>

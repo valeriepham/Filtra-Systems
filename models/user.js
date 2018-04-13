@@ -5,7 +5,7 @@ const Order = require('./order');
 const schema = mongoose.Schema({
   email: { type: String, require: true, trim: true, unique: true },
   password: { type: String, require: true },
-  level: { type: Number, require: false, default: 0 },
+  level: { type: Number, require: true, default: 0 },
   currentCartId: { type: String, require: false, default: null }
 });
 
