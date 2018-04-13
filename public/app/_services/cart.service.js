@@ -18,7 +18,11 @@
     }
 
     function update(cart) {
-      http.put('/api/cart/update', cart)
+      return http.put('/api/cart/update', cart)
+        .then(function (result) {
+          console.log('RESULT',result.data);
+          return result.data;
+        })
         .catch(function (err) {
           console.log(err);
         });

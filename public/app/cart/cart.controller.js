@@ -10,7 +10,6 @@
     vm.options = {
 
     };
-    vm.cart;
     vm.remove = remove;
     vm.update = update;
     vm.checkout = checkout;
@@ -21,11 +20,14 @@
     function update() {
       for (const id in vm.cart.items) {
         console.log('checking item:', vm.cart.items[id]);
-        if (vm.cart.items[id].quantity < 1) {
+        if (vm.cart.items[id].quantity < 1 || !vm.cart.items[id].quantity) {
+          console.log('invalid quantity!');
           delete vm.cart.items[id];
         }
       }
-      cartService.update(vm.cart);
+      cartService.update(vm.cart).then(function() {
+        getCart();
+      });
     }
     function checkout() {
       cartService.update(vm.cart);
