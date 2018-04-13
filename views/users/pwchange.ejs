@@ -21,11 +21,17 @@
           <%=message.danger%>
         </div>
       <% } %>
-      <div class="container">      
+      <br>
+      <div align="center">
+          <h1>Change Your Password</h1>
+          <br>
+      </div>
+      <div class="container">     
       <div class="row">
+       
         <div class="col-md-4"></div>
         <div class="col-md-4">
-            <h1>User Login</h1>
+            
       <form class="form-width" role="form" action="/users/pwchange" method="post">
       
         <div class="form-group">
@@ -39,7 +45,7 @@
         </div>
 
         <div class="form-group">
-            <label for="password">New_Password</label>
+            <label for="password">New Password</label>
             <input type="password" id="newpassword" name="newpassword" class="form-control" placeholder="New_Password" >
           </div>
       
