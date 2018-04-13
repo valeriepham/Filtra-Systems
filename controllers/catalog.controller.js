@@ -7,7 +7,7 @@ function allSeries(req, res) {
     }
     else {
       let chunks = [];
-      let chunkSize = 3;
+      let chunkSize = 2;
       for (let i = 0; i < seriesList.length; i += chunkSize) {
         chunks.push(seriesList.slice(i, i + chunkSize));
       }
