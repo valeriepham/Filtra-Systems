@@ -19,14 +19,14 @@
 <%- include('./partials/header.ejs') %>
 
     <body>
-        <div class="listing">
+        <div class="listing mt-5 mb-3">
             <% chunks.forEach(function(chunk){ %>
                 <div class="row">
                     <div class="col-2"></div>
                     <% chunk.forEach(function(series){ %>
                         <div class="col-4">
                             <div class="card my-4 text-center">
-                                <img align="center" class="card-img mx-auto img-responsive" src="images/<%=series%>.jpg" alt="<%=series%>">
+                                <img align="center" class="card-img mx-auto img-responsive pt-2" src="images/<%=series%>.jpg" alt="<%=series%>">
                                 <div class="card-body">
                                     <a class="card-title" href="products/<%= series %>"><%=series%></a>
                                 </div>
