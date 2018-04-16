@@ -37,13 +37,10 @@ router.get('/product/:series', productController.findSeries);
 
 router.get('/cart', function (req, res) {
   if (!req.session.cart || req.session.cart == null) {
-    return res.render('ngcart', { products: null, totalPrice: 0 });
+    return res.render('cart', { products: null, totalPrice: 0 });
   } else {
-    console.log('req cart', req.session.cart);
     let cart = new Cart(req.session.cart);
-    console.log('cart object', cart);
-    console.log('price', cart.getPrice());
-    res.render('ngcart', { products: cart.cartItems(), totalPrice: cart.getPrice() });
+    res.render('cart', { products: cart.cartItems(), totalPrice: cart.getPrice() });
   }
 });
 
