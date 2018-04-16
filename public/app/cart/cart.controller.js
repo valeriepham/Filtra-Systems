@@ -14,8 +14,9 @@
     vm.update = update;
     vm.checkout = checkout;
     
-    function remove() {
-
+    function remove(id) {
+      delete vm.cart.items[id];
+      update();
     }
     function update() {
       for (const id in vm.cart.items) {
