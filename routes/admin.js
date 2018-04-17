@@ -81,10 +81,10 @@ router.post('/adpwchange', function (req, res) {
       res.send(`There was an error: ${err}`);
     } else if (!user) {
       req.flash('danger', 'Email is not correct');
-      res.redirect('/users/pwchange');
+      res.redirect('/admin/adpwchange');
     } else if (!user.isValidPassword(req.body.password)) {
       req.flash('danger', 'Password is not correct');
-      res.redirect('/users/pwchange');
+      res.redirect('/admin/adpwchange');
     } else { // User doesn't exist. Save to DB
       user.password = user.generateHash(req.body.newpassword);
       user.save(function (err) {
@@ -96,7 +96,7 @@ router.post('/adpwchange', function (req, res) {
               res.send(`There was an error: ${err}`);
             } else {
               req.flash('success', "Your password has been changed.");
-              res.redirect('/users/profile');
+              res.redirect('/admin/adminhome');
             }
           });
         }
