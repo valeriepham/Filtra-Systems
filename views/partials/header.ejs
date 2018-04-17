@@ -4,15 +4,20 @@
 		<a class="navbar-brand" href="/">
 			<img src="/images/logo.png">
 		</a>
-		<a class="navbar-brand" id="profile"
-			<% if(login ) { %>
-				href="/users/profile"
-			<% } else { %>
-				href="/users/login"
-			<% } %>
-		>
-			<img src="/images/profile.png">
-		</a>
+		<div class="justify-content-right" id="icon">
+			<a class="navbar-brand" href="/cart">
+				<img src="/images/cart.png"
+			</a>
+			<a class="navbar-brand" id="icon"
+				<% if(login ) { %>
+					href="/users/profile"
+				<% } else { %>
+					href="/users/login"
+				<% } %>
+			>
+				<img src="/images/profile.png">
+			</a>
+		</div>
 	</nav>
 	
 	<div class="nav_size">
@@ -28,9 +33,6 @@
 			</li>
 			<li class="nav-item">
 				<a class="nav-link active nav_link_size" href="\request-quote">Request Quote</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link active nav_link_size" href="\cart">Shopping Cart</a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link active nav_link_size" href="\contact-us">Contact Us</a>

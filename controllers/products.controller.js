@@ -13,7 +13,7 @@ function listProducts(req, res) {
       });
     }
   });
-};
+}
 
 function findSeries(req, res) {
   let series = req.params.series;
@@ -25,11 +25,28 @@ function findSeries(req, res) {
     }
     else {
       res.render('product', {
-        title: 'Product Page',
+        title: series + 'Product Page',
         products: product
       });
     }
   });
-};
+}
 
-module.exports = { listProducts, findSeries };
+function subscriptions(req, res) {
+  let series = req.params.series;
+  Product.find({ 'series': series }).exec(function (err, product) {
+    console.log(series);
+    if (err) {
+      console.log('Error when fetching product');
+      res.render('500', { err: err });
+    }
+    else {
+      res.render('subscriptions', {
+        title: series + ' subscriptions',
+        products: product
+      });
+    }
+  });
+}
+
+module.exports = { listProducts, findSeries, subscriptions };
