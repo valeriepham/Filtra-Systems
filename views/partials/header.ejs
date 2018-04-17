@@ -4,9 +4,16 @@
 		<a class="navbar-brand" href="/">
 			<img src="/images/logo.png">
 		</a>
+		<a class="navbar-brand"
+			<% if(login ) { %>
+				href="/users/profile"
+			<% } else { %>
+				href="/users/login"
+			<% } %>
+		>
+			<img src="/images/profile.png">
+		</a>
 	</nav>
-
-	<%- include('./user-navbar.ejs') %>
 	
 	<div class="nav_size">
 		<ul class="nav nav-pills nav-fill bg-primary">
