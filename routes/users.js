@@ -45,7 +45,7 @@ router.get('/profile', function (req, res, next) {
       }
     });
   } else {
-    req.flash('danger', "Please logged in first")
+    req.flash('danger', "Please log in first")
     res.redirect('/users/login');
   }
 });
