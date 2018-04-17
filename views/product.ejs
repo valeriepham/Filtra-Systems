@@ -18,12 +18,12 @@
 	<!-- content -->
 	<div class="container mt-5 mb-3">
 		<!-- body -->
+		<h1>
+			<%= products[0].title %>
+		</h1>
 		<div class="row container">
 			<!-- Information -->
 			<div class="col-8">
-				<h1>
-					<%= products[0].title %>
-				</h1>
 				<img class="img-thumbnail" src="../images/<%=products[0].series%>.jpg">
 				<div class="card p-2 my-2">
 					<h5 class="card-title">Description</h5>
@@ -46,7 +46,7 @@
 						<!-- Quantity -->
 						<div class="form-group m-2">
 							<label for="quantity">Quantity: </label>
-							<input type="number" class="form-control" id="quantity" name="qty">
+							<input type="number" class="form-control" id="quantity" name="qty" min="0">
 						</div>
 						<!-- Model -->
 						<div class="form-group m-2">
@@ -112,6 +112,21 @@
 						<% }) %>
 				</tbody>
 			</table>
+		</div>
+		<!-- recommended -->
+		<h3>Frequently Purchased Together</h3>
+		<div class="container row">
+
+			<div class="col-4">
+				<div class="card my-4 text-center">
+	                <a class="card-title" href="products/FSCS">
+	                  <img align="center" class="card-img mx-auto img-responsive pt-2" src="/images/FSCS.jpg" alt="FSCS">
+	                  <div class="card-body">
+	                    <strong>FSCS</strong>
+	                  </div>
+	            	</a>
+	            </div>
+			</div>
 		</div>
 	</div>
 
