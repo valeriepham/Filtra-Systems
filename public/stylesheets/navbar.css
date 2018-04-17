@@ -1,8 +1,4 @@
 /* header css */
-.nav_size{
-	height: 50px;
-}
-
 .nav_link_size{
 	height: 60px;
 	font-size: 15px;
@@ -12,8 +8,8 @@
 	height: 80px;
 }
 
-#profile img{
-	height: 50px;
+#icon img{
+	height: 60px;
 }
 
 /* body css */
