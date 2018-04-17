@@ -25,7 +25,7 @@ router.post('/adminlogin', function (req, res) {
         if (err) {
           res.send(`There was an error: ${err}`);
         } else {
-          req.flash('success', "You're now logged in.");
+          req.flash('success', 'You\'re now logged in.');
           res.redirect('/admin/adminhome');
         }
       });
@@ -37,7 +37,7 @@ router.get('/adminhome', function (req, res) {
   if (req.user) {
     res.render('admin/adminhome');
   } else {
-    req.flash('danger', "Please logged in first")
+    req.flash('danger', 'Please log in first');
     res.redirect('/admin/adminlogin');
   }
 });
@@ -46,14 +46,14 @@ router.get('/userlist', function (req, res) {
   if (req.user) {
     res.render('admin/userlist');
   } else {
-    req.flash('danger', "Please logged in first")
+    req.flash('danger', 'Please log in first');
     res.redirect('/admin/adminlogin');
   }
 });
 
 router.get('/adminlogout', function (req, res) {
   req.logout();
-  req.flash('success', "You've logged out!");
+  req.flash('success', 'You\'ve logged out!');
   res.redirect('/admin/adminlogin');
 });
 
