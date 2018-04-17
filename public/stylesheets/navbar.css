@@ -12,6 +12,10 @@
 	height: 80px;
 }
 
+#profile img{
+	height: 50px;
+}
+
 /* body css */
 html{
 	height: 100% !important;
