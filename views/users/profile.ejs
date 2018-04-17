@@ -13,40 +13,47 @@
 
 </head>
 
+<%- include('../partials/header') %>
+
 <body>
-  <%- include('../partials/header') %>
   <% if (message.success) { %>
     <div class="alert alert-success" role="alert">
       <%=message.success%>
     </div>
   <% } %>
 
-<div class="container mt-5 mb-3">
+  <div class="container mt-5 mb-3">
     <h1>My Account</h1>
   
     <p>Email Address: <%= user.email %> </p>
     
   
     <h3> Past Orders:</h3>
-   <table>
-    <tr>
-      <th>Name</th>
-      <th>Order ID</th> 
-      <th>Payment ID</th>
-      <th>Date</th>
-    </tr>
-    <% orders.forEach(function(order) { %>
-      <tr><th><%= order.name %></th> <th><%= order._id %></th> <th> <%= order.paymentId %></th> <th><%= order.date %></th></tr>
-    <% }) %>
-    
+    <table class="table">
+      <thead>
+        <th scope="col">Name</th>
+        <th scope="col">Order ID</th> 
+        <th scope="col">Payment ID</th>
+        <th scope="col">Date</th>
+      </thead>
+      <% orders.forEach(function(order) { %>
+        <tr>
+          <td><%= order.name %></td>
+          <td><%= order._id %></td>
+          <td> <%= order.paymentId %></td>
+          <td><%= order.date %></td>
+        </tr>
+      <% }) %>
     </table>
-</div>
+  </div>
 
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 
 <%- include('../partials/footer') %>
+
+<!-- Scripts -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 </html>

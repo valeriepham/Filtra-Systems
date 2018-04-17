@@ -1,20 +1,29 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-    <link rel='stylesheet' href='/stylesheets/navbar.css'>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+<head>
+  <title><%= title %></title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="stylesheets/catalog.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
     crossorigin="anonymous">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-    crossorigin="anonymous"></script>
-  </head>
-  <body>
-    <%- include('../partials/header.ejs') %>
-    <div class="container mt-5 mb-3">
-      <h1><%= title %></h1>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit amet ante arcu. Suspendisse non leo sit amet metus ornare fringilla. Aliquam dapibus blandit pretium. Vivamus tristique erat vel nunc vehicula maximus. Morbi scelerisque tincidunt consectetur. Nullam nec orci iaculis, rhoncus nisi cursus, venenatis eros. Cras et pellentesque leo. Mauris tempor augue lorem, eu sollicitudin enim lacinia a. Maecenas faucibus nisl ut facilisis porta. Maecenas sapien enim, porttitor a molestie vitae, semper non mauris. Pellentesque nec faucibus dolor, sit amet rutrum felis. Proin faucibus luctus efficitur. Vivamus risus nunc, faucibus et nibh id, vestibulum varius velit. Fusce fringilla auctor ipsum.</p>
-    </div>
-    <%- include('../partials/footer.ejs') %>
-  </body>
+  <link rel="stylesheet" href="stylesheets/navbar.css">
+</head>
+
+<body>
+  <%- include('../partials/header.ejs') %>
+  <div class="container mt-5 mb-3">
+    <h1><%= title %></h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit amet ante arcu. Suspendisse non leo sit amet metus ornare fringilla. Aliquam dapibus blandit pretium. Vivamus tristique erat vel nunc vehicula maximus. Morbi scelerisque tincidunt consectetur. Nullam nec orci iaculis, rhoncus nisi cursus, venenatis eros. Cras et pellentesque leo. Mauris tempor augue lorem, eu sollicitudin enim lacinia a. Maecenas faucibus nisl ut facilisis porta. Maecenas sapien enim, porttitor a molestie vitae, semper non mauris. Pellentesque nec faucibus dolor, sit amet rutrum felis. Proin faucibus luctus efficitur. Vivamus risus nunc, faucibus et nibh id, vestibulum varius velit. Fusce fringilla auctor ipsum.</p>
+  </div>
+</body>
+
+<%- include('../partials/footer.ejs') %>
+
+<!-- Scripts -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+crossorigin="anonymous"></script>
+
 </html>

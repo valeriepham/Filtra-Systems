@@ -2,44 +2,49 @@
 <html>
 
 <head>
-  <title>
-    <%= title %>
-  </title>
-  <link rel='stylesheet' href='/stylesheets/style.css' />
-  <link rel="stylesheet" href="stylesheets/navbar.css">
+  <title><%= title %></title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="stylesheets/catalog.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
     crossorigin="anonymous">
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="stylesheets/navbar.css">
 </head>
 
 <body>
   <%- include('../partials/header.ejs') %>
-    <div class="container mt-5 mb-3">
-      <h1>Request a Quote</h1>
-      <p>If you would like to speak to a sales represesentative you may fill out this form or call us at (111) 111-1111.</p>
-      <form>
-        <div class="row">
-          <div class="form-group col">
-            <label for="name">Name</label>
-            <input type="text" class="form-control" id="name" placeholder="Name">
-          </div>
-          <div class="form-group col">
-            <label for="telephone">Phone Number</label>
-            <div class="form-row">
-              <div class="col-3">
-                <input type="tel" class="form-control" id="telephone" placeholder="xxx">
-              </div>
-              <div class="col-9">
-                <input type="tel" class="form-control" id="telephone" placeholder="xxx-xxxx">
-              </div>
+  <div class="container mt-5 mb-3">
+    <h1>Request a Quote</h1>
+    <p>If you would like to speak to a sales representative, you may fill out this form or call us at (111) 111-1111</p>
+    <form>
+      <div class="row">
+        <div class="form-group col">
+          <label for="name">Name</label>
+          <input type="text" class="form-control" id="name" placeholder="Name">
+        </div>
+        <div class="form-group col">
+          <label for="telephone">Phone Number</label>
+          <div class="form-row">
+            <div class="col-3">
+              <input type="tel" class="form-control" id="telephone-area" placeholder="xxx">
+            </div>
+            <div class="col-9">
+              <input type="tel" class="form-control" id="telephone" placeholder="xxx-xxxx">
             </div>
           </div>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
-    </div>
-  <%- include('../partials/footer.ejs') %>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
 </body>
+
+<%- include('../partials/footer.ejs') %>
+
+<!-- Scripts -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+crossorigin="anonymous"></script>
 
 </html>

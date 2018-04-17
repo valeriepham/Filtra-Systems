@@ -15,6 +15,9 @@ function addToCart(req, res) {
     }
     console.log('product found:', product);
     let qty = parseInt(req.body.qty, 10);
+    if (qty < 1) {
+      qty = 1;
+    }
     cart.add(product, product.id, qty || 1);
     req.session.cart = cart;
     res.redirect('/cart');
