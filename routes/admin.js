@@ -3,23 +3,6 @@ const router = express.Router();
 
 const User = require('../models/user');
 
-function listusers(req, res) {
-  User.find().exec(function (err, userlist) {
-    if (err) {
-      console.log('Error when fetching products');
-      res.render('500', { err: err });
-    }
-    else {
-      res.render('userlist', {
-        email: email,
-        level: level
-      });
-    }
-  });
-};
-
-
-
 router.get('/adminlogin', function (req, res) {
   res.render('admin/adminlogin');
 });
@@ -64,11 +47,14 @@ router.get('/adminhome', function (req, res) {
 router.get('/userlist', function (req, res) {
   if (req.user) {
     if(req.user.level != 0) {
-      User.find({}, function (err, user) {
+      User.find().exec(function (err, users) {
         if (err) {
-          res.send(`There was an error: ${err}`);
+          console.log('Error finding users');
+          console.error(err);
+        } else if (users === []) {
+          res.render('admin/userlist', { users: 'You have not made any purchases yet!' });
         } else {
-        res.render('admin/userlist');
+          res.render('admin/userlist', { users: users });
         }
       });
     } 

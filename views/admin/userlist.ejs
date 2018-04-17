@@ -23,22 +23,21 @@
     </div>
   <% } %>
 
-  <h1>User List</h1>
-
   <div class="container mt-5 mb-3">
         <h1>Admin panel</h1>     
+        <br>
         <h3>Current User List:</h3>
         <table class="table">
           <thead>
             <th scope="col">User Email</th>
             <th scope="col">User Level</th> 
           </thead>
-          <% userlist.forEach(function(user) { %>
+          <% users.forEach(function(user) { %>
             <tr>
               <td><%= user.email %></td>
               <td><%= user.level %></td>
             </tr>
-          <% }) %>
+          <% })%>
         </table>
       </div>
   
