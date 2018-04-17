@@ -14,6 +14,7 @@
 </head>
 
 <%- include('../partials/header') %>
+<%- include('../partials/user-navbar.ejs') %>
 
 <body>
   <% if (message.success) { %>
@@ -40,7 +41,7 @@
         <tr>
           <td><%= order.name %></td>
           <td><%= order._id %></td>
-          <td> <%= order.paymentId %></td>
+          <td><%= order.paymentId %></td>
           <td><%= order.date %></td>
         </tr>
       <% }) %>
