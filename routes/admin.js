@@ -3,6 +3,23 @@ const router = express.Router();
 
 const User = require('../models/user');
 
+function listusers(req, res) {
+  User.find().exec(function (err, userlist) {
+    if (err) {
+      console.log('Error when fetching products');
+      res.render('500', { err: err });
+    }
+    else {
+      res.render('userlist', {
+        email: email,
+        level: level
+      });
+    }
+  });
+};
+
+
+
 router.get('/adminlogin', function (req, res) {
   res.render('admin/adminlogin');
 });
@@ -35,7 +52,9 @@ router.post('/adminlogin', function (req, res) {
 
 router.get('/adminhome', function (req, res) {
   if (req.user) {
-    res.render('admin/adminhome');
+    if(req.user.level != 0) {
+      res.render('admin/adminhome');
+    }    
   } else {
     req.flash('danger', "Please logged in first")
     res.redirect('/admin/adminlogin');
@@ -44,11 +63,60 @@ router.get('/adminhome', function (req, res) {
 
 router.get('/userlist', function (req, res) {
   if (req.user) {
-    res.render('admin/userlist');
+    if(req.user.level != 0) {
+      User.find({}, function (err, user) {
+        if (err) {
+          res.send(`There was an error: ${err}`);
+        } else {
+        res.render('admin/userlist');
+        }
+      });
+    } 
   } else {
     req.flash('danger', "Please logged in first")
     res.redirect('/admin/adminlogin');
   }
+});
+
+router.get('/adpwchange', function (req, res) {
+  if (req.user) {
+    if(req.user.level != 0) {
+      res.render('admin/adpwchange');
+    }
+  } else {
+    req.flash('danger', "Please logged in first")
+    res.redirect('/admin/adminlogin');
+  }
+});
+
+router.post('/adpwchange', function (req, res) {
+  User.findOne({ email: req.body.email }, function (err, user) {
+    if (err) {
+      res.send(`There was an error: ${err}`);
+    } else if (!user) {
+      req.flash('danger', 'Email is not correct');
+      res.redirect('/users/pwchange');
+    } else if (!user.isValidPassword(req.body.password)) {
+      req.flash('danger', 'Password is not correct');
+      res.redirect('/users/pwchange');
+    } else { // User doesn't exist. Save to DB
+      user.password = user.generateHash(req.body.newpassword);
+      user.save(function (err) {
+        if (err) {
+          res.send(`There was an error: ${err}`);
+        } else {
+          req.login(user, function (err) {
+            if (err) {
+              res.send(`There was an error: ${err}`);
+            } else {
+              req.flash('success', "Your password has been changed.");
+              res.redirect('/users/profile');
+            }
+          });
+        }
+      });
+    }
+  });
 });
 
 router.get('/adminlogout', function (req, res) {

@@ -16,7 +16,7 @@
 </head>
 
 <body>
-  <%- include('../partials/user-navbar') %>
+  <%- include('../partials/admin-navbar') %>
   <% if (message.success) { %>
     <div class="alert alert-success" role="alert">
       <%=message.success%>
@@ -33,7 +33,7 @@
 			<div class="col-sm-4">
 				<ul>
 					<li>
-						<button><a href="#">User Management</a></button>
+						<button><a href="userlist">User Management</a></button>
 					</li>
 				</ul>
 			</div>

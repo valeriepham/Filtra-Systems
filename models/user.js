@@ -17,6 +17,7 @@ schema.methods.isValidPassword = function (password) {
   return bcrypt.compareSync(password, this.password);
 };
 
+
 schema.methods.pullOrders = function () {
   console.log('pullOrders is', this._id);
   return Order.find({ user: this._id }).exec(function (err, orders) {

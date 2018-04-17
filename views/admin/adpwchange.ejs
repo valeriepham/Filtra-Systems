@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Password</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="../stylesheets/navbar.css">
+  <style type="text/css">
+    .form-width {
+      width: 300px;
+    }
+  </style>
+</head>
+
+<body>
+  <% if (message.danger) { %>
+    <div class="alert alert-danger" role="alert">
+      <%=message.danger%>
+    </div>
+  <% } %>
+  <br>
+  <div class="container mt-3 mb-3">
+    <div align="center">
+      <h1>Change Your Password</h1>
+      <br>
+    </div>
+    <div class="container">
+      <div class="row justify-content-md-center">
+
+        <div class="col-md-4">
+          <form class="form-width" role="form" action="/admin/adpwchange" method="post">
+            <div class="form-group">
+              <label for="email">Email address</label>
+              <input type="email" id="email" name="email" class="form-control" placeholder="Valid email address">
+            </div>
+
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" id="password" name="password" class="form-control" placeholder="Password">
+            </div>
+
+            <div class="form-group">
+              <label for="password">New Password</label>
+              <input type="password" id="newpassword" name="newpassword" class="form-control" placeholder="New_Password">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Changepassword</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+<!-- Scripts -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+  crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+  crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+  crossorigin="anonymous"></script>
+
+</html>
