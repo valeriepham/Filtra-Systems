@@ -84,7 +84,7 @@ function charge(req, res) {
     // asynchronously called
     if (err) {
       req.flash('danger', err.message);
-      return res.redirect('/simplecheckout');
+      return res.redirect('/checkout');
     }
     let order = new Order({
       user: req.user ? req.user : null,

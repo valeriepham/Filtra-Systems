@@ -7,8 +7,7 @@ router.get('/save', function(req, res) {
   if (!req.session.cart) {
     return res.redirect('/cart');
   }
-  let cart = new Cart(req.session.cart);
-  res.render('simplecheckout', { totalPrice: cart.price() });
+  res.redirect('checkout');
 });
 
 router.get('/', function (req, res) {

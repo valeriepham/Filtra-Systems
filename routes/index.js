@@ -5,7 +5,7 @@ const cartController = require('../controllers/cart.controller');
 const Cart = require('../models/cart');
 const Product = require('../models/product');
 const Order = require('../models/order');
-// const Stripe = require('stripe');
+const stripe = require('stripe')('sk_test_uxg0FRXwXVLJidLOj1Xvm6AJ');
 const apiRoutes = require('./api');
 
 /* GET home page. */
@@ -36,23 +36,82 @@ router.get('/cart', function (req, res) {
   }
 });
 
-router.get('/simplecheckout', function (req, res) {
+router.get('/checkout', function (req, res) {
   if (!req.session.cart) {
     console.log('no cart in session');
     return res.redirect('/cart');
   }
   console.log('checkout cart', req.session.cart);
   let cart = new Cart(req.session.cart);
-  res.render('simplecheckout', { totalPrice: cart.getPrice() * 1.2375 });
+  console.log(req.user);
+  if (!req.user) {
+    console.log('guest checkout');
+    res.render('guest-checkout', { cart: cart });  
+  } else {
+    console.log('user checkout!');
+    stripe.customers.retrieve(req.user.customer_id, function(err, customer) {
+      console.log(customer.sources.data);
+      if (err) {
+        console.log('Error when retrieving customer:', err);
+        res.render('profile');
+      } else {
+        res.render('user-checkout', {cart: cart, sources: customer.sources.data});
+      }
+    });
+  }
 });
 
-router.get('/api/cart/save', function(req, res) {
+router.post('/charge-user', function(req, res) {
   if (!req.session.cart) {
     return res.redirect('/cart');
   }
   let cart = new Cart(req.session.cart);
-  res.render('simplecheckout', { totalPrice: cart.getPrice() });
+  let token = req.body.method;
+  stripe.charges.create({
+    amount: cart.getPrice() * 1.2375 * 100,
+    currency: 'usd',
+    description: 'test user charge',
+    customer: req.user.customer_id,
+    source: token
+  }, function(err, charge) {
+    if (err) {
+      console.log('Error when creating charge', err);
+    }
+    let order = new Order({
+      user: req.user ? req.user : null,
+      cart: cart,
+      shippingAddress: {
+        street: req.body.shippingAdd,
+        state: req.body.shippingSt,
+        zip: req.body.shippingZip,
+      },
+      billingAddress: {
+        street: req.body.billingAdd,
+        state: req.body.billingSt,
+        zip: req.body.billingZip,
+      },
+      name: req.body.cardHolderName,
+      paymentId: charge.id,
+    });
+    order.save(function (err, result) {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log(result);
+        req.flash('success', 'Checkout was successful!');
+        req.session.cart = null;
+        res.redirect('/cart');
+      }
+    });
+  });
 });
+
+router.get('/guest-checkout', function (req, res) {
+  console.log('checkout cart', req.session.cart);
+  let cart = new Cart(req.session.cart);
+  res.render('guest-checkout', { cart: cart});
+});
+
 
 router.post('/add-to-cart/:id', cartController.addToCart);
 
