@@ -12,6 +12,7 @@ let flash = require('connect-flash');
 let passport = require('passport');
 let User = require('./models/user');
 let Cart = require('./models/cart');
+let sslRedirect = require('heroku-ssl-redirect');
 
 let MongoStore = require('connect-mongo')(session);
 
@@ -46,7 +47,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
+app.use(sslRedirect([
+  'development',
+  'production'
+]));
 function getDatabaseUrl() {
   if (process.env.NODE_ENV === "production") {
     return process.env.PRODUCTION_DATABASE_URL;
@@ -56,7 +60,7 @@ function getDatabaseUrl() {
 }
 
 const days = 24 * 60 * 60 * 1000;
-const minutes = 60 * 1000
+const minutes = 60 * 1000;
 app.use(session({
   secret: process.env.APP_SESSION_SECRET,
   resave: false,
@@ -95,7 +99,7 @@ app.use(function (req, res, next) {
 app.use('/', index);
 app.use('/products', products);
 app.use('/catalog', catalog);
-app.use('/admin', admin)
+app.use('/admin', admin);
 app.use('/users', users);
 
 
