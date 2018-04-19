@@ -15,7 +15,6 @@
   <script>
       var app = angular.module('myApp', []);
     app.controller('registerCtrl', function($scope) {
-
     });
     </script>
 </head>
@@ -36,26 +35,36 @@
 
           <div class="form-group">
             <label for="email">Email address</label>
-            <input type="email" id="email" name="email" class="form-control" placeholder="Valid email address">
+            <input type="email" id="email" name="email" class="form-control" placeholder="Valid email address" ng-model="email" required>
+            <p>
+                <span style="color: red" ng-show=" registerForm.email.$invalid">
+                    <span ng-show="registerForm.email.$error.required">*Please input email</span> <span
+                    ng-show="registerForm.email.$error.email">*Please use the correct email</span>
+                </span>
+            </p>
           </div>
 
           <div class="form-group">
             <label for="password">Password</label>
-            <input type="password" id="password" name="password" class="form-control" placeholder="Password" ng-model="password" required>
+            <input type="password" id="password" name="password" class="form-control" placeholder="Password" ng-model="password" ng-minlength="6" ng-maxlength="20" required>
+            <p>
+                <span style="color: red" ng-show="registerForm.password.$invalid">
+                    <span ng-show="registerForm.password.$error.minlength">*Password less than 6 digits</span>
+                    <span ng-show="registerForm.password.$error.maxlength">*Password should be less than 20 digits</span>
+                </span>
+            </p>
           </div>
 
           <div class="form-group">
             <label for="confirm_password">Re-enter Password</label>
-            <input type="password" id="confirm_password" name="repassword" class="form-control" placeholder="Password_Confirm" ng-model="repassword" required>
+            <input type="password" id="confirm_password" name="repassword" class="form-control" placeholder="Confirm Password" ng-model="repassword" required>
             <p>
             <span style="color: red" ng-show="registerForm.password.$valid">
                 <span ng-show="repassword!=password">*PassWord Mismatch</span>
             </span>
           </p>
           </div>
-          
-
-          <button type="submit" class="btn btn-primary" ng-disabled="submit(userForm)">Sign Up</button> Or
+          <button type="submit" class="btn btn-primary" ng-disabled="registerForm.email.$invalid || registerForm.password.$invalid || repassword!=password">Sign Up</button> Or
           <a href="/users/login">Sign in</a>
         </form>
       </div>
