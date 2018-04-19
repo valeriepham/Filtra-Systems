@@ -66,7 +66,7 @@ router.post('/charge-user', function(req, res) {
   let cart = new Cart(req.session.cart);
   let token = req.body.method;
   stripe.charges.create({
-    amount: cart.getPrice() * 1.2375 * 100,
+    amount: parseInt(cart.getPrice() * 1.2375 * 100),
     currency: 'usd',
     description: 'test user charge',
     customer: req.user.customer_id,

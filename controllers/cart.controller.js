@@ -76,7 +76,7 @@ function charge(req, res) {
 
   // Charge the user's card:
   stripe.charges.create({
-    amount: cart.getPrice() * 100,
+    amount: parseInt(cart.getPrice() * 100),
     currency: 'usd',
     description: 'Test Charge',
     source: token,
