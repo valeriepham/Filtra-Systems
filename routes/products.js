@@ -9,6 +9,6 @@ router.get('/:series', controller.findSeries);
 
 router.get('/bags/:series', controller.findBagSeries);
 
-router.get('/:series/subscriptions', controller.subscriptions);
+router.get('/:model/subscriptions', controller.subscriptions);
 
 module.exports = router;

@@ -48,11 +48,11 @@ router.get('/checkout', function (req, res) {
   } else {
     console.log('user checkout!');
     stripe.customers.retrieve(req.user.customer_id, function(err, customer) {
-      console.log(customer.sources.data);
       if (err) {
         console.log('Error when retrieving customer:', err);
         res.render('profile');
       } else {
+        console.log(customer.sources.data);
         res.render('user-checkout', {cart: cart, sources: customer.sources.data});
       }
     });

@@ -144,11 +144,11 @@ router.post('/pwchange', function (req, res) {
 
 router.get('/payments', function(req, res) {
   stripe.customers.retrieve(req.user.customer_id, function(err, customer) {
-    console.log(customer.sources.data);
     if (err) {
       console.log('Error when retrieving customer:', err);
-      res.render('profile');
+      res.redirect('profile');
     } else {
+      console.log(customer.sources.data);
       res.render('users/payments', {sources: customer.sources.data});
     }
   });
