@@ -29,5 +29,9 @@ router.get('/update-quantity/:id/:qty', cartController.updateQuantity);
 
 router.put('/update', cartController.update);
 
+router.post('/subscribe', cartController.subscribe);
+
+router.post('/charge-subscription', cartController.chargeSubscription);
+
 
 module.exports = router;

@@ -115,4 +115,13 @@ function charge(req, res) {
   });
 }
 
-module.exports = { addToCart, updateQuantity, update, remove, charge };
+function subscribe(req, res) {
+  console.log(req.body);
+  res.render('review-subscription', { subscription: req.body });
+}
+
+function chargeSubscription(req, res) {
+
+}
+
+module.exports = { addToCart, updateQuantity, update, remove, charge, subscribe, chargeSubscription };
