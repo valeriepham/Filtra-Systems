@@ -16,7 +16,7 @@ function allSeries(req, res) {
       res.render('catalog', { seriesList: seriesList, chunks: chunks });
     }
   });
-};
+}
 
 function findSeries(req, res) {
   let series = req.params.series;
@@ -33,6 +33,6 @@ function findSeries(req, res) {
       });
     }
   });
-};
+}
 
 module.exports = { allSeries, findSeries };

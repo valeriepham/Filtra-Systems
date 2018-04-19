@@ -24,7 +24,11 @@
           <% chunk.forEach(function(series){ %>
             <div class="col-4">
               <div class="card my-4 text-center">
-                <a class="card-title" href="products/<%= series %>">
+                  <% if (series[2] === 'F') { %>
+                    <a class="card-title" href="products/bags/<%= series %>">
+                  <% } else { %>
+                    <a class="card-title" href="products/<%= series %>">
+                  <% } %>
                   <img align="center" class="card-img mx-auto img-responsive pt-2" src="images/<%=series%>.jpg" alt="<%=series%>">
                   <div class="card-body">
                     <strong><%=series%></strong>

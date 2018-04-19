@@ -4,12 +4,12 @@ const Product = require('../models/product');
 const Stripe = require('stripe');
 
 function addToCart(req, res) {
-  let series = req.body.model;
+  let model = req.body.model;
   let cart = new Cart(req.session.cart ? req.session.cart : {});
 
-  console.log('adding', series, 'to cart');
+  console.log('adding', model, 'to cart');
 
-  Product.findOne({ model: series }).exec(function (err, product) {
+  Product.findOne({ model: model }).exec(function (err, product) {
     if (err) {
       return res.redirect('/');
     }

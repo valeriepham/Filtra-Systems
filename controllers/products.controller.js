@@ -32,21 +32,43 @@ function findSeries(req, res) {
   });
 }
 
-function subscriptions(req, res) {
+function findBagSeries(req, res) {
   let series = req.params.series;
-  Product.find({ 'series': series }).exec(function (err, product) {
+  Product.findOne({ 'series': series }).exec(function (err, product) {
     console.log(series);
     if (err) {
       console.log('Error when fetching product');
       res.render('500', { err: err });
     }
     else {
-      res.render('subscriptions', {
-        title: series + ' subscriptions',
-        products: product
+      res.render('bag', {
+        title: series + 'Product Page',
+        bag: product
       });
     }
   });
 }
 
-module.exports = { listProducts, findSeries, subscriptions };
+function subscriptions(req, res) {
+  if (!req.user) {
+    res.render('subscriptions', { title: 'Subscriptions', user: false });
+  } else {
+    let series = req.params.series;
+    Product.find({ 'series': series }).exec(function (err, product) {
+      console.log(series);
+      if (err) {
+        console.log('Error when fetching product');
+        res.render('500', { err: err });
+      }
+      else {
+        res.render('subscriptions', {
+          title: series + ' subscriptions',
+          user: req.user,
+          products: product
+        });
+      }
+    });
+  }
+}
+
+module.exports = { listProducts, findSeries, findBagSeries, subscriptions };

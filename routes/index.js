@@ -25,8 +25,6 @@ router.get('/contact-us', function (req, res) {
   res.render('site-info/contact-us', { title: 'Contact Us', message: 'More information to come soon!' });
 });
 
-router.get('/product/:series', productController.findSeries);
-
 router.get('/cart', function (req, res) {
   if (!req.session.cart || req.session.cart == null) {
     return res.render('cart', { products: null, totalPrice: 0 });

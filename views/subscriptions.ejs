@@ -15,10 +15,15 @@
 <%- include('./partials/header') %>
 
 <body>
-  <div class="container mt-5 mb-3">
-    <h2><%= products[0].title %> – Subscriptions</h2>
-    <p>Subscriptions are not currently available for <%= products[0].title %>s, please check back with us soon!<br>In the meantime, please feel free to browse our <a href="/catalog">catalog</a> for a listing of available products.</p>
-  </div>
+<div class="container mt-5 mb-3">
+	<% if (!user) { %>
+		<h2>Oops!</h2>
+		<p class="h4">It appears that you are not logged in. You must <a href="/users/login">sign in</a> to an account or <a href="/users/signup">create a new one</a> before registering for subscriptions.<br><br>Once you are logged in, you may return to this page to purchase a new subscription.	
+	<% } else { %> 
+		<h2><%= products[0].title %> – Subscriptions</h2>
+		<p>Subscriptions are not currently available for <%= products[0].title %>s, please check back with us soon!<br>In the meantime, please feel free to browse our <a href="/catalog">catalog</a> for a listing of available products.</p>
+	<% } %> 
+</div>
 </body>
 
 <%- include('./partials/footer') %>

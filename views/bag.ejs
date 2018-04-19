@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-	<title><%=products[0].title%></title>
+	<title><%= bag.title %></title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	 crossorigin="anonymous">
 	<link rel="stylesheet" href="/stylesheets/navbar.css">
@@ -19,16 +19,16 @@
 	<div class="container mt-5 mb-3">
 		<!-- body -->
 		<h1>
-			<%= products[0].title %>
+			<%= bag.title %>
 		</h1>
 		<div class="row container">
 			<!-- Information -->
 			<div class="col-8">
-				<img class="img-thumbnail" src="../images/<%=products[0].series%>.jpg">
+				<img class="img-thumbnail" src="/images/<%= bag.series %>.jpg">
 				<div class="card p-2 my-2">
 					<h5 class="card-title">Description</h5>
 					<p class="card-text">
-						<%= products[0].description %>
+						<%= bag.description %>
 					</p>
 				</div>
 
@@ -38,7 +38,7 @@
 
 				<div class="card">
 					<div class="card-body">
-						<h5 class="card-title m-0">Price: $<%= products[0].pricing.retail %></h5>
+						<h5 class="card-title m-0">Price: $<%= bag.pricing.retail %></h5>
 					</div>
 
 					
@@ -48,19 +48,9 @@
 							<label for="quantity">Quantity: </label>
 							<input type="number" class="form-control" id="quantity" name="qty" min="0">
 						</div>
-						<!-- Model -->
-						<div class="form-group m-2">
-							<label for="sel1">Select list:</label>
-							<select class="form-control" id="model" name="model">
-								<% products.forEach(function(product) { %>
-									<option>
-										<%= product.model %>
-									</option>
-								<% }) %>
-							</select>
-						</div>
 						<button type="submit" class="btn btn-primary m-2">Add to Cart</button>
 					</form>
+					<p>Or <a href="/products/<%= bag.series %>/subscriptions">click here</a> to learn about subscriptions</p>
 				</div>
 			</div>
 		</div>
@@ -81,34 +71,32 @@
 					</tr>
 				</thead>
 				<tbody>
-					<% products.forEach(function(product) { %>
 						<tr>
 							<th scope="col">
-								<%=product.series%>
+								<%=bag.series%>
 							</th>
 							<th scope="col">
-								<%=product.model%>
+								<%=bag.model%>
 							</th>
 							<th scope="col">
-								<%=product.order_information.bag_quantity%>
+								<%=bag.order_information.bag_quantity%>
 							</th>
 							<th scope="col">
-								<%=product.order_information.bag_size%>
+								<%=bag.order_information.bag_size%>
 							</th>
 							<th scope="col">
-								<%=product.order_information.material%>
+								<%=bag.order_information.material%>
 							</th>
 							<th scope="col">
-								<%=product.order_information.max_pressure_psi%>
+								<%=bag.order_information.max_pressure_psi%>
 							</th>
 							<th scope="col">
-								<%=product.order_information.connection%>
+								<%=bag.order_information.connection%>
 							</th>
 							<th scope="col">
-								<%=product.order_information.connection_type%>
+								<%=bag.order_information.connection_type%>
 							</th>
 						</tr>
-						<% }) %>
 				</tbody>
 			</table>
 		</div>
@@ -118,20 +106,20 @@
 
 			<div class="col-4">
 				<div class="card my-4 text-center">
-	                <a class="card-title" href="/products/bags/OAFB">
-	                  <img align="center" class="card-img mx-auto img-responsive pt-2" src="/images/OAFB.jpg" alt="OAFB">
+	                <a class="card-title" href="/products/FSCS">
+	                  <img align="center" class="card-img mx-auto img-responsive pt-2" src="/images/FSCS.jpg" alt="FSCS">
 	                  <div class="card-body">
-	                    <strong>OAFB</strong>
+	                    <strong>FSCS</strong>
 	                  </div>
 	            	</a>
 	            </div>
 			</div>
 			<div class="col-4">
 					<div class="card my-4 text-center">
-						<a class="card-title" href="/products/bags/NFFB">
-							<img align="center" class="card-img mx-auto img-responsive pt-2" src="/images/NFFB.jpg" alt="NFFB">
+						<a class="card-title" href="/products/FSCT">
+							<img align="center" class="card-img mx-auto img-responsive pt-2" src="/images/FSCT.jpg" alt="FSCT">
 							<div class="card-body">
-								<strong>NFFB</strong>
+								<strong>FSCT</strong>
 							</div>
 						</a>
 					</div>
