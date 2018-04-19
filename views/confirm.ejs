@@ -1,0 +1,86 @@
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	 crossorigin="anonymous">
+	<link rel="stylesheet" href="stylesheets/navbar.css">
+	<title>Home</title>
+</head>
+
+<%- include('./partials/header.ejs') %>
+
+<body>
+	<div class="container">
+        <h1>Order Review</h1>
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Product</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for (item in cart.cartItems) { %>
+                    <%= item.pricing.retail %>
+                    <tr>
+                        <th scope="col">
+                            <img class="img-thumbnail" src="../images/<%=item.series%>.jpg" alt="item.series.jpg">
+                            <br>
+                            <p><strong>item.title</strong><br>item.model</p>
+                        </th>
+                        <th scope="col">
+                            item.quantity
+                        </th>
+                        <th scope="col">
+                            item.pricing.retail
+                        </th>
+                        <th scope="col">
+                            <!-- subtotal=item.quantity*item.pricing.retail -->
+                            subtotal
+                        </th>
+                    </tr>
+                    <!-- total=total+subtotal -->
+                <% } %>
+            </tbody>
+        </table>
+        <div class="row">
+            <div class="col-6"></div>
+            <div class="col-6">
+                <table class="table table-hover">
+                    <tbody>
+                        <tr>
+                            <th scope="row">Subtotal:</th>
+                            <td><!--total--></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Shipping:</th>
+                            <td><!--shipping--></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Tax:</th>
+                            <td><!--tax--></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Total:</th>
+                            <td><!--total+shipping+tax--></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+
+<%- include('./partials/footer.ejs') %>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+ crossorigin="anonymous"></script>
+
+</html>
