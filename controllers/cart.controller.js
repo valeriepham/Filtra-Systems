@@ -109,7 +109,7 @@ function charge(req, res) {
         console.log(result);
         req.flash('success', 'Checkout was successful!');
         req.session.cart = null;
-        res.redirect('/cart');
+        res.render('confirm', {cart: cart});
       }
     });
   });

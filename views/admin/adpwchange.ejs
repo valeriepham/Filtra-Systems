@@ -11,16 +11,23 @@
       width: 300px;
     }
   </style>
+  <script src="http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js"></script>
+  <script>
+      var app = angular.module('myApp', []);
+    app.controller('registerCtrl', function($scope) {
+    });
+    </script>
 </head>
 
 <body>
+    <%- include('../partials/admin-navbar') %>
   <% if (message.danger) { %>
     <div class="alert alert-danger" role="alert">
       <%=message.danger%>
     </div>
   <% } %>
   <br>
-  <div class="container mt-3 mb-3">
+  <div class="container mt-3 mb-3" ng-app="myApp" ng-controller="registerCtrl">
     <div align="center">
       <h1>Change Your Password</h1>
       <br>
@@ -29,23 +36,46 @@
       <div class="row justify-content-md-center">
 
         <div class="col-md-4">
-          <form class="form-width" role="form" action="/admin/adpwchange" method="post">
+          <form name="pwchForm" class="form-width" role="form" action="/admin/adpwchange" method="post">
             <div class="form-group">
               <label for="email">Email address</label>
-              <input type="email" id="email" name="email" class="form-control" placeholder="Valid email address">
+              <input type="email" id="email" name="email" class="form-control" value="<%=user.email%>">
             </div>
 
             <div class="form-group">
-              <label for="password">Password</label>
-              <input type="password" id="password" name="password" class="form-control" placeholder="Password">
-            </div>
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" class="form-control" placeholder="Password" ng-model="password" ng-minlength="6" ng-maxlength="20" required>
+                <p>
+                    <span style="color: red" ng-show="pwchForm.password.$invalid">
+                        <span ng-show="pwchForm.password.$error.minlength">*Password less than 6 digits</span>
+                        <span ng-show="pwchForm.password.$error.maxlength">*Password should be less than 20 digits</span>
+                    </span>
+                </p>
+              </div>
 
             <div class="form-group">
               <label for="password">New Password</label>
-              <input type="password" id="newpassword" name="newpassword" class="form-control" placeholder="New_Password">
+              <input type="password" id="newpassword" name="newpassword" class="form-control" placeholder="New Password" ng-model="newpassword" ng-minlength="6" ng-maxlength="20" required>
+              <p>
+                  <span style="color: red" ng-show="pwchForm.newpassword.$invalid">
+                      <span ng-show="pwchForm.newpassword.$error.minlength">*Password less than 6 digits</span>
+                      <span ng-show="pwchForm.newpassword.$error.maxlength">*Password should be less than 20 digits</span>
+                  </span>
+              </p>
             </div>
 
-            <button type="submit" class="btn btn-primary">Changepassword</button>
+            <div class="form-group">
+                <label for="confirm_password">Re-enter Password</label>
+                <input type="password" id="confirm_password" name="repassword" class="form-control" placeholder="Confirm Password" ng-model="repassword" required>
+                <p>
+                <span style="color: red" ng-show="pwchForm.repassword.$valid">
+                    <span ng-show="repassword!=newpassword">*PassWord Mismatch</span>
+                </span>
+              </p>
+              </div>
+
+
+            <button type="submit" class="btn btn-primary" ng-disabled="pwchForm.password.$invalid || pwchForm.newpassword.$invalid || repassword!=newpassword">Change password</button>
           </form>
         </div>
       </div>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Password</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="../stylesheets/navbar.css">
+  <style type="text/css">
+    .form-width {
+      width: 300px;
+    }
+  </style>
+  <script src="http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js"></script>
+  <script>
+      var app = angular.module('myApp', []);
+    app.controller('registerCtrl', function($scope) {
+    });
+    </script>
+</head>
+
+<body>
+    <%- include('../partials/admin-navbar') %>
+  <% if (message.danger) { %>
+    <div class="alert alert-danger" role="alert">
+      <%=message.danger%>
+    </div>
+  <% } %>
+  <br>
+  <div class="container mt-3 mb-3" ng-app="myApp" ng-controller="registerCtrl">
+    <div align="center">
+      <h1>Change Password for Customer</h1>
+      <h4><%= tuser.email%></h4>
+      <br>
+    </div>
+    <div class="container">
+      <div class="row justify-content-md-center">
+
+        <div class="col-md-4">
+          <form name="pwchForm" class="form-width" role="form" action="/admin/userpwmanage/<%=tuser.email%>" method="post">
+            <div class="form-group">
+              <label for="email">Email address</label>
+              <input type="email" id="email" name="email" class="form-control" value="<%=tuser.email%>">
+            </div>
+
+            <div class="form-group">
+                <label for="password">New Password</label>
+                <input type="password" id="newpassword" name="newpassword" class="form-control" placeholder="New Password" ng-model="newpassword" ng-minlength="6" ng-maxlength="20" required>
+                <p>
+                    <span style="color: red" ng-show="pwchForm.newpassword.$invalid">
+                        <span ng-show="pwchForm.newpassword.$error.minlength">*Password less than 6 digits</span>
+                        <span ng-show="pwchForm.newpassword.$error.maxlength">*Password should be less than 20 digits</span>
+                    </span>
+                </p>
+              </div>
+  
+              <div class="form-group">
+                  <label for="confirm_password">Re-enter Password</label>
+                  <input type="password" id="confirm_password" name="repassword" class="form-control" placeholder="Confirm Password" ng-model="repassword" required>
+                  <p>
+                  <span style="color: red" ng-show="pwchForm.repassword.$valid">
+                      <span ng-show="repassword!=newpassword">*PassWord Mismatch</span>
+                  </span>
+                </p>
+                </div>
+
+            <button type="submit" class="btn btn-primary" ng-disabled="pwchForm.newpassword.$invalid || repassword!=newpassword">Change password</button>
+          </form>
+          <br>
+          <div align="center">
+                <a href="/admin/userlist"><button type="submit" class="btn btn-secondary">Cancel</button></a>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+<!-- Scripts -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+  crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+  crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+  crossorigin="anonymous"></script>
+
+</html>

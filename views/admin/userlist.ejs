@@ -12,7 +12,12 @@
       width:300px;
     }
   </style>
-
+  <script>
+    function check() {
+      return confirm('Are you sure you want to delete this user?');
+    }
+  </script>
+  
 </head>
 
 <body>
@@ -22,20 +27,28 @@
       <%=message.success%>
     </div>
   <% } %>
+  <div align="center">
+      <h1>Admin Panel</h1>
+      <br>
+  </div>
 
   <div class="container mt-5 mb-3">
-        <h1>Admin panel</h1>     
-        <br>
         <h3>Current User List:</h3>
         <table class="table">
           <thead>
             <th scope="col">User Email</th>
-            <th scope="col">User Level</th> 
+            <th scope="col">User Level</th>
+            <th scope="col">User Id</th>
+            <th></th> 
+            <th></th>
           </thead>
           <% users.forEach(function(user) { %>
             <tr>
               <td><%= user.email %></td>
               <td><%= user.level %></td>
+              <td><%= user._id %></td>
+              <td><a href="userpwmanage/<%= user.email %>"><button type="button" class="btn btn-primary">Password</button></a></td>
+              <td><a href="aduserdelete/<%= user.email %>"><button type="button" onClick="return check()" class="btn btn-danger">Delete</button></a></td>
             </tr>
           <% })%>
         </table>

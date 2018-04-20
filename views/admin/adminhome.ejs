@@ -8,9 +8,6 @@
     body{
       padding: 50px;
     }
-    .form-width{
-      width:300px;
-    }
   </style>
 
 </head>
@@ -23,37 +20,27 @@
     </div>
   <% } %>
 
-  <h1>Admin Panel</h1>
-
-  <label>Email Address: <%= user.email %> </label> <br>
-  
-
-  <div class="container">
-		<div class="row">
-			<div class="col-sm-4">
-				<ul>
-					<li>
-						<button><a href="userlist">User Management</a></button>
-					</li>
-				</ul>
-			</div>
-			<div class="col-sm-4">
-				<ul>
-					<li>
-						<button><a href="#">Order Management</a></button>
-					</li>
-				</ul>
-      </div>
-      <div class="col-sm-4">
-				<ul>
-					<li>
-					<button><a href="#">Inventory Management</a></button>
-					</li>
-				</ul>
-      </div>
-    </div>
+  <div align="center">
+      <h1>Admin Panel</h1>
   </div>
+
+  <h4>Hello: <%= user.email %> </h4> <br>
   
+  <div class="container" mt-5 mb-3>
+		<table class="table">
+      <tr>
+        <td><a href="userlist"><img src="/images/aduser.png" width="320" height="300"></a></td>
+        <td><a href="#"><img src="/images/adorder.png" width="320" height="300"></a></td>
+        <td><a href="#"><img src="/images/adinventory.png" width="320" height="300"></a></td>
+      </tr>
+      <tr>
+          <td align = "center"><a href="userlist"><button type="button" class="btn btn-secondary">User Management</button></a></td>
+          <td align = "center"><a href="#"><button type="button" class="btn btn-secondary">Order Management</button></a></td>
+          <td align = "center"><a href="#"><button type="button" class="btn btn-secondary">Inventory Management</button></a></td>
+      </tr>
+    </table>
+    </div>
+    
 </body>
 
 

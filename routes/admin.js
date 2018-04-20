@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const User = require('../models/user');
+const Order = require('../models/order')
 
 router.get('/adminlogin', function (req, res) {
   res.render('admin/adminlogin');
@@ -47,7 +48,7 @@ router.get('/adminhome', function (req, res) {
 router.get('/userlist', function (req, res) {
   if (req.user) {
     if(req.user.level != 0) {
-      User.find().exec(function (err, users) {
+      User.find().sort({email: 1}).exec(function (err, users) {
         if (err) {
           console.log('Error finding users');
           console.error(err);
@@ -96,13 +97,80 @@ router.post('/adpwchange', function (req, res) {
               res.send(`There was an error: ${err}`);
             } else {
               req.flash('success', "Your password has been changed.");
-              res.redirect('/admin/adminhome');
+              res.redirect('/admin/userlist');
             }
           });
         }
       });
     }
   });
+});
+
+router.get('/userpwmanage/:email', function (req, res) {
+  if (req.user) {
+    if(req.user.level != 0) {
+      User.findOne({email: req.params.email}).exec(function (err, tuser) {
+        if (err) {
+          console.log('Error finding users');
+          console.error(err);
+        } else{
+          res.render('admin/userpwmanage', { tuser: tuser });        
+        }
+      });
+    } 
+  } else {
+    req.flash('danger', "Please logged in first")
+    res.redirect('/admin/adminlogin');
+  }
+});
+
+router.post('/userpwmanage/:email', function (req, res) {
+  if (req.user) {
+    if(req.user.level != 0) {
+      User.findOne({email: req.params.email}, function (err, tuser) {
+        if (err) {
+          console.log('Error finding users');
+          console.error(err);
+        } else{
+          tuser.password = tuser.generateHash(req.body.newpassword);
+      tuser.save(function (err) {
+        if (err) {
+          res.send(`There was an error: ${err}`);
+        } else {
+          req.flash('success', 'User Password Has been Changed');
+          res.redirect('/admin/userlist');            
+        }
+      });      
+      }
+      });
+     } 
+  } else {
+    req.flash('danger', "Please logged in first")
+    res.redirect('/admin/adminlogin');
+  }
+});
+
+router.get('/aduserdelete/:email', function (req, res) {
+  if (req.user) {
+    if(req.user.level != 0) {
+      User.find().exec(function (err, users) {
+        if (err) {
+          console.log('Error finding users');
+          console.error(err);
+        } else{
+          let tuser = User.findOne({email: req.params.email})
+          Order.findOne({user: tuser._id}).remove().exec();
+          User.findOne({ email: req.params.email }).remove().exec();
+          req.flash('success', 'User has been deleted');
+          res.redirect('/admin/userlist');          
+        }
+      });
+    } 
+  } else {
+    req.flash('danger', "Please logged in first")
+    res.redirect('/admin/adminlogin');
+  }
+  
 });
 
 router.get('/adminlogout', function (req, res) {

@@ -11,6 +11,12 @@
       width: 300px;
     }
   </style>
+  <script src="http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js"></script>
+  <script>
+      var app = angular.module('myApp', []);
+    app.controller('registerCtrl', function($scope) {
+    });
+    </script>
 </head>
 
 <%- include('../partials/header') %>
@@ -21,28 +27,44 @@
       <%=message.danger%>
     </div>
   <% } %>
-  <div class="container mt-5 mb-3">
+  <div class="container mt-5 mb-3" ng-app="myApp" ng-controller="registerCtrl">
     <div class="row justify-content-md-center">
       <div class="col-md-4">
         <h1>User Sign Up</h1>
-        <form role="form" action="/users/signup" method="post">
+        <form  name="registerForm" role="form" action="/users/signup" method="post">
 
           <div class="form-group">
             <label for="email">Email address</label>
-            <input type="email" id="email" name="email" class="form-control" placeholder="Valid email address">
+            <input type="email" id="email" name="email" class="form-control" placeholder="Valid email address" ng-model="email" required>
+            <p>
+                <span style="color: red" ng-show=" registerForm.email.$invalid">
+                    <span ng-show="registerForm.email.$error.required">*Please input email</span> <span
+                    ng-show="registerForm.email.$error.email">*Please use the correct email</span>
+                </span>
+            </p>
           </div>
 
           <div class="form-group">
             <label for="password">Password</label>
-            <input type="password" id="password" name="password" class="form-control" placeholder="Password">
+            <input type="password" id="password" name="password" class="form-control" placeholder="Password" ng-model="password" ng-minlength="6" ng-maxlength="20" required>
+            <p>
+                <span style="color: red" ng-show="registerForm.password.$invalid">
+                    <span ng-show="registerForm.password.$error.minlength">*Password less than 6 digits</span>
+                    <span ng-show="registerForm.password.$error.maxlength">*Password should be less than 20 digits</span>
+                </span>
+            </p>
           </div>
 
           <div class="form-group">
             <label for="confirm_password">Re-enter Password</label>
-            <input type="password" id="confirm_password" name="confirm_password" class="form-control" placeholder="Password_Confirm">
+            <input type="password" id="confirm_password" name="repassword" class="form-control" placeholder="Confirm Password" ng-model="repassword" required>
+            <p>
+            <span style="color: red" ng-show="registerForm.password.$valid">
+                <span ng-show="repassword!=password">*PassWord Mismatch</span>
+            </span>
+          </p>
           </div>
-
-          <button type="submit" class="btn btn-primary">Sign Up</button> Or
+          <button type="submit" class="btn btn-primary" ng-disabled="registerForm.email.$invalid || registerForm.password.$invalid || repassword!=password">Sign Up</button> Or
           <a href="/users/login">Sign in</a>
         </form>
       </div>
@@ -53,6 +75,8 @@
 <%- include('../partials/footer') %>
 
   <!-- Scripts -->
+  
+  
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
     crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
