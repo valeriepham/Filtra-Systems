@@ -20,33 +20,32 @@
             <thead>
                 <tr>
                     <th scope="col">Product</th>
+                    <th scope="col"></th>
                     <th scope="col">Quantity</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Total</th>
+                    <th scope="col">Unit Price</th>
+                    <th scope="col">Total Price</th>
                 </tr>
             </thead>
             <tbody>
-                <% for (item in cart.cartItems) { %>
-                    <%= item.pricing.retail %>
+                <% cart.cartItems().forEach( function(item) { %>
                     <tr>
-                        <th scope="col">
-                            <img class="img-thumbnail" src="../images/<%=item.series%>.jpg" alt="item.series.jpg">
-                            <br>
-                            <p><strong>item.title</strong><br>item.model</p>
-                        </th>
-                        <th scope="col">
-                            item.quantity
-                        </th>
-                        <th scope="col">
-                            item.pricing.retail
-                        </th>
-                        <th scope="col">
-                            <!-- subtotal=item.quantity*item.pricing.retail -->
-                            subtotal
-                        </th>
+                        <td class="align-middle">
+                            <img class="img-thumbnail" src="../images/<%=item.item.series%>.jpg" alt="<%=item.item.series%>.jpg" style="width: 100px; height: 100px;">
+                        </td>
+                        <td class="align-middle">
+                            <p><strong><%=item.item.title%></strong><br><%=item.item.model%></p>
+                        </td>
+                        <td class="align-middle">
+                            <%=item.quantity%>
+                        </td>
+                        <td class="align-middle">
+                            <%=item.item.pricing.retail%>
+                        </td>
+                        <td class="align-middle">
+                            <%=item.price%>
+                        </td>
                     </tr>
-                    <!-- total=total+subtotal -->
-                <% } %>
+                <% }); %>
             </tbody>
         </table>
         <div class="row">
@@ -56,19 +55,15 @@
                     <tbody>
                         <tr>
                             <th scope="row">Subtotal:</th>
-                            <td><!--total--></td>
+                            <td><%=cart.price%></td>
                         </tr>
                         <tr>
                             <th scope="row">Shipping:</th>
-                            <td><!--shipping--></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Tax:</th>
-                            <td><!--tax--></td>
+                            <td>25</td>
                         </tr>
                         <tr>
                             <th scope="row">Total:</th>
-                            <td><!--total+shipping+tax--></td>
+                            <td><%=cart.price + 25%></td>
                         </tr>
                     </tbody>
                 </table>
