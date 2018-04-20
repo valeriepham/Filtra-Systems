@@ -1,14 +1,11 @@
 <header>
 	<!-- navbar -->
-	<nav class="navbar bg-primary">
-		<a class="navbar-brand" href="/">
+	<nav class="navbar bg-primary px-1 py-1">
+		<a class="navbar-brand mx-1" href="/">
 			<img src="/images/logo.png">
 		</a>
-		<div class="justify-content-right" id="icon">
-			<a class="navbar-brand" href="/cart">
-				<img src="/images/cart.png"
-			</a>
-			<a class="navbar-brand" id="icon"
+		<div class="justify-content-right">
+			<a class="navbar-brand mt-0 pt-0" id="icon"
 				<% if(login ) { %>
 					href="/users/profile"
 				<% } else { %>
@@ -16,6 +13,9 @@
 				<% } %>
 			>
 				<img src="/images/profile.png">
+			</a>
+			<a class="navbar-brand mt-0 pt-0 mr-1" href="/cart" id="icon">
+				<img src="/images/cart.png">
 			</a>
 		</div>
 	</nav>

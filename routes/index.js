@@ -66,6 +66,10 @@ router.get('/test', function (req, res) {
   res.render('test');
 });
 
+router.get('/confirm', function(req, res) {
+  res.render('confirm', { cart: req.session.cart });
+});
+
 router.get('/api/products', function (req, res) {
   Product.find().exec(function (err, products) {
     if (err) {

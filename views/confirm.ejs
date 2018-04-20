@@ -1,0 +1,81 @@
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	 crossorigin="anonymous">
+	<link rel="stylesheet" href="stylesheets/navbar.css">
+	<title>Home</title>
+</head>
+
+<%- include('./partials/header.ejs') %>
+
+<body>
+	<div class="container">
+        <h1>Order Review</h1>
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Product</th>
+                    <th scope="col"></th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Unit Price</th>
+                    <th scope="col">Total Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% cart.cartItems().forEach( function(item) { %>
+                    <tr>
+                        <td class="align-middle">
+                            <img class="img-thumbnail" src="../images/<%=item.item.series%>.jpg" alt="<%=item.item.series%>.jpg" style="width: 100px; height: 100px;">
+                        </td>
+                        <td class="align-middle">
+                            <p><strong><%=item.item.title%></strong><br><%=item.item.model%></p>
+                        </td>
+                        <td class="align-middle">
+                            <%=item.quantity%>
+                        </td>
+                        <td class="align-middle">
+                            <%=item.item.pricing.retail%>
+                        </td>
+                        <td class="align-middle">
+                            <%=item.price%>
+                        </td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+        <div class="row">
+            <div class="col-6"></div>
+            <div class="col-6">
+                <table class="table table-hover">
+                    <tbody>
+                        <tr>
+                            <th scope="row">Subtotal:</th>
+                            <td><%=cart.price%></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Shipping:</th>
+                            <td>25</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Total:</th>
+                            <td><%=cart.price + 25%></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+
+<%- include('./partials/footer.ejs') %>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+ crossorigin="anonymous"></script>
+
+</html>
