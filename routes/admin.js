@@ -48,7 +48,7 @@ router.get('/adminhome', function (req, res) {
 router.get('/userlist', function (req, res) {
   if (req.user) {
     if(req.user.level != 0) {
-      User.find().exec(function (err, users) {
+      User.find().sort({email: 1}).exec(function (err, users) {
         if (err) {
           console.log('Error finding users');
           console.error(err);
