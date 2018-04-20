@@ -16,18 +16,81 @@
 
 <body>
 <div class="container mt-5 mb-3">
-		<%= subscription.email %>
-		<%= subscription.sAddress %>
-		<%= subscription.sCity %>
-		<%= subscription.sState %>
-		<%= subscription.bAddress %>
-		<%= subscription.bCity %>
-		<%= subscription.bState %>
-		<%= subscription.method %>
-		<%= subscription.qty %>
-		<%= subscription.startDate %>
-		<%= subscription.freq %>
-		<%= subscription.model %>
+	<div class="row justify-content-center">
+		<div class="col-6">
+			<table class="table table-striped">
+				<tbody>
+					<!-- payment -->
+					<tr>
+						<th colspan="2" class="text-center">
+							Payment and Shipping
+						</th>
+					</tr>
+					<tr>
+						<th scope="row">Email: </th>
+						<td><%= subscription.email %></td>
+					</tr>
+					<tr>
+						<th scope="row">Mailing Address: </th>
+						<td>
+							<strong><%= subscription.sAddress %></strong><br>
+							<%= subscription.sCity %>, <%= subscription.sState %>
+						</td>
+					</tr>
+					<tr>
+						<th scope="row">Billing Address: </th>
+						<td>
+							<strong><%= subscription.bAddress %></strong><br>
+							<%= subscription.bCity %>, <%= subscription.bState %>		
+						</td>
+					</tr>
+					<tr>
+						<th scope="row">Card Used: </th>
+						<td><%= subscription.method %></td>
+					</tr>
+					<!-- subscription -->
+					<tr>
+						<th colspan="2" class="text-center">
+							Subscription
+						</th>
+					</tr>
+					<tr>
+						<th scope="row">Model: </th>
+						<td><%= subscription.model.substr(0,4) %></td>
+					</tr>
+					<tr>
+						<th scope="row">Quantity: </th>
+						<td><%= subscription.qty %></td>
+					</tr>
+					<tr>
+						<th scope="row">Card: </th>
+						<td><%= subscription.startDate.substr(5,2) %>/<%= subscription.startDate.substr(8,2) %>/<%= subscription.startDate.substr(0,4) %></td>
+					</tr>
+					<tr>
+						<th scope="row">Frequency: </th>
+						<% if(subscription.freq==1){ %><>
+							<td>Weekly</td>
+						<% } %>
+						<% if(subscription.freq==2){ %>
+							<td>Monthly</td>
+						<% } %>
+						<% if(subscription.freq==3){ %>
+							<td>Bi-Monthly</td>
+						<% } %>
+						<% if(subscription.freq==4){ %>
+							<td>Quarterly</td>
+						<% } %>
+						<% if(subscription.freq==5){ %>
+							<td>Semi-Annual</td>
+						<% } %>
+						<% if(subscription.freq==6){ %>
+							<td>Annual</td>
+						<% } %>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
 </div>
 </body>
 
