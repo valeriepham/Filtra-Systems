@@ -99,13 +99,15 @@
                     </label>
                   </div>
               <% }) %>
-              <button style="display: block;" type="submit" class="my-5 btn btn-primary">Submit Payment for $<%= (cart.getPrice() * 1.2375).toFixed(2) %></button>
+              <% if (sources.length !== 0) { %>
+                <button style="display: block;" type="submit" class="my-5 btn btn-primary">Submit Payment for $<%= (cart.getPrice() * 1.2375).toFixed(2) %></button>
+              <% } %>
             </div>  <!-- Close Options Col -->
           </div>  <!-- Close Payment Methods Row -->
         </form>
         <br>
         <br>
-        <p>If you would like to <strong>add a new payment method</strong>, or <strong>update existing ones</strong>, you may do so from <a href="/users/profile/payments">your account management page</a></p>
+        <p>If you would like to <strong>add a new payment method</strong>, or <strong>update existing ones</strong>, you may do so from <a href="/users/payments">your account management page</a></p>
       </div>  <!-- Close Checkout Col -->
     </div>  <!-- Close Row -->
   </div>  <!-- Close Container -->

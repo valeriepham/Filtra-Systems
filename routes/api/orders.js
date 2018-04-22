@@ -36,4 +36,16 @@ router.get('/reorder/:id', function(req, res) {
   });
 });
 
+router.get('/user/:uid', function(req, res) {
+  Order.find({ user: req.params.uid }).exec(function (err, orders) {
+    if (err) {
+      console.log('Error when fetching orders');
+      res.status(400).send(err);
+    } else {
+      console.log('Orders:', orders);
+      res.status(200).send(orders);
+    }
+  });
+});
+
 module.exports = router;

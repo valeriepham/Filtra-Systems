@@ -59,6 +59,31 @@ function remove(req, res) {
   res.redirect('/cart');
 }
 
+function checkout(req, res) {
+  if (!req.session.cart) {
+    console.log('no cart in session');
+    return res.redirect('/cart');
+  }
+  console.log('checkout cart', req.session.cart);
+  let cart = new Cart(req.session.cart);
+  console.log(req.user);
+  if (!req.user) {
+    console.log('guest checkout');
+    res.render('guest-checkout', { cart: cart, message: 'If you would like to save this order, please <a href="/users/login">login</a>, or <a href="/users/signup">signup</a> for an account first.' });  
+  } else {
+    console.log('user checkout!');
+    stripe.customers.retrieve(req.user.customer_id, function(err, customer) {
+      if (err) {
+        console.log('Error when retrieving customer:', err);
+        res.render('profile');
+      } else {
+        console.log(customer.sources.data);
+        res.render('user-checkout', {cart: cart, sources: customer.sources.data});
+      }
+    });
+  }
+}
+
 function charge(req, res) {
   //ensure that the cart is still saved in session memory
   if (!req.session.cart) {
@@ -182,4 +207,14 @@ function chargeSubscription(req, res) {
   res.redirect('/users/profile');
 }
 
-module.exports = { addToCart, updateQuantity, update, remove, charge, chargeUser, subscribe, chargeSubscription };
+module.exports = { 
+  addToCart,
+  updateQuantity,
+  update,
+  remove,
+  charge,
+  checkout,
+  chargeUser,
+  subscribe,
+  chargeSubscription
+};

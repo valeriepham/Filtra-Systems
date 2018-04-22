@@ -34,39 +34,15 @@ router.get('/cart', function (req, res) {
   }
 });
 
-router.get('/checkout', function (req, res) {
-  if (!req.session.cart) {
-    console.log('no cart in session');
-    return res.redirect('/cart');
-  }
-  console.log('checkout cart', req.session.cart);
-  let cart = new Cart(req.session.cart);
-  console.log(req.user);
-  if (!req.user) {
-    console.log('guest checkout');
-    res.render('guest-checkout', { cart: cart });  
-  } else {
-    console.log('user checkout!');
-    stripe.customers.retrieve(req.user.customer_id, function(err, customer) {
-      if (err) {
-        console.log('Error when retrieving customer:', err);
-        res.render('profile');
-      } else {
-        console.log(customer.sources.data);
-        res.render('user-checkout', {cart: cart, sources: customer.sources.data});
-      }
-    });
-  }
-});
+router.get('/checkout', cartController.checkout);
 
 router.post('/charge-user', cartController.chargeUser);
 
 router.get('/guest-checkout', function (req, res) {
   console.log('checkout cart', req.session.cart);
   let cart = new Cart(req.session.cart);
-  res.render('guest-checkout', { cart: cart});
+  res.render('guest-checkout', { cart: cart, message: 'If you would like to return to the user checkout page, you may do so <a href="/checkout">here</a>' });
 });
-
 
 router.post('/add-to-cart/:id', cartController.addToCart);
 
@@ -78,30 +54,6 @@ router.get('/update-quantity/:id/:qty', cartController.updateQuantity);
 
 router.get('/test', function (req, res) {
   res.render('test');
-});
-
-router.get('/api/products', function (req, res) {
-  Product.find().exec(function (err, products) {
-    if (err) {
-      console.log('Error when fetching products');
-      res.render('500', { err: err });
-    }
-    else {
-      res.send(products);
-    }
-  });
-});
-
-router.get('api/orders/user/:uid', function(req, res) {
-  Order.find({ user: req.params.uid }).exec(function (err, orders) {
-    if (err) {
-      console.log('Error when fetching orders');
-      res.status(400).send(err);
-    } else {
-      console.log('Orders:', orders);
-      res.status(200).send(orders);
-    }
-  });
 });
 
 router.use('/api/', apiRoutes);
