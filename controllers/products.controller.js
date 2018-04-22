@@ -18,7 +18,7 @@ function listProducts(req, res) {
 
 function findSeries(req, res) {
   let series = req.params.series;
-  Product.find({ 'series': series }).exec(function (err, product) {
+  Product.find({ 'series': series }).exec(function (err, products) {
     console.log(series);
     if (err) {
       console.log('Error when fetching product');
@@ -28,12 +28,12 @@ function findSeries(req, res) {
       if (series[2] === 'F') {
         res.render('bag', {
           title: series + 'Product Page',
-          bag: product
+          bag: products[0]
         });
       } else {
         res.render('product', {
           title: series + 'Product Page',
-          products: product
+          products: products
         });  
       }
     }
