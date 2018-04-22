@@ -19,7 +19,7 @@
             <img src="/images/{{ product.item.series }}.jpg" width="75px" height="75px">
           </td>
           <td class="align-middle">
-            <p><strong>{{ product.item.title }}</strong><br>{{ product.item.model }}</p>
+            <p><a href="/products/{{product.item.series}}"><strong>{{ product.item.title }}</strong></a><br>{{ product.item.model }}</p>
           </td>
           <td class="align-middle">
             <input type="number" min="1" max="999" ng-model="product.quantity">

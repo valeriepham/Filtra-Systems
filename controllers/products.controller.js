@@ -25,10 +25,17 @@ function findSeries(req, res) {
       res.render('500', { err: err });
     }
     else {
-      res.render('product', {
-        title: series + 'Product Page',
-        products: product
-      });
+      if (series[2] === 'F') {
+        res.render('bag', {
+          title: series + 'Product Page',
+          bag: product
+        });
+      } else {
+        res.render('product', {
+          title: series + 'Product Page',
+          products: product
+        });  
+      }
     }
   });
 }
@@ -42,10 +49,17 @@ function findBagSeries(req, res) {
       res.render('500', { err: err });
     }
     else {
-      res.render('bag', {
-        title: series + 'Product Page',
-        bag: product
-      });
+      if (series[2] === 'F') {
+        res.render('bag', {
+          title: series + 'Product Page',
+          bag: product
+        });
+      } else {
+        res.render('product', {
+          title: series + 'Product Page',
+          products: product
+        });  
+      }
     }
   });
 }
