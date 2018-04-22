@@ -182,7 +182,7 @@ router.get('/adminlogout', function (req, res) {
 router.get('/order-mgt/:page', function(req, res) {
   if (req.user) {
     if (req.user.level !== 0) {
-      Order.find().sort({date: 1}).exec(function(err, orders) {
+      Order.find().sort({date: -1}).exec(function(err, orders) {
         if (err) {
           console.log(err);
           res.send(err);

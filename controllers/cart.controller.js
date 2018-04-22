@@ -83,27 +83,31 @@ function charge(req, res) {
       req.flash('danger', err.message);
       return res.redirect('/checkout');
     }
+    console.log('charge:', charge);
     let order = new Order({
       user: req.user ? req.user : null,
       cart: cart,
+      email: req.body.email,
       shippingAddress: {
-        street: req.body.shippingAdd,
-        state: req.body.shippingSt,
-        zip: req.body.shippingZip,
+        street: req.body.address,
+        state: req.body.state,
+        city: req.body.city,
+        zip: charge.source.address_zip,
       },
       billingAddress: {
-        street: req.body.billingAdd,
-        state: req.body.billingSt,
-        zip: req.body.billingZip,
+        street: req.body.address,
+        state: req.body.state,
+        city: req.body.city,
+        zip: charge.source.address_zip,
       },
-      name: req.body.cardHolderName,
+      name: req.body.cardName,
       paymentId: charge.id,
     });
     order.save(function (err, result) {
       if (err) {
         console.log(err);
       } else {
-        console.log(result);
+        console.log('order:',result);
         req.flash('success', 'Checkout was successful!');
         req.session.cart = null;
         res.render('confirm', { cart: cart, reorder: false });
@@ -128,30 +132,42 @@ function chargeUser(req, res) {
     if (err) {
       console.log('Error when creating charge', err);
     }
-    let order = new Order({
-      user: req.user ? req.user : null,
-      cart: cart,
-      shippingAddress: {
-        street: req.body.shippingAdd,
-        state: req.body.shippingSt,
-        zip: req.body.shippingZip,
-      },
-      billingAddress: {
-        street: req.body.billingAdd,
-        state: req.body.billingSt,
-        zip: req.body.billingZip,
-      },
-      name: req.body.cardHolderName,
-      paymentId: charge.id,
-    });
-    order.save(function (err, result) {
+    stripe.customers.retrieve(req.user.customer_id, function(err, customer) {
       if (err) {
-        console.log(err);
-      } else {
-        console.log(result);
-        req.flash('success', 'Checkout was successful!');
-        req.session.cart = null;
-        res.render('confirm', { cart: cart, reorder: false });
+        console.log('Error when retrieving customer', err);
+      }
+      else {
+        let source = customer.sources.data.find(card => card.id === token);
+        console.log('source:', source);
+        let order = new Order({
+          user: req.user ? req.user : null,
+          cart: cart,
+          email: source.owner.email,
+          shippingAddress: {
+            street: source.owner.address.line1,
+            state: source.owner.address.state,
+            city: source.owner.address.city,
+            zip: source.owner.address.postal_code,
+          },
+          billingAddress: {
+            street: source.owner.address.line1,
+            state: source.owner.address.state,
+            city: source.owner.address.city,
+            zip: source.owner.address.postal_code,
+          },
+          name: source.owner.name,
+          paymentId: charge.id,
+        });
+        order.save(function (err, result) {
+          if (err) {
+            console.log(err);
+          } else {
+            console.log('order:',result);
+            req.flash('success', 'Checkout was successful!');
+            req.session.cart = null;
+            res.render('confirm', { cart: cart, reorder: false });
+          }
+        });
       }
     });
   });
@@ -163,7 +179,6 @@ function subscribe(req, res) {
 
 function chargeSubscription(req, res) {
   console.log(req.body);
-  
   res.redirect('/users/profile');
 }
 
