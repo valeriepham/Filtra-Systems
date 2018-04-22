@@ -13,7 +13,7 @@ router.get('/', function(req, res) {
 });
 
 router.use('/cart', cartRoutes);
-router.use('/order', orderRoutes);
+router.use('/orders', orderRoutes);
 router.use('/products', productRoutes);
 router.use('/user', userRoutes);
 

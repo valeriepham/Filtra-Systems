@@ -41,7 +41,10 @@ router.get('/profile', function (req, res, next) {
         console.log('Error finding user\'s orders');
         console.error(err);
       } else {
-        res.render('users/profile', { orders: orders });
+        stripe.customers.retrieve(req.user.customer_id, function(err, customer) {
+          console.log(customer.subscriptions.data);
+          res.render('users/profile', { orders: orders, subscriptions: customer.subscriptions.data });
+        });
       }
     });
   } else {

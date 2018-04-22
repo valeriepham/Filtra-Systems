@@ -59,50 +59,7 @@ router.get('/checkout', function (req, res) {
   }
 });
 
-router.post('/charge-user', function(req, res) {
-  if (!req.session.cart) {
-    return res.redirect('/cart');
-  }
-  let cart = new Cart(req.session.cart);
-  let token = req.body.method;
-  stripe.charges.create({
-    amount: parseInt(cart.getPrice() * 1.2375 * 100),
-    currency: 'usd',
-    description: 'test user charge',
-    customer: req.user.customer_id,
-    source: token
-  }, function(err, charge) {
-    if (err) {
-      console.log('Error when creating charge', err);
-    }
-    let order = new Order({
-      user: req.user ? req.user : null,
-      cart: cart,
-      shippingAddress: {
-        street: req.body.shippingAdd,
-        state: req.body.shippingSt,
-        zip: req.body.shippingZip,
-      },
-      billingAddress: {
-        street: req.body.billingAdd,
-        state: req.body.billingSt,
-        zip: req.body.billingZip,
-      },
-      name: req.body.cardHolderName,
-      paymentId: charge.id,
-    });
-    order.save(function (err, result) {
-      if (err) {
-        console.log(err);
-      } else {
-        console.log(result);
-        req.flash('success', 'Checkout was successful!');
-        req.session.cart = null;
-        res.redirect('/cart');
-      }
-    });
-  });
-});
+router.post('/charge-user', cartController.chargeUser);
 
 router.get('/guest-checkout', function (req, res) {
   console.log('checkout cart', req.session.cart);
