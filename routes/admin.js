@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const User = require('../models/user');
-const Order = require('../models/order')
+const Order = require('../models/order');
 
 router.get('/adminlogin', function (req, res) {
   res.render('admin/adminlogin');
@@ -36,7 +36,7 @@ router.post('/adminlogin', function (req, res) {
 
 router.get('/adminhome', function (req, res) {
   if (req.user) {
-    if(req.user.level != 0) {
+    if(req.user.level !== 0) {
       res.render('admin/adminhome');
     }    
   } else {
@@ -47,7 +47,7 @@ router.get('/adminhome', function (req, res) {
 
 router.get('/userlist', function (req, res) {
   if (req.user) {
-    if(req.user.level != 0) {
+    if(req.user.level !== 0) {
       User.find().sort({email: 1}).exec(function (err, users) {
         if (err) {
           console.log('Error finding users');
@@ -67,7 +67,7 @@ router.get('/userlist', function (req, res) {
 
 router.get('/adpwchange', function (req, res) {
   if (req.user) {
-    if(req.user.level != 0) {
+    if(req.user.level !== 0) {
       res.render('admin/adpwchange');
     }
   } else {
@@ -108,7 +108,7 @@ router.post('/adpwchange', function (req, res) {
 
 router.get('/userpwmanage/:email', function (req, res) {
   if (req.user) {
-    if(req.user.level != 0) {
+    if(req.user.level !== 0) {
       User.findOne({email: req.params.email}).exec(function (err, tuser) {
         if (err) {
           console.log('Error finding users');
@@ -126,26 +126,26 @@ router.get('/userpwmanage/:email', function (req, res) {
 
 router.post('/userpwmanage/:email', function (req, res) {
   if (req.user) {
-    if(req.user.level != 0) {
+    if(req.user.level !== 0) {
       User.findOne({email: req.params.email}, function (err, tuser) {
         if (err) {
           console.log('Error finding users');
           console.error(err);
-        } else{
-          tuser.password = tuser.generateHash(req.body.newpassword);
-      tuser.save(function (err) {
-        if (err) {
-          res.send(`There was an error: ${err}`);
         } else {
-          req.flash('success', 'User Password Has been Changed');
-          res.redirect('/admin/userlist');            
+          tuser.password = tuser.generateHash(req.body.newpassword);
+          tuser.save(function (err) {
+            if (err) {
+              res.send(`There was an error: ${err}`);
+            } else {
+              req.flash('success', 'User Password Has been Changed');
+              res.redirect('/admin/userlist');            
+            }
+          });      
         }
-      });      
-      }
       });
-     } 
+    } 
   } else {
-    req.flash('danger', "Please logged in first")
+    req.flash('danger', "Please logged in first");
     res.redirect('/admin/adminlogin');
   }
 });
@@ -177,6 +177,29 @@ router.get('/adminlogout', function (req, res) {
   req.logout();
   req.flash('success', 'You\'ve logged out!');
   res.redirect('/admin/adminlogin');
+});
+
+router.get('/order-mgt/:page', function(req, res) {
+  if (req.user) {
+    if (req.user.level !== 0) {
+      Order.find().sort({date: 1}).exec(function(err, orders) {
+        if (err) {
+          console.log(err);
+          res.send(err);
+        } else {
+          let page = parseInt(req.params.page);
+          console.log('page', page);
+          let morePages = true;
+          orders = orders.slice((page - 1) * 10, page * 10);
+          if (orders.length < 10) morePages = false;
+          console.log('Found Orders');
+          res.render('admin/order-mgt', {orders: orders, page: page, morePages: morePages});
+        }
+      });
+    }
+  } else {
+    res.redirect('/adminlogin');
+  }
 });
 
 module.exports = router;
