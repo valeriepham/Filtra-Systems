@@ -5,7 +5,7 @@ const cartController = require('../controllers/cart.controller');
 const Cart = require('../models/cart');
 const Product = require('../models/product');
 const Order = require('../models/order');
-// const Stripe = require('stripe');
+const stripe = require('stripe')('sk_test_uxg0FRXwXVLJidLOj1Xvm6AJ');
 const apiRoutes = require('./api');
 
 /* GET home page. */
@@ -25,8 +25,6 @@ router.get('/contact-us', function (req, res) {
   res.render('site-info/contact-us', { title: 'Contact Us', message: 'More information to come soon!' });
 });
 
-router.get('/product/:series', productController.findSeries);
-
 router.get('/cart', function (req, res) {
   if (!req.session.cart || req.session.cart == null) {
     return res.render('cart', { products: null, totalPrice: 0 });
@@ -36,23 +34,39 @@ router.get('/cart', function (req, res) {
   }
 });
 
-router.get('/simplecheckout', function (req, res) {
+router.get('/checkout', function (req, res) {
   if (!req.session.cart) {
     console.log('no cart in session');
     return res.redirect('/cart');
   }
   console.log('checkout cart', req.session.cart);
   let cart = new Cart(req.session.cart);
-  res.render('simplecheckout', { totalPrice: cart.getPrice() * 1.2375 });
+  console.log(req.user);
+  if (!req.user) {
+    console.log('guest checkout');
+    res.render('guest-checkout', { cart: cart });  
+  } else {
+    console.log('user checkout!');
+    stripe.customers.retrieve(req.user.customer_id, function(err, customer) {
+      if (err) {
+        console.log('Error when retrieving customer:', err);
+        res.render('profile');
+      } else {
+        console.log(customer.sources.data);
+        res.render('user-checkout', {cart: cart, sources: customer.sources.data});
+      }
+    });
+  }
 });
 
-router.get('/api/cart/save', function(req, res) {
-  if (!req.session.cart) {
-    return res.redirect('/cart');
-  }
+router.post('/charge-user', cartController.chargeUser);
+
+router.get('/guest-checkout', function (req, res) {
+  console.log('checkout cart', req.session.cart);
   let cart = new Cart(req.session.cart);
-  res.render('simplecheckout', { totalPrice: cart.getPrice() });
+  res.render('guest-checkout', { cart: cart});
 });
+
 
 router.post('/add-to-cart/:id', cartController.addToCart);
 

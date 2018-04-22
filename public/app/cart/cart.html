@@ -16,7 +16,7 @@
       <tbody>
         <tr ng-repeat="product in $ctrl.cart.items">
           <td class="align-middle">
-            <img src="{{ product.item.img }}" width="50px" height="100px">
+            <img src="/images/{{ product.item.series }}.jpg" width="75px" height="75px">
           </td>
           <td class="align-middle">
             <p><strong>{{ product.item.title }}</strong><br>{{ product.item.model }}</p>
@@ -61,7 +61,7 @@
       </tr>
       <tr style="align-content: right;">
         <td colspan="2" style="text-align: right;">
-          <a href="/simplecheckout" class="btn btn-primary">Checkout for ${{ ($ctrl.cart.price * 1.2375).toFixed(2) }}</a>
+          <a href="/checkout" class="btn btn-primary">Checkout for ${{ ($ctrl.cart.price * 1.2375).toFixed(2) }}</a>
         </td>
       </tr>
     </table>

@@ -28,25 +28,53 @@
   
     <p>Email Address: <%= user.email %> </p>
     
-  
-    <h3> Past Orders:</h3>
-    <table class="table">
-      <thead>
-        <th scope="col">Name</th>
-        <th scope="col">Order ID</th> 
-        <th scope="col">Payment ID</th>
-        <th scope="col">Date</th>
-      </thead>
-      <% orders.forEach(function(order) { %>
-        <tr>
-          <td><%= order.name %></td>
-          <td><%= order._id %></td>
-          <td><%= order.paymentId %></td>
-          <td><%= order.date %></td>
-        </tr>
-      <% }) %>
-    </table>
+    <div class="row">
+      <div class="col-md-12">
+      <h3> Past Orders:</h3>
+      <table class="table">
+        <thead>
+          <th scope="col">Name</th>
+          <th scope="col">Order ID</th> 
+          <th scope="col">Payment ID</th>
+          <th scope="col">Date</th>
+          <th scope="col">Reorder</th>
+        </thead>
+        <% orders.forEach(function(order) { %>
+          <tr>
+            <td><%= order.name %></td>
+            <td><a href="/api/orders/review/<%= order._id %>"><%= order._id %></a></td>
+            <td><%= order.paymentId %></td>
+            <td><%= order.date %></td>
+            <td><a class="btn btn-primary" href="/api/orders/reorder/<%= order._id %>">Reorder</a></td>
+          </tr>
+        <% }) %>
+      </table>
+    </div>
   </div>
+  <div class="mt-5 row">
+    <div class="col-md-12">
+      <% if (subscriptions.length !== 0) { %>
+        <h3>Active Subscriptions:</h3>
+        <table class="table">
+          <thead>
+            <th scope="col">Item</th>
+            <th scope="col">Qty</th> 
+            <th scope="col">Frequency</th>
+            <th scope="col">Cancel Subscription</th>
+          </thead>
+          <% subscriptions.forEach(function(subscription) { %>
+            <tr>
+              <td><%= subscription.title %></td>
+              <td><%= subscription.qty %></td>
+              <td><%= subscription.freq %></td>
+              <td><a href="#" class="btn btn-danger">Cancel</a></td>
+            </tr>
+          <% }) %>
+        </table>
+      <% } %>
+    </div>
+  </div>
+</div>
 
 </body>
 
