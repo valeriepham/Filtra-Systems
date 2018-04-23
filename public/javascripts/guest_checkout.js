@@ -1,5 +1,5 @@
 // Create a Stripe client.
-let stripe = Stripe('pk_test_7JDyjeXXuLNF7oTJTn1x7oiS');
+let stripe = Stripe('pk_test_81LGdfG9uBuZJM4hjT4qcTR9');
 
 // Create an instance of Elements.
 let elements = stripe.elements();

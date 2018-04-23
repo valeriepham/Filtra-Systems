@@ -3,7 +3,7 @@ const router = express.Router();
 
 const User = require('../models/user');
 const Order = require('../models/order');
-const stripe = require('stripe')('sk_test_uxg0FRXwXVLJidLOj1Xvm6AJ');
+const stripe = require('stripe')('sk_test_gGinXwwcglQJZORWWQQlCYsH');
 
 router.get('/login', function (req, res) {
   res.render('users/login');

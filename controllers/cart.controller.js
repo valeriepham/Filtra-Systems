@@ -1,7 +1,7 @@
 const Cart = require('../models/cart');
 const Order = require('../models/order');
 const Product = require('../models/product');
-const stripe = require('stripe')('sk_test_uxg0FRXwXVLJidLOj1Xvm6AJ');
+const stripe = require('stripe')('sk_test_gGinXwwcglQJZORWWQQlCYsH');
 
 function addToCart(req, res) {
   let model = req.body.model;

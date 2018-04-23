@@ -1,5 +1,5 @@
 const Product = require('../models/product');
-const stripe = require('stripe')('sk_test_uxg0FRXwXVLJidLOj1Xvm6AJ');
+const stripe = require('stripe')('sk_test_gGinXwwcglQJZORWWQQlCYsH');
 
 function listProducts(req, res) {
   Product.find().exec(function (err, products) {

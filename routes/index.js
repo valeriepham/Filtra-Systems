@@ -5,7 +5,7 @@ const cartController = require('../controllers/cart.controller');
 const Cart = require('../models/cart');
 const Product = require('../models/product');
 const Order = require('../models/order');
-const stripe = require('stripe')('sk_test_uxg0FRXwXVLJidLOj1Xvm6AJ');
+const stripe = require('stripe')('sk_test_gGinXwwcglQJZORWWQQlCYsH');
 const apiRoutes = require('./api');
 
 /* GET home page. */
