@@ -154,8 +154,6 @@ router.get('/aduserdelete/:email', function (req, res) {
         if (err) {
           console.log('Error finding users', err);
         } else{
-          let tuser = User.findOne({email: req.params.email});
-          Order.findOne({user: tuser._id}).remove().exec();
           User.findOne({ email: req.params.email }).remove().exec();
           req.flash('success', 'User has been deleted');
           res.redirect('/admin/userlist');          
