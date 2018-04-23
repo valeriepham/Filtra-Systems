@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>User Management</title>
+  <title>Order Management</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <style type="text/css">
     body{
@@ -33,26 +33,41 @@
   </div>
 
   <div class="container mt-5 mb-3">
-        <h3>Current User List:</h3>
-        <table class="table">
-          <thead>
-            <th scope="col">User Email</th>
-            <th scope="col">User Level</th>
-            <th scope="col">User Id</th>
-            <th></th> 
-            <th></th>
-          </thead>
-          <% users.forEach(function(user) { %>
-            <tr>
-              <td><%= user.email %></td>
-              <td><%= user.level %></td>
-              <td><%= user._id %></td>
-              <td><a href="userpwmanage/<%= user.email %>"><button type="button" class="btn btn-primary">Password</button></a></td>
-              <td><a href="aduserdelete/<%= user.email %>"><button type="button" onClick="return check()" class="btn btn-danger">Delete</button></a></td>
-            </tr>
-          <% })%>
-        </table>
+    <h3>Order List: Page <%= page %></h3>
+      <table class="table">
+        <thead>
+          <th scope="col">Order Name</th>
+          <th scope="col">Order Total</th>
+          <th scope="col">Date of Order</th>
+          <th scope="col">Order ID</th>
+          <th scope="col">Ordered By</th>
+        </thead>
+        <% orders.forEach(function(order) { %>
+          <tr>
+            <td><%= order.name %></td>
+            <td>$<%= order.cart.total.toFixed(2) %></td>
+            <td><%= order.date %></td>
+            <td><a href="/api/orders/review/<%= order._id %>"><%= order._id %></a></td>
+            <td><%= order.user %></td>
+          </tr>
+        <% })%>
+      </table>
+        <div class="row justify-content-md-center">
+          <div class="col-md-2">
+            <% if(page !== 1) { %>
+              <a href="/admin/order-mgt/<%= (page - 1) %>">&lt&lt Prev Page</a>
+            <% } %>
+          </div>
+          <div class="col-md-2">
+            Page: <%= page %>
+          </div>
+          <div class="col-md-2">
+            <% if(morePages) { %>
+              <a href="/admin/order-mgt/<%= (page + 1) %>">Next Page &gt&gt</a>
+            <% } %>
+          </div>
       </div>
+    </div>
   
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

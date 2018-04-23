@@ -6,7 +6,7 @@ const schema = mongoose.Schema({
   email: { type: String, require: true, trim: true, unique: true },
   password: { type: String, require: true },
   level: { type: Number, require: true, default: 0 },
-  currentCartId: { type: String, require: false, default: null }
+  customer_id: { type: String, require: true, default: null},
 });
 
 schema.methods.generateHash = function (password) {

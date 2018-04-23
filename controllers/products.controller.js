@@ -1,4 +1,5 @@
 const Product = require('../models/product');
+const stripe = require('stripe')('sk_test_gGinXwwcglQJZORWWQQlCYsH');
 
 function listProducts(req, res) {
   Product.find().exec(function (err, products) {
@@ -17,36 +18,77 @@ function listProducts(req, res) {
 
 function findSeries(req, res) {
   let series = req.params.series;
-  Product.find({ 'series': series }).exec(function (err, product) {
-    console.log(series);
+  Product.find({ 'series': series }).exec(function (err, products) {
     if (err) {
       console.log('Error when fetching product');
       res.render('500', { err: err });
     }
     else {
-      res.render('product', {
-        title: series + 'Product Page',
-        products: product
-      });
+      if (series[2] === 'F') {
+        res.render('bag', {
+          title: series + 'Product Page',
+          bag: products[0]
+        });
+      } else {
+        res.render('product', {
+          title: series + 'Product Page',
+          products: products
+        });  
+      }
+    }
+  });
+}
+
+function findBagSeries(req, res) {
+  let series = req.params.series;
+  Product.findOne({ 'series': series }).exec(function (err, product) {
+    if (err) {
+      console.log('Error when fetching product');
+      res.render('500', { err: err });
+    }
+    else {
+      if (series[2] === 'F') {
+        res.render('bag', {
+          title: series + 'Product Page',
+          bag: product
+        });
+      } else {
+        res.render('product', {
+          title: series + 'Product Page',
+          products: product
+        });  
+      }
     }
   });
 }
 
 function subscriptions(req, res) {
-  let series = req.params.series;
-  Product.find({ 'series': series }).exec(function (err, product) {
-    console.log(series);
-    if (err) {
-      console.log('Error when fetching product');
-      res.render('500', { err: err });
-    }
-    else {
-      res.render('subscriptions', {
-        title: series + ' subscriptions',
-        products: product
-      });
-    }
-  });
+  if (!req.user) {
+    res.render('subscriptions', { title: 'Subscriptions', user: false });
+  } else {
+    let model = req.params.model;
+    Product.findOne({ 'model': model }).exec(function (err, product) {
+      if (err) {
+        console.log('Error when fetching product');
+        res.render('500', { err: err });
+      }
+      else {
+        stripe.customers.retrieve(req.user.customer_id, function (err, customer) {
+          if (err) {
+            console.log('Error when retrieving customer:', err);
+            res.redirect('/users/payments');
+          } else {
+            res.render('subscriptions', {
+              title: product.title + ' Subscriptions',
+              user: req.user,
+              sources: customer.sources.data,
+              product: product
+            });
+          }
+        });
+      }
+    });
+  }
 }
 
-module.exports = { listProducts, findSeries, subscriptions };
+module.exports = { listProducts, findSeries, findBagSeries, subscriptions };

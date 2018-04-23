@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Checkout</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="stylesheets/navbar.css">
+  <style>
+    .StripeElement {
+      background-color: white;
+      height: 40px;
+      padding: 10px 12px;
+      border-radius: 4px;
+      border: 1px solid transparent;
+      box-shadow: 0 1px 3px 0 #e6ebf1;
+      -webkit-transition: box-shadow 150ms ease;
+      transition: box-shadow 150ms ease;
+    }
+
+    .StripeElement--focus {
+      box-shadow: 0 1px 3px 0 #cfd7df;
+    }
+
+    .StripeElement--invalid {
+      border-color: #fa755a;
+    }
+
+    .StripeElement--webkit-autofill {
+      background-color: #fefde5 !important;
+    }
+  </style>
+</head>
+
+<%- include('./partials/header.ejs') %>
+
+<body>
+  <% if (message.danger) { %>
+    <div class="alert alert-danger" role="alert">
+      <%= message.danger %>
+    </div>
+  <% } %>
+  <div class="pt-3 container">
+    <div class="row">
+      <div class="col-md-4">
+        <h4 class="text-center">Cart Summary</h4>
+        <table class="table table-striped">
+          <thead style="border-bottom: 3px black solid;" class="table-secondary">
+            <th scope="col">Item</th>
+            <th class="text-center" scope="col">Quantity</th>
+            <th class="text-center" scope="col">Price</th>
+          </thead>
+          <% cart.cartItems().forEach(function(item){ %>
+            <tr>
+              <td><%= item.item.title %></td>
+              <td class="text-center"><%= item.quantity %></td>
+              <td class="text-center">$<%= item.price %></td>
+            </tr>
+          <% }) %>
+        </table>
+        <table class="table table-sm">
+          <tr style="border-top: 3px black double;" class="table-light">
+            <td><strong>Cart Subtotal:</strong></td>
+            <td class="text-right" colspan="2"><strong>$<%= cart.getPrice() %></strong></td>
+          </tr>
+          <tr class="table-light">
+            <td><strong>Shipping:</strong></td>
+            <td class="text-right" colspan="2"><strong>$<%= (cart.getPrice() * cart.shipping.method).toFixed(2) %></strong></td>
+          </tr>
+          <tr class="table-light">
+            <td><strong>Sales Tax:</strong></td>
+            <td class="text-right" colspan="2"><strong>$<%= (cart.getPrice() * 0.0875).toFixed(2) %></strong></td>
+          </tr>
+          <tr class="table-primary">
+            <td><strong>Order Total:</strong></td>
+            <td class="text-right" colspan="2"><strong>$<%= (cart.getPrice() * (1.0875 + parseFloat(cart.shipping.method))).toFixed(2) %></strong></td>
+          </tr>
+        </table>
+      </div>
+      <div class="col-md-1"></div>
+      <div class="col-md-7">
+        <p>Choose from one of your registered payment methods below<br>
+        Or you may choose to <a href="/guest-checkout">checkout as a guest</a></p>
+        <form name="payment" action="/charge-user" method="post">
+          <div class="row">
+            <div class="col-sm-3">
+              <h4>Payment Method</h4>
+            </div>
+            <div class="col-sm-9">
+              <% sources.forEach(function(source, i) { %>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="method" id="radio_<%= i %>" value="<%= source.id %>" required>
+                    <label class="form-check-label" for="radio_<%= i %>">
+                        <strong><%= source.card.brand %></strong> ending in <%= source.card.last4 %><br>
+                       Name on Card: <%= source.owner.name %><br>
+                    </label>
+                  </div>
+              <% }) %>
+              <% if (sources.length !== 0) { %>
+                <button style="display: block;" type="submit" class="my-5 btn btn-primary">Submit Payment for $<%= (cart.getPrice() * (1.0875 + parseFloat(cart.shipping.method))).toFixed(2) %></button>
+              <% } %>
+            </div>  <!-- Close Options Col -->
+          </div>  <!-- Close Payment Methods Row -->
+        </form>
+        <br>
+        <br>
+        <p>If you would like to <strong>add a new payment method</strong>, or <strong>update existing ones</strong>, you may do so from <a href="/users/payments">your account management page</a></p>
+      </div>  <!-- Close Checkout Col -->
+    </div>  <!-- Close Row -->
+  </div>  <!-- Close Container -->
+
+  <script src="https://js.stripe.com/v3/"></script>
+  <script src="/javascripts/guest_checkout.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+  <script src="jquery-3.3.1.min.js"></script>
+
+</body>
+
+<%- include('./partials/footer.ejs') %>
+
+</html>

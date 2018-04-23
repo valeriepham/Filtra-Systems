@@ -7,8 +7,7 @@ router.get('/save', function(req, res) {
   if (!req.session.cart) {
     return res.redirect('/cart');
   }
-  let cart = new Cart(req.session.cart);
-  res.render('simplecheckout', { totalPrice: cart.price() });
+  res.redirect('checkout');
 });
 
 router.get('/', function (req, res) {
@@ -29,6 +28,10 @@ router.get('/remove-from-cart/:id', cartController.remove);
 router.get('/update-quantity/:id/:qty', cartController.updateQuantity);
 
 router.put('/update', cartController.update);
+
+router.post('/subscribe', cartController.subscribe);
+
+router.post('/charge-subscription', cartController.chargeSubscription);
 
 
 module.exports = router;

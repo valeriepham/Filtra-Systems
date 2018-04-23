@@ -60,12 +60,11 @@ function getDatabaseUrl() {
 }
 
 const days = 24 * 60 * 60 * 1000;
-const minutes = 60 * 1000;
 app.use(session({
   secret: process.env.APP_SESSION_SECRET,
   resave: false,
   saveUninitialized: false,
-  cookie: { maxAge: 25 * minutes },
+  cookie: { maxAge: 3 * days },
   store: new MongoStore({ mongooseConnection: db }),
 }));
 

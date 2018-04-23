@@ -1,10 +1,12 @@
 class Cart {
   constructor(previousCart) {
     this.items = previousCart.items || {};
+    this.shipping = previousCart.shipping || {};
     for (let id in this.items) {
       this.items[id].price = this.items[id].item.pricing.retail * this.items[id].quantity;
     }
     this.price = this.getPrice();
+    this.total = this.total();
   }
 
   add(item, id, qty) {
@@ -56,6 +58,17 @@ class Cart {
       price += this.items[id].price;
     }
     return price;
+  }
+
+  total() {
+    let sub = this.getPrice();
+    let total = sub;
+    if (!this.shipping.method) {
+      total = sub * 1.2375;
+    } else {
+      total = sub * (1.0875 + parseFloat(this.shipping.method));
+    }
+    return total;
   }
 
   quantity() {

@@ -1,19 +1,18 @@
 const Cart = require('../models/cart');
 const Order = require('../models/order');
 const Product = require('../models/product');
-const Stripe = require('stripe');
+const stripe = require('stripe')('sk_test_gGinXwwcglQJZORWWQQlCYsH');
 
 function addToCart(req, res) {
-  let series = req.body.model;
+  let model = req.body.model;
   let cart = new Cart(req.session.cart ? req.session.cart : {});
 
-  console.log('adding', series, 'to cart');
+  console.log('adding', model, 'to cart');
 
-  Product.findOne({ model: series }).exec(function (err, product) {
+  Product.findOne({ model: model }).exec(function (err, product) {
     if (err) {
       return res.redirect('/');
     }
-    console.log('product found:', product);
     let qty = parseInt(req.body.qty, 10);
     if (qty < 1) {
       qty = 1;
@@ -32,18 +31,13 @@ function updateQuantity(req, res) {
   let id = req.params.id;
   let qty = req.params.qty;
   let cart = new Cart(req.session.cart);
-  console.log(cart.cartItems());
   cart.updateQuantity(id, qty);
-  console.log(cart.cartItems());
   res.redirect('/cart');
 }
 
 function update(req, res) {
   let cart = new Cart(req.body);
-  console.log('passed cart:',cart);
-  console.log('session cart:',req.session.cart);
   req.session.cart = cart;
-  console.log('updated cart:',req.session.cart);
   res.send(cart);
   // res.redirect('/cart');
 }
@@ -59,6 +53,55 @@ function remove(req, res) {
   res.redirect('/cart');
 }
 
+function shipping(req, res) {
+  if (!req.session.cart) {
+    console.log('No cart in session');
+    return res.redirect('/cart');
+  } else {
+    let cart = new Cart(req.session.cart);
+    res.render('shipping', { cart: cart });
+  }
+}
+
+function postShipping(req, res) {
+  console.log(req.body);
+  if (!req.session.cart) {
+    console.log('No cart in session');
+    return res.redirect('/cart');
+  } else {
+    req.session.cart.shipping.first = req.body.first;
+    req.session.cart.shipping.last = req.body.last;
+    req.session.cart.shipping.address = req.body.address;
+    req.session.cart.shipping.city = req.body.city;
+    req.session.cart.shipping.state = req.body.state;
+    req.session.cart.shipping.zip = req.body.zip;
+    req.session.cart.shipping.method = req.body.shipping;
+    res.redirect('/checkout');
+  }
+}
+
+function checkout(req, res) {
+  if (!req.session.cart) {
+    console.log('No cart in session');
+    return res.redirect('/cart');
+  }
+  let cart = new Cart(req.session.cart);
+  if (!req.user) {
+    console.log('guest checkout');
+    res.render('guest-checkout', { cart: cart, message: 'If you would like to save this order, please <a href="/users/login">login</a>, or <a href="/users/signup">signup</a> for an account first.' });  
+  } else {
+    console.log('user checkout');
+    stripe.customers.retrieve(req.user.customer_id, function(err, customer) {
+      if (err) {
+        console.log('Error when retrieving customer:', err);
+        res.render('profile');
+      } else {
+        res.render('user-checkout', {cart: cart, sources: customer.sources.data});
+      }
+    });
+  }
+}
+
 function charge(req, res) {
   //ensure that the cart is still saved in session memory
   if (!req.session.cart) {
@@ -67,16 +110,13 @@ function charge(req, res) {
   //create a new cart object from the saved cart in session memory
   let cart = new Cart(req.session.cart);
 
-  // Set stripe key to secret test key (test version)
-  let stripe = Stripe('sk_test_uxg0FRXwXVLJidLOj1Xvm6AJ');
-
   // Token is created using Elements
   // Get the payment token ID submitted by the form:
   let token = req.body.stripeToken; // Using Express
 
   // Charge the user's card:
   stripe.charges.create({
-    amount: cart.getPrice() * 100,
+    amount: parseInt(cart.getPrice() * (1.0875 + parseFloat(cart.shipping.method)) * 100),
     currency: 'usd',
     description: 'Test Charge',
     source: token,
@@ -84,35 +124,111 @@ function charge(req, res) {
     // asynchronously called
     if (err) {
       req.flash('danger', err.message);
-      return res.redirect('/simplecheckout');
+      return res.redirect('/checkout');
     }
     let order = new Order({
       user: req.user ? req.user : null,
       cart: cart,
+      email: req.body.email,
       shippingAddress: {
-        street: req.body.shippingAdd,
-        state: req.body.shippingSt,
-        zip: req.body.shippingZip,
+        street: cart.shipping.address,
+        state: cart.shipping.state,
+        city: cart.shipping.city,
+        zip: cart.shipping.zip,
       },
       billingAddress: {
-        street: req.body.billingAdd,
-        state: req.body.billingSt,
-        zip: req.body.billingZip,
+        street: req.body.address,
+        state: req.body.state,
+        city: req.body.city,
+        zip: charge.source.address_zip,
       },
-      name: req.body.cardHolderName,
+      name: req.body.cardName,
       paymentId: charge.id,
     });
     order.save(function (err, result) {
       if (err) {
         console.log(err);
       } else {
-        console.log(result);
         req.flash('success', 'Checkout was successful!');
         req.session.cart = null;
-        res.render('confirm', {cart: cart});
+        res.render('confirm', { cart: cart, reorder: false });
       }
     });
   });
 }
 
-module.exports = { addToCart, updateQuantity, update, remove, charge };
+function chargeUser(req, res) {
+  if (!req.session.cart) {
+    return res.redirect('/cart');
+  }
+  let cart = new Cart(req.session.cart);
+  let token = req.body.method;
+  stripe.charges.create({
+    amount: parseInt(cart.getPrice() * (1.0875 + parseFloat(cart.shipping.method)) * 100),
+    currency: 'usd',
+    description: 'test user charge',
+    customer: req.user.customer_id,
+    source: token
+  }, function (err, charge) {
+    if (err) {
+      console.log('Error when creating charge', err);
+    }
+    stripe.customers.retrieve(req.user.customer_id, function(err, customer) {
+      if (err) {
+        console.log('Error when retrieving customer', err);
+      }
+      else {
+        let source = customer.sources.data.find(card => card.id === token);
+        let order = new Order({
+          user: req.user ? req.user : null,
+          cart: cart,
+          email: source.owner.email,
+          shippingAddress: {
+            street: cart.shipping.address,
+            state: cart.shipping.state,
+            city: cart.shipping.city,
+            zip: cart.shipping.zip,
+          },
+          billingAddress: {
+            street: source.owner.address.line1,
+            state: source.owner.address.state,
+            city: source.owner.address.city,
+            zip: source.owner.address.postal_code,
+          },
+          name: source.owner.name,
+          paymentId: charge.id,
+        });
+        order.save(function (err, result) {
+          if (err) {
+            console.log(err);
+          } else {
+            req.flash('success', 'Checkout was successful!');
+            req.session.cart = null;
+            res.render('confirm', { cart: cart, reorder: false });
+          }
+        });
+      }
+    });
+  });
+}
+function subscribe(req, res) {
+  res.render('review-subscription', { subscription: req.body });
+}
+
+function chargeSubscription(req, res) {
+  res.redirect('/users/profile');
+}
+
+module.exports = { 
+  addToCart,
+  updateQuantity,
+  update,
+  remove,
+  charge,
+  shipping,
+  postShipping,
+  checkout,
+  chargeUser,
+  subscribe,
+  chargeSubscription
+};

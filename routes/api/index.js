@@ -9,11 +9,11 @@ const productRoutes = require('./products');
 const userRoutes = require('./users');
 
 router.get('/', function(req, res) {
-  res.status(200).send('Welcome to the Filta Systems API!');
+  res.status(200).send('Welcome to the Filtra Systems API!');
 });
 
 router.use('/cart', cartRoutes);
-router.use('/order', orderRoutes);
+router.use('/orders', orderRoutes);
 router.use('/products', productRoutes);
 router.use('/user', userRoutes);
 

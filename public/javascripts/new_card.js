@@ -1,5 +1,5 @@
 // Create a Stripe client.
-let stripe = Stripe('pk_test_7JDyjeXXuLNF7oTJTn1x7oiS');
+let stripe = Stripe('pk_test_81LGdfG9uBuZJM4hjT4qcTR9');
 
 // Create an instance of Elements.
 let elements = stripe.elements();
@@ -40,30 +40,30 @@ card.addEventListener('change', function(event) {
   }
 });
 
-// Handle form submission.
-let form = document.getElementById('payment-form');
+let form = document.getElementById('new-card');
+
 form.addEventListener('submit', function(event) {
   event.preventDefault();
 
-  stripe.createToken(card).then(function(result) {
+  stripe.createSource(card).then(function(result) {
     if (result.error) {
-      // Inform the user if there was an error.
+      // Inform the user if there was an error
       let errorElement = document.getElementById('card-errors');
       errorElement.textContent = result.error.message;
     } else {
-      // Send the token to your server.
-      stripeTokenHandler(result.token);
+      // Send the source to your server
+      stripeSourceHandler(result.source);
     }
   });
 });
 
-function stripeTokenHandler(token) {
-  // Insert the token ID into the form so it gets submitted to the server
-  var form = document.getElementById('payment-form');
+function stripeSourceHandler(source) {
+  // Insert the source ID into the form so it gets submitted to the server
+  var form = document.getElementById('new-card');
   var hiddenInput = document.createElement('input');
   hiddenInput.setAttribute('type', 'hidden');
-  hiddenInput.setAttribute('name', 'stripeToken');
-  hiddenInput.setAttribute('value', token.id);
+  hiddenInput.setAttribute('name', 'stripeSource');
+  hiddenInput.setAttribute('value', source.id);
   form.appendChild(hiddenInput);
 
   // Submit the form

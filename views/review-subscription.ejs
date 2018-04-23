@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+	<title>Review Subscription</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	 crossorigin="anonymous">
+	<link rel="stylesheet" href="/stylesheets/navbar.css">
+</head>
+
+<%- include('./partials/header') %>
+
+<body>
+<div class="container mt-5 mb-3">
+	<div class="row justify-content-center">
+		<div class="col-6">
+			<table class="table table-striped">
+				<tbody>
+					<!-- payment -->
+					<tr>
+						<th colspan="2" class="table-secondary text-center">
+							Payment and Shipping
+						</th>
+					</tr>
+					<tr>
+						<th scope="row">Email: </th>
+						<td><%= subscription.email %></td>
+					</tr>
+					<tr>
+						<th scope="row">Mailing Address: </th>
+						<td>
+							<strong><%= subscription.sAddress %></strong><br>
+							<%= subscription.sCity %>, <%= subscription.sState %>
+						</td>
+					</tr>
+					<tr>
+						<th scope="row">Billing Address: </th>
+						<td>
+							<strong><%= subscription.bAddress %></strong><br>
+							<%= subscription.bCity %>, <%= subscription.bState %>		
+						</td>
+					</tr>
+					<tr>
+						<th scope="row">Card Used: </th>
+						<td><%= subscription.method.id %></td>
+					</tr>
+					<!-- subscription -->
+					<tr>
+						<th colspan="2" class="mt-3 table-secondary text-center">
+							Subscription
+						</th>
+					</tr>
+					<tr>
+						<th scope="row">Model: </th>
+						<td><%= subscription.model.substr(0,4) %></td>
+					</tr>
+					<tr>
+						<th scope="row">Quantity: </th>
+						<td><%= subscription.qty %></td>
+					</tr>
+					<tr>
+						<th scope="row">Subscription will begin on: </th>
+						<td><%= subscription.startDate.substr(5,2) %>/<%= subscription.startDate.substr(8,2) %>/<%= subscription.startDate.substr(0,4) %></td>
+					</tr>
+					<tr>
+						<th scope="row">Frequency: </th>
+						<% if(subscription.freq==1){ %><>
+							<td>Weekly</td>
+						<% } %>
+						<% if(subscription.freq==2){ %>
+							<td>Monthly</td>
+						<% } %>
+						<% if(subscription.freq==3){ %>
+							<td>Bi-Monthly</td>
+						<% } %>
+						<% if(subscription.freq==4){ %>
+							<td>Quarterly</td>
+						<% } %>
+						<% if(subscription.freq==5){ %>
+							<td>Semi-Annual</td>
+						<% } %>
+						<% if(subscription.freq==6){ %>
+							<td>Annual</td>
+						<% } %>
+					</tr>
+				</tbody>
+			</table>
+			<p class="mt-3">You will be charged $XXX on: XX/XX/XXXX</p>
+			<form action="/api/cart/charge-subscription" method="post" name="charge-form">
+				<input name="email" value="<%= subscription.email %>" hidden>
+				<input name="sAddress" value="<%= subscription.sAddress %>" hidden>
+				<input name="sCity" value="<%= subscription.sCity %>" hidden>
+				<input name="sState" value="<%= subscription.sState %>" hidden>
+				<input name="bAddress" value="<%= subscription.bAddress %>" hidden>
+				<input name="bCity" value="<%= subscription.bCity %>" hidden>
+				<input name="bState" value="<%= subscription.bState %>" hidden>
+				<input name="method" value="<%= subscription.method %>" hidden>
+				<input name="qty" value="<%= subscription.qty %>" hidden>
+				<input name="startDate" value="<%= subscription.startDate %>" hidden>
+				<input name="freq" value="<%= subscription.freq %>" hidden>
+				<input name="model" value="<%= subscription.model %>" hidden>
+				<button type="submit" class="mt-5 mx-auto btn btn-primary">Charge this Subscription</button>
+			</form>
+		</div>
+	</div>
+</div>
+</body>
+
+<%- include('./partials/footer') %>
+
+<!-- Scripts -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+=<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</html>
