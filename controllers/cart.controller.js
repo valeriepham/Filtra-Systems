@@ -131,10 +131,10 @@ function charge(req, res) {
       cart: cart,
       email: req.body.email,
       shippingAddress: {
-        street: req.body.address,
-        state: req.body.state,
-        city: req.body.city,
-        zip: charge.source.address_zip,
+        street: cart.shipping.address,
+        state: cart.shipping.state,
+        city: cart.shipping.city,
+        zip: cart.shipping.zip,
       },
       billingAddress: {
         street: req.body.address,
@@ -184,10 +184,10 @@ function chargeUser(req, res) {
           cart: cart,
           email: source.owner.email,
           shippingAddress: {
-            street: source.owner.address.line1,
-            state: source.owner.address.state,
-            city: source.owner.address.city,
-            zip: source.owner.address.postal_code,
+            street: cart.shipping.address,
+            state: cart.shipping.state,
+            city: cart.shipping.city,
+            zip: cart.shipping.zip,
           },
           billingAddress: {
             street: source.owner.address.line1,

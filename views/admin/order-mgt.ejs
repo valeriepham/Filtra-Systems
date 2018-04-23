@@ -37,6 +37,7 @@
       <table class="table">
         <thead>
           <th scope="col">Order Name</th>
+          <th scope="col">Order Total</th>
           <th scope="col">Date of Order</th>
           <th scope="col">Order ID</th>
           <th scope="col">Ordered By</th>
@@ -44,6 +45,7 @@
         <% orders.forEach(function(order) { %>
           <tr>
             <td><%= order.name %></td>
+            <td>$<%= order.cart.total.toFixed(2) %></td>
             <td><%= order.date %></td>
             <td><a href="/api/orders/review/<%= order._id %>"><%= order._id %></a></td>
             <td><%= order.user %></td>
