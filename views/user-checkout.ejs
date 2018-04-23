@@ -68,7 +68,7 @@
           </tr>
           <tr class="table-light">
             <td><strong>Shipping:</strong></td>
-            <td class="text-right" colspan="2"><strong>$<%= (cart.getPrice() * 0.15).toFixed(2) %></strong></td>
+            <td class="text-right" colspan="2"><strong>$<%= (cart.getPrice() * cart.shipping.method).toFixed(2) %></strong></td>
           </tr>
           <tr class="table-light">
             <td><strong>Sales Tax:</strong></td>
@@ -76,7 +76,7 @@
           </tr>
           <tr class="table-primary">
             <td><strong>Order Total:</strong></td>
-            <td class="text-right" colspan="2"><strong>$<%= (cart.getPrice() * 1.2375).toFixed(2) %></strong></td>
+            <td class="text-right" colspan="2"><strong>$<%= (cart.getPrice() * (1.0875 + parseFloat(cart.shipping.method))).toFixed(2) %></strong></td>
           </tr>
         </table>
       </div>
@@ -100,7 +100,7 @@
                   </div>
               <% }) %>
               <% if (sources.length !== 0) { %>
-                <button style="display: block;" type="submit" class="my-5 btn btn-primary">Submit Payment for $<%= (cart.getPrice() * 1.2375).toFixed(2) %></button>
+                <button style="display: block;" type="submit" class="my-5 btn btn-primary">Submit Payment for $<%= (cart.getPrice() * (1.0875 + parseFloat(cart.shipping.method))).toFixed(2) %></button>
               <% } %>
             </div>  <!-- Close Options Col -->
           </div>  <!-- Close Payment Methods Row -->

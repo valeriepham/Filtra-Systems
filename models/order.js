@@ -18,7 +18,8 @@ let orderSchema = mongoose.Schema({
   },
   name: {type: String, required: true, default: 'Test Name'},
   paymentId: {type: String, required: true, default: 'Test Payment'},
-  date: {type: Date, default: Date.now}
+  date: {type: Date, default: Date.now},
+  shippingMethod: {type: Number, required: true, default: 0.15}
 });
 
 let Order = mongoose.model('Order', orderSchema);

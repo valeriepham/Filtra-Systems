@@ -71,19 +71,19 @@
 						</tr>
 						<tr>
 							<td>Subtotal</td>
-							<td>$<%= cart.price %></td>
+							<td>$<%= cart.getPrice().toFixed(2) %></td>
 						</tr>
 						<tr>
-							<td>Estimated Shipping</td>
-							<td>$<%= (cart.price * 0.15).toFixed(2) %></td>
+							<td>Shipping</td>
+							<td>$<%= (cart.getPrice() * parseFloat(cart.shipping.method)).toFixed(2) %></td>
 						</tr>
 						<tr>
 							<td>Sales Tax</td>
-							<td>$<%= (cart.price * 0.0875).toFixed(2) %></td>
+							<td>$<%= (cart.getPrice() * 0.0875).toFixed(2) %></td>
 						</tr>
 						<tr class="table-secondary">
 							<td>Total</td>
-							<td>$<%= (cart.price * 1.2375).toFixed(2) %></td>
+							<td>$<%= cart.total %></td>
 						</tr>
 					</table>
 				</div>

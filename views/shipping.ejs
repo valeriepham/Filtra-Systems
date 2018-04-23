@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Guest Checkout</title>
+  <title>Shipping Details</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
     crossorigin="anonymous">
   <link rel="stylesheet" href="stylesheets/navbar.css">
@@ -44,8 +44,8 @@
     </div>
   <% } %>
   <div class="pt-3 container">
-    <h2 class="text-center">Checking out as a Guest</h2>
-    <p class="text-center mb-3"><%- message %></p>
+    <h2 class="text-center">Shipping Details</h2>
+    <!-- <p class="text-center mb-3"><%- message %></p> -->
     <div class="row">
       <div class="col-md-5">
         <h4 class="text-center">Cart Summary</h4>
@@ -69,32 +69,34 @@
             <td class="text-right" colspan="2"><strong>$<%= cart.getPrice() %></strong></td>
           </tr>
           <tr class="table-light">
-            <td><strong>Shipping:</strong></td>
-            <td class="text-right" colspan="2"><strong>$<%= (cart.getPrice() * cart.shipping.method).toFixed(2) %></strong></td>
-          </tr>
-          <tr class="table-light">
             <td><strong>Sales Tax:</strong></td>
             <td class="text-right" colspan="2"><strong>$<%= (cart.getPrice() * 0.0875).toFixed(2) %></strong></td>
           </tr>
-          <tr class="table-primary">
-            <td><strong>Order Total:</strong></td>
-            <td class="text-right" colspan="2"><strong>$<%= (cart.getPrice() * (1.0875 + parseFloat(cart.shipping.method))).toFixed(2) %></strong></td>
+          <tr class="table-light">
+            <td><strong>Before Shipping:</strong></td>
+            <td class="text-right" colspan="2"><strong>$<%= (cart.getPrice() * 1.0875).toFixed(2) %></strong></td>
           </tr>
         </table>
       </div>
-      <div class="col-md-1"></div>
-      <div class="col-md-6">
-        <form action="/charge" method="post" id="payment-form">
-          <div class="my-3 form-group">
-              <label for="card-name">Email Address</label>
-              <input type="email" name="email " id="email" placeholder="address@email.com" class="form-control" required>
+      <!-- <div class="col-md-1"></div> -->
+      <div class="col-md-7">
+        <form action="/postShipping" method="post" id="shippingForm">
+          <div class="my-3 form-row">
+            <div class="col-6">
+              <label for="first">First Name</label>
+              <input type="text" name="first" id="first" placeholder="First Name" class="form-control" required>
+            </div>
+            <div class="col-6">
+              <label for="last">Last Name</label>
+              <input type="text" name="last" id="last" placeholder="Last Name" class="form-control" required>
+            </div>
           </div>
           <div class="mt-3 form-row">
-            <div class="col-6">
-              <label for="address">Billing Address</label>
+            <div class="col-5">
+              <label for="address">Shipping Address</label>
               <input type="address" name="address" id="address" placeholder="111 Street Address" class="form-control" required>
             </div>
-            <div class="col-4">
+            <div class="col-3">
                 <label for="city">City</label>
                 <input type="text" name="city" id="city" placeholder="City" class="form-control" required>
             </div>
@@ -102,23 +104,27 @@
               <label for="state">State</label>
               <input type="text" name="state" id="state" placeholder="ST" class="form-control" required>
             </div>
-          </div>
-          <div class="my-3 form-group">
-            <label for="card-name">Card Holder Name</label>
-            <input type="text" name="cardName " id="card-name" placeholder="Name on Card" class="form-control" required>
-          </div>
-          <div class="form-group">
-            <label for="card-element">Credit or debit card</label>
-            <br>
-            <div style="width: 500px;" id="card-element">
-              <!-- A Stripe Element will be inserted here. -->
+            <div class="col-2">
+              <label for="zip">Zip</label>
+              <input type="number" name="zip" id="zip" min="11111" max="99999" maxlength="5" placeholder="11111" class="form-control" required>
             </div>
-
-            <!-- Used to display Element errors. -->
-            <div id="card-errors" role="alert"></div>
           </div>
-
-          <button style="display: block; margin: 50px auto;" type="submit" class="mx-auto btn btn-primary">Submit Payment for $<%= (cart.getPrice() * 1.2375).toFixed(2) %></button>
+          <div class="mt-4 mb-2 form-check">
+            <input class="form-check-input" type="radio" name="shipping" id="shipping1" value=0.15 required checked>
+            <label class="form-check-label" for="shipping1">Standard Shipping: <strong>$<%= (cart.getPrice() * 0.15).toFixed(2) %></strong></label>
+            <p>With standard shipping, products will arrive in 10-12 business days</p>
+          </div>
+          <div class="my-2 form-check">
+            <input class="form-check-input" type="radio" name="shipping" id="shipping2" value=0.25 required>
+            <label class="form-check-label" for="shipping2">Expedited Shipping: <strong>$<%= (cart.getPrice() * 0.25).toFixed(2) %></strong></label>
+            <p>With standard shipping, products will arrive in 5-7 business days</p>
+          </div>
+          <div class="my-2 form-check">
+            <input class="form-check-input" type="radio" name="shipping" id="shipping3" value=0.35 required>
+            <label class="form-check-label" for="shipping3">Priority Shipping: <strong>$<%= (cart.getPrice() * 0.35).toFixed(2) %></strong></label>
+            <p>With standard shipping, products will arrive in 3-5 business days</p>
+          </div>
+          <button style="display: block; margin: 50px auto;" type="submit" class="mx-auto btn btn-primary">Proceed to Confirmation</button>
         </form>
       </div>  <!-- Close Checkout Col -->
     </div>  <!-- Close Row -->

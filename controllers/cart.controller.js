@@ -53,6 +53,33 @@ function remove(req, res) {
   res.redirect('/cart');
 }
 
+function shipping(req, res) {
+  if (!req.session.cart) {
+    console.log('No cart in session');
+    return res.redirect('/cart');
+  } else {
+    let cart = new Cart(req.session.cart);
+    res.render('shipping', { cart: cart });
+  }
+}
+
+function postShipping(req, res) {
+  console.log(req.body);
+  if (!req.session.cart) {
+    console.log('No cart in session');
+    return res.redirect('/cart');
+  } else {
+    req.session.cart.shipping.first = req.body.first;
+    req.session.cart.shipping.last = req.body.last;
+    req.session.cart.shipping.address = req.body.address;
+    req.session.cart.shipping.city = req.body.city;
+    req.session.cart.shipping.state = req.body.state;
+    req.session.cart.shipping.zip = req.body.zip;
+    req.session.cart.shipping.method = req.body.shipping;
+    res.redirect('/checkout');
+  }
+}
+
 function checkout(req, res) {
   if (!req.session.cart) {
     console.log('No cart in session');
@@ -89,7 +116,7 @@ function charge(req, res) {
 
   // Charge the user's card:
   stripe.charges.create({
-    amount: parseInt(cart.getPrice() * 100),
+    amount: parseInt(cart.getPrice() * (1.0875 + parseFloat(cart.shipping.method)) * 100),
     currency: 'usd',
     description: 'Test Charge',
     source: token,
@@ -137,7 +164,7 @@ function chargeUser(req, res) {
   let cart = new Cart(req.session.cart);
   let token = req.body.method;
   stripe.charges.create({
-    amount: parseInt(cart.getPrice() * 1.2375 * 100),
+    amount: parseInt(cart.getPrice() * (1.0875 + parseFloat(cart.shipping.method)) * 100),
     currency: 'usd',
     description: 'test user charge',
     customer: req.user.customer_id,
@@ -198,6 +225,8 @@ module.exports = {
   update,
   remove,
   charge,
+  shipping,
+  postShipping,
   checkout,
   chargeUser,
   subscribe,

@@ -34,6 +34,10 @@ router.get('/cart', function (req, res) {
   }
 });
 
+router.get('/shipping', cartController.shipping);
+
+router.post('/postShipping', cartController.postShipping);
+
 router.get('/checkout', cartController.checkout);
 
 router.post('/charge-user', cartController.chargeUser);
