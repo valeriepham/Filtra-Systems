@@ -13,7 +13,7 @@
 <%- include('./partials/header.ejs') %>
 
 	<body>
-		<div class="container">
+		<div class="my-5 container">
 			<% if (!reorder) { %>
 			<h1>Order Has Been Placed</h1>
 			<% } %>
@@ -60,15 +60,8 @@
 			</table>
 			<div class="row">
 				<div class="col-6">
-					<% if (reorder) { %>
-						<a class="btn btn-primary btn-large" href="/api/orders/reorder/<%= reorder.id %>">Reorder these items</a> 
-					<% } %>
-				</div>
-				<div class="col-6">
+					<h4>Order Summary</h4>
 					<table class="table table-sm">
-						<tr class="table-secondary">
-							<th colspan="2">Order Summary</th>
-						</tr>
 						<tr>
 							<td>Subtotal</td>
 							<td>$<%= cart.getPrice().toFixed(2) %></td>
@@ -86,6 +79,41 @@
 							<td>$<%= cart.total %></td>
 						</tr>
 					</table>
+				</div>
+				<div class="col-6">
+					<h4>Shipping Information</h4>
+					<table class="table table-sm">
+						<tr>
+							<th scope="row">Shipped To:</th>
+							<td><%= cart.shipping.first %> <%= cart.shipping.last %></td>		
+						</tr>
+						<tr>
+							<th rowspan="2" scope="row">Address:</th>
+							<td><%= cart.shipping.address %></td>		
+						</tr>
+						<tr>
+							<td><%= cart.shipping.city %>, <%= cart.shipping.state %> <%= cart.shipping.zip %></td>		
+						</tr>
+						<tr>
+							<th scope="row">Shipping Method:</th>
+							<% if (cart.shipping.method == '0.15') { %>
+								<td>Standard Shipping (10-15 business days)</td>		
+							<% } else if (cart.shipping.method == '0.25') { %>
+								<td>Expedited Shipping (5-7 business days)</td>		
+							<% } else if (cart.shipping.method == '0.35') { %>
+								<td>Priority Shipping (3-5 business days)</td>		
+							<% } %>
+						</tr>	
+						<% if (reorder) { %>
+						<tr>
+							<th scope="row">Ordered On:</th>
+							<td><%= reorder.date %></td>		
+						</tr>
+						<% } %>
+					</table>
+					<% if (reorder && !admin) { %>
+						<a class="btn btn-primary btn-large my-3" href="/api/orders/reorder/<%= reorder.id %>">Reorder these items</a> 
+					<% } %>
 				</div>
 			</div>
 		</div>

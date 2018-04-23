@@ -12,7 +12,11 @@ router.get('/review/:id', function(req, res) {
       res.send('Error');
     } else {
       let cart = new Cart(order.cart);
-      res.render('confirm', {cart: cart, reorder: order});
+      if (req.user.level > 1) {
+        res.render('confirm', {cart: cart, reorder: order, admin: true});
+      } else {
+        res.render('confirm', {cart: cart, reorder: order, admin: false});
+      }
     }
   });
 });
