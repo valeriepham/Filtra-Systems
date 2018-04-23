@@ -1,9 +1,9 @@
 const PRODUCT = require('../models/product');
 
 function allSeries(req, res) {
-  PRODUCT.distinct("series").exec(function (err, seriesList) {
+  PRODUCT.distinct('series').exec(function (err, seriesList) {
     if (err) {
-      console.log('Error creating distinct list');
+      console.log('Error creating distinct list', err);
     }
     else {
       let chunks = [];
@@ -11,8 +11,6 @@ function allSeries(req, res) {
       for (let i = 0; i < seriesList.length; i += chunkSize) {
         chunks.push(seriesList.slice(i, i + chunkSize));
       }
-      console.log(seriesList);
-      console.log(chunks);
       res.render('catalog', { seriesList: seriesList, chunks: chunks });
     }
   });
@@ -21,7 +19,6 @@ function allSeries(req, res) {
 function findSeries(req, res) {
   let series = req.params.series;
   PRODUCT.find({ 'series': series }).exec(function (err, product) {
-    console.log(series);
     if (err) {
       console.log('Error when fetching product');
       res.render('500', { err: err });

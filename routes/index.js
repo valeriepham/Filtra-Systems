@@ -39,7 +39,6 @@ router.get('/checkout', cartController.checkout);
 router.post('/charge-user', cartController.chargeUser);
 
 router.get('/guest-checkout', function (req, res) {
-  console.log('checkout cart', req.session.cart);
   let cart = new Cart(req.session.cart);
   res.render('guest-checkout', { cart: cart, message: 'If you would like to return to the user checkout page, you may do so <a href="/checkout">here</a>' });
 });

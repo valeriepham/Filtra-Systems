@@ -32,29 +32,25 @@ router.post('/login', function (req, res) {
   });
 });
 
-router.get('/profile', function (req, res, next) {
+router.get('/profile', function (req, res) {
   if (req.user) {
-    console.log('user: ', req.user);
     Order.find({ user: req.user._id }).sort({ date: -1 }).exec(function (err, orders) {
-      console.log(orders);
       if (err) {
-        console.log('Error finding user\'s orders');
-        console.error(err);
+        console.log('Error finding user\'s orders', err);
       } else {
         stripe.customers.retrieve(req.user.customer_id, function(err, customer) {
-          console.log(customer.subscriptions.data);
           res.render('users/profile', { orders: orders, subscriptions: customer.subscriptions.data });
         });
       }
     });
   } else {
-    req.flash('danger', "Please log in first");
+    req.flash('danger', 'Please log in first');
     res.redirect('/users/login');
   }
 });
 
 
-router.get('/signup', function (req, res, next) {
+router.get('/signup', function (req, res) {
   if (req.user) {
     req.logout();
   }
@@ -62,7 +58,6 @@ router.get('/signup', function (req, res, next) {
 });
 
 router.post('/signup', function (req, res) {
-  console.log(req.body);
   User.findOne({ email: req.body.email }, function (err, user) {
     if (err) {
       res.send(`There was an error: ${err}`);
@@ -79,8 +74,6 @@ router.post('/signup', function (req, res) {
 
       }, function (err, customer) {
         user.customer_id = customer.id;
-        console.log('customer is', customer);
-        console.log('customer id is', user.customer_id);
         user.save(function (err) {
           if (err) {
             res.send(`There was an error: ${err}`);
@@ -151,7 +144,6 @@ router.get('/payments', function(req, res) {
       console.log('Error when retrieving customer:', err);
       res.redirect('profile');
     } else {
-      console.log(customer.sources.data);
       res.render('users/payments', {sources: customer.sources.data});
     }
   });
@@ -162,7 +154,6 @@ router.get('/payments/remove/:id', function(req, res) {
     if (err) {
       console.log('Error deleting source:', err);
     } else {
-      console.log('Source deleted successfully:', source);
       res.redirect('/users/payments');
     }
   });
@@ -175,12 +166,10 @@ router.put('/payments/update', function(req, res) {
 });
 
 router.post('/payments/add-new-card/', function(req, res) {
-  console.log(req.body);
   stripe.customers.createSource(req.user.customer_id, {source: req.body.stripeSource }, function(err, source) {
     if(err) {
       console.log('Error creating new source:', err);
     } else {
-      console.log('New Source Created:', source);
       stripe.sources.update(source.id, {
         owner: {
           address: {
@@ -196,7 +185,6 @@ router.post('/payments/add-new-card/', function(req, res) {
         if (err) {
           console.log('Error updating new source', err);
         } else {
-          console.log('New source also updated', source);
           res.redirect('/users/payments');
         }
       });

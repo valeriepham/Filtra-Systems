@@ -19,7 +19,6 @@ function listProducts(req, res) {
 function findSeries(req, res) {
   let series = req.params.series;
   Product.find({ 'series': series }).exec(function (err, products) {
-    console.log(series);
     if (err) {
       console.log('Error when fetching product');
       res.render('500', { err: err });
@@ -43,7 +42,6 @@ function findSeries(req, res) {
 function findBagSeries(req, res) {
   let series = req.params.series;
   Product.findOne({ 'series': series }).exec(function (err, product) {
-    console.log(series);
     if (err) {
       console.log('Error when fetching product');
       res.render('500', { err: err });
@@ -70,7 +68,6 @@ function subscriptions(req, res) {
   } else {
     let model = req.params.model;
     Product.findOne({ 'model': model }).exec(function (err, product) {
-      console.log(product);
       if (err) {
         console.log('Error when fetching product');
         res.render('500', { err: err });
@@ -81,7 +78,6 @@ function subscriptions(req, res) {
             console.log('Error when retrieving customer:', err);
             res.redirect('/users/payments');
           } else {
-            console.log(customer.sources.data);
             res.render('subscriptions', {
               title: product.title + ' Subscriptions',
               user: req.user,

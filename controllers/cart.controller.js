@@ -13,7 +13,6 @@ function addToCart(req, res) {
     if (err) {
       return res.redirect('/');
     }
-    console.log('product found:', product);
     let qty = parseInt(req.body.qty, 10);
     if (qty < 1) {
       qty = 1;
@@ -32,18 +31,13 @@ function updateQuantity(req, res) {
   let id = req.params.id;
   let qty = req.params.qty;
   let cart = new Cart(req.session.cart);
-  console.log(cart.cartItems());
   cart.updateQuantity(id, qty);
-  console.log(cart.cartItems());
   res.redirect('/cart');
 }
 
 function update(req, res) {
   let cart = new Cart(req.body);
-  console.log('passed cart:', cart);
-  console.log('session cart:', req.session.cart);
   req.session.cart = cart;
-  console.log('updated cart:', req.session.cart);
   res.send(cart);
   // res.redirect('/cart');
 }
@@ -61,23 +55,20 @@ function remove(req, res) {
 
 function checkout(req, res) {
   if (!req.session.cart) {
-    console.log('no cart in session');
+    console.log('No cart in session');
     return res.redirect('/cart');
   }
-  console.log('checkout cart', req.session.cart);
   let cart = new Cart(req.session.cart);
-  console.log(req.user);
   if (!req.user) {
     console.log('guest checkout');
     res.render('guest-checkout', { cart: cart, message: 'If you would like to save this order, please <a href="/users/login">login</a>, or <a href="/users/signup">signup</a> for an account first.' });  
   } else {
-    console.log('user checkout!');
+    console.log('user checkout');
     stripe.customers.retrieve(req.user.customer_id, function(err, customer) {
       if (err) {
         console.log('Error when retrieving customer:', err);
         res.render('profile');
       } else {
-        console.log(customer.sources.data);
         res.render('user-checkout', {cart: cart, sources: customer.sources.data});
       }
     });
@@ -108,7 +99,6 @@ function charge(req, res) {
       req.flash('danger', err.message);
       return res.redirect('/checkout');
     }
-    console.log('charge:', charge);
     let order = new Order({
       user: req.user ? req.user : null,
       cart: cart,
@@ -132,7 +122,6 @@ function charge(req, res) {
       if (err) {
         console.log(err);
       } else {
-        console.log('order:',result);
         req.flash('success', 'Checkout was successful!');
         req.session.cart = null;
         res.render('confirm', { cart: cart, reorder: false });
@@ -163,7 +152,6 @@ function chargeUser(req, res) {
       }
       else {
         let source = customer.sources.data.find(card => card.id === token);
-        console.log('source:', source);
         let order = new Order({
           user: req.user ? req.user : null,
           cart: cart,
@@ -187,7 +175,6 @@ function chargeUser(req, res) {
           if (err) {
             console.log(err);
           } else {
-            console.log('order:',result);
             req.flash('success', 'Checkout was successful!');
             req.session.cart = null;
             res.render('confirm', { cart: cart, reorder: false });
@@ -198,12 +185,10 @@ function chargeUser(req, res) {
   });
 }
 function subscribe(req, res) {
-  console.log(req.body);
   res.render('review-subscription', { subscription: req.body });
 }
 
 function chargeSubscription(req, res) {
-  console.log(req.body);
   res.redirect('/users/profile');
 }
 

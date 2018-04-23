@@ -6,15 +6,12 @@ const Order = require('../../models/order');
 
 router.get('/review/:id', function(req, res) {
   let id = req.params.id;
-  console.log(id);
   Order.findOne({ _id: id }).exec(function(err, order) {
     if (err) {
       console.log('Error fetching order', err);
       res.send('Error');
     } else {
-      console.log('Order found', order);
       let cart = new Cart(order.cart);
-      console.log('date', order.date.getMonth());
       res.render('confirm', {cart: cart, reorder: order});
     }
   });
@@ -22,13 +19,11 @@ router.get('/review/:id', function(req, res) {
 
 router.get('/reorder/:id', function(req, res) {
   let id = req.params.id;
-  console.log(id);
   Order.findOne({ _id: id }).exec(function(err, order) {
     if (err) {
       console.log('Error fetching order', err);
       res.send('Error');
     } else {
-      console.log('Order found', order);
       let cart = new Cart(order.cart);
       req.session.cart = cart;
       res.redirect('/cart');
@@ -42,7 +37,6 @@ router.get('/user/:uid', function(req, res) {
       console.log('Error when fetching orders');
       res.status(400).send(err);
     } else {
-      console.log('Orders:', orders);
       res.status(200).send(orders);
     }
   });
