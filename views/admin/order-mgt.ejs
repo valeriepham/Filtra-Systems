@@ -47,7 +47,7 @@
             <td><%= order.name %></td>
             <td>$<%= order.cart.total.toFixed(2) %></td>
             <td><%= order.date %></td>
-            <td><a href="/api/orders/review/<%= order._id %>"><%= order._id %></a></td>
+            <td><a href="/api/orders/review/<%= order._id %>" target="_blank"><%= order._id %></a></td>
             <td><%= order.user %></td>
           </tr>
         <% })%>
