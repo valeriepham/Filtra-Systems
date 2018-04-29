@@ -24,7 +24,7 @@ let products = require('./routes/products');
 let catalog = require('./routes/catalog');
 
 // setup database connection
-mongoose.connect('mongodb://michael:michael1@ds127139.mlab.com:27139/soba-filtra');
+mongoose.connect('mongodb://filtrasys:Filtrasys99@ds127139.mlab.com:27139/soba-filtra');
 let db = mongoose.connection;
 
 // check for successful connection
