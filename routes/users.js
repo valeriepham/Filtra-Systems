@@ -159,12 +159,6 @@ router.get('/payments/remove/:id', function(req, res) {
   });
 });
 
-router.put('/payments/update', function(req, res) {
-
-  //Need to implement this still
-  
-});
-
 router.post('/payments/add-new-card/', function(req, res) {
   stripe.customers.createSource(req.user.customer_id, {source: req.body.stripeSource }, function(err, source) {
     if(err) {
