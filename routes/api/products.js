@@ -27,7 +27,8 @@ router.post('/update', function(req, res) {
     'order_information.max_pressure_psi': req.body.maxP,
     'order_information.connection': req.body.connection,
     'order_information.connection_type': req.body.cType,
-    'pricing.retail': req.body.price
+    'pricing.retail': req.body.price,
+    qty: req.body.qty
   }).exec(function(err, result) {
     if (err) {
       console.log('Error Updating Product', err);
