@@ -19,8 +19,6 @@ router.get('/', function (req, res) {
 
 router.post('/update', function(req, res) {
   Product.findOneAndUpdate({ model: req.body.model }, {
-    title: req.body.title,
-    description: req.body.description,
     'order_information.bag_quantity': req.body.bagQ,
     'order_information.bag_size': req.body.bagS,
     'order_information.material': req.body.mat,
@@ -32,9 +30,23 @@ router.post('/update', function(req, res) {
   }).exec(function(err, result) {
     if (err) {
       console.log('Error Updating Product', err);
-    } else {
-      req.flash('success', 'Product Updated Successfully');
+      req.flash('danger', 'Error Updating Product');
       res.redirect('back');
+    } else {
+      Product.updateMany({ series: req.body.series }, {
+        title: req.body.title,
+        description:  req.body.description
+      }).exec(function(err, result) {
+        if (err) {
+          console.log('Error Updating Product', err);
+          req.flash('danger', 'Error Updating Product');
+          res.redirect('back');
+        } else {
+          console.log(result);
+          req.flash('success', 'Product Updated Successfully');
+          res.redirect('back');  
+        }
+      });
     }
   });
 });

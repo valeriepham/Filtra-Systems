@@ -22,7 +22,11 @@
         <%= message.success %>
       </div>
     <% } %>
-
+    <% if (message.danger) { %>
+      <div class="alert alert-danger" role="alert">
+        <%= message.danger %>
+      </div>
+    <% } %>
     <!-- content -->
     <div class="container mt-5 mb-3">
       <!-- body -->
@@ -46,11 +50,11 @@
             <div class="row">
               <div class="form-group col-md-4">
                 <label for="bagQ">Bag Quantity: </label>
-                <input name="bagQ" id="bagQ" type="number" class="form-control" value="<%= product.order_information.bag_quantity %>">
+                <input name="bagQ" id="bagQ" type="number" min="1" class="form-control" value="<%= product.order_information.bag_quantity %>">
               </div>
               <div class="form-group col-md-4">
                 <label for="bagS">Bag Size: </label>
-                <input name="bagS" id="bagS" type="number" class="form-control" value="<%= product.order_information.bag_size %>">
+                <input name="bagS" id="bagS" type="number" min="1" class="form-control" value="<%= product.order_information.bag_size %>">
               </div>
               <div class="form-group col-md-4">
                 <label for="mat">Material: </label>
@@ -60,11 +64,11 @@
             <div class="row">
               <div class="form-group col-md-4">
                 <label for="maxP">Max Pressure (psi): </label>
-                <input name="maxP" id="maxP" type="number" class="form-control" value="<%= product.order_information.max_pressure_psi %>">
+                <input name="maxP" id="maxP" type="number" min="1" class="form-control" value="<%= product.order_information.max_pressure_psi %>">
               </div>
               <div class="form-group col-md-4">
                 <label for="connection">connection: </label>
-                <input name="connection" id="connection" type="number" class="form-control" value="<%= product.order_information.connection %>">
+                <input name="connection" id="connection" type="number" min="1" class="form-control" value="<%= product.order_information.connection %>">
               </div>
               <div class="form-group col-md-4">
                 <label for="cType">Connection Type: </label>
@@ -82,14 +86,15 @@
             <div class="row">
               <div class="form-group col-md-6">
                 <label for="price">Pricing: </label>
-                <input name="price" id="price" type="number" class="form-control" value="<%= product.pricing.retail %>">
+                <input name="price" id="price" type="number" min="1" class="form-control" value="<%= product.pricing.retail %>">
               </div>
               <div class="form-group col-md-6">
                 <label for="qty">Quantity in Inventory: </label>
-                <input name="qty" id="qty" type="number" class="form-control" value="<%= product.qty %>">
+                <input name="qty" id="qty" type="number" min="0" class="form-control" value="<%= product.qty %>">
               </div>
             </div>
             <input name="model" type="text" value="<%= product.model %>" hidden>
+            <input name="series" type="text" value="<%= product.series %>" hidden>
             <button style="display: block; margin: auto;" type="submit" class="mx-auto btn btn-primary">Save Updates to Product</button>
           </form>
         </div>
