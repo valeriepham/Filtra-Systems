@@ -3,6 +3,7 @@ const router = express.Router();
 
 const User = require('../models/user');
 const Order = require('../models/order');
+const Product = require('../models/product');
 
 router.get('/adminlogin', function (req, res) {
   res.render('admin/adminlogin');
@@ -186,6 +187,40 @@ router.get('/order-mgt/:page', function(req, res) {
           orders = orders.slice((page - 1) * 10, page * 10);
           if (orders.length < 10) morePages = false;
           res.render('admin/order-mgt', {orders: orders, page: page, morePages: morePages});
+        }
+      });
+    }
+  } else {
+    res.redirect('/adminlogin');
+  }
+});
+
+router.get('/inv-mgt/', function(req, res) {
+  if (req.user) {
+    if (req.user.level !== 0) {
+      Product.find().sort({ cat: 1, model: 1 }).exec(function(err, products) {
+        if (err) {
+          console.log('Error finding Orders', err);
+          res.send(err);
+        } else {
+          res.render('admin/inv-mgt', { products: products });
+        }
+      });
+    }
+  } else {
+    res.redirect('/adminlogin');
+  }
+});
+
+router.get('/manage-product/:model', function(req, res) {
+  if (req.user) {
+    if (req.user.level !== 0) {
+      Product.findOne({ model: req.params.model }).exec(function(err, product) {
+        if (err) {
+          console.log('Error finding Orders', err);
+          res.send(err);
+        } else {
+          res.render('admin/manageproduct', { product: product });
         }
       });
     }

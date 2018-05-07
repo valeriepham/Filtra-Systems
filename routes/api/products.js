@@ -17,5 +17,25 @@ router.get('/', function (req, res) {
   });
 });
 
+router.post('/update', function(req, res) {
+  Product.findOneAndUpdate({ model: req.body.model }, {
+    title: req.body.title,
+    description: req.body.description,
+    'order_information.bag_quantity': req.body.bagQ,
+    'order_information.bag_size': req.body.bagS,
+    'order_information.material': req.body.mat,
+    'order_information.max_pressure_psi': req.body.maxP,
+    'order_information.connection': req.body.connection,
+    'order_information.connection_type': req.body.cType,
+    'pricing.retail': req.body.price
+  }).exec(function(err, result) {
+    if (err) {
+      console.log('Error Updating Product', err);
+    } else {
+      req.flash('success', 'Product Updated Successfully');
+      res.redirect('back');
+    }
+  });
+});
 
 module.exports = router;

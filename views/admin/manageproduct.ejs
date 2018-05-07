@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <title>
+    <%= product.title %>
+  </title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="/stylesheets/navbar.css">
+</head>
+
+<%- include('../partials/admin-navbar') %>
+
+  <body>
+    <% if (message.success) { %>
+      <div class="alert alert-success" role="alert">
+        <%= message.success %>
+      </div>
+    <% } %>
+
+    <!-- content -->
+    <div class="container mt-5 mb-3">
+      <!-- body -->
+      <div class="row justify-content-md-center">
+        <div class="col-md-8">
+          <h1>
+            <%= product.title %>
+          </h1>
+          <h3>
+            <%= product.model %>
+          </h3>
+          <form action="/api/products/update" method="post">
+            <div class="form-group">
+              <label for="title">Title: </label>
+              <input name="title" id="title" type="text" class="form-control" value="<%= product.title %>">
+            </div>
+            <div class="form-group">
+              <label for="description">Description: </label>
+              <textarea class="form-control" name="description" id="description" rows="5"><%= product.description %></textarea>
+            </div>
+            <div class="row">
+              <div class="form-group col-md-4">
+                <label for="bagQ">Bag Quantity: </label>
+                <input name="bagQ" id="bagQ" type="number" class="form-control" value="<%= product.order_information.bag_quantity %>">
+              </div>
+              <div class="form-group col-md-4">
+                <label for="bagS">Bag Size: </label>
+                <input name="bagS" id="bagS" type="number" class="form-control" value="<%= product.order_information.bag_size %>">
+              </div>
+              <div class="form-group col-md-4">
+                <label for="mat">Material: </label>
+                <input name="mat" id="mat" type="text" class="form-control" value="<%= product.order_information.material %>">
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group col-md-4">
+                <label for="maxP">Max Pressure (psi): </label>
+                <input name="maxP" id="maxP" type="number" class="form-control" value="<%= product.order_information.max_pressure_psi %>">
+              </div>
+              <div class="form-group col-md-4">
+                <label for="connection">connection: </label>
+                <input name="connection" id="connection" type="number" class="form-control" value="<%= product.order_information.connection %>">
+              </div>
+              <div class="form-group col-md-4">
+                <label for="cType">Connection Type: </label>
+                <input name="cType" id="cType" type="text" class="form-control" value="<%= product.order_information.connection_type %>">
+              </div>
+            </div>
+            <div class="row my-3">
+              <% product.dimensions.forEach(function(dim, i) { %>
+                <div class="form-group col-md-4">
+                  <label for="dim<%= i %>">Dimension <%= i+1 %>: </label>
+                  <input name="dim<%= i %>" id="dim<%= i %>" type="text" class="form-control" value="<%= dim %>">
+                </div>
+              <% }) %>
+            </div>
+            <div class="row">
+              <div class="form-group col-md-6">
+                <label for="price">Pricing: </label>
+                <input name="price" id="price" type="number" class="form-control" value="<%= product.pricing.retail %>">
+              </div>
+              <div class="form-group col-md-6">
+                <label for="qty">Quantity in Inventory: </label>
+                <input name="qty" id="qty" type="number" class="form-control" value="<%= product.qty %>">
+              </div>
+            </div>
+            <input name="model" type="text" value="<%= product.model %>" hidden>
+            <button style="display: block; margin: auto;" type="submit" class="mx-auto btn btn-primary">Save Updates to Product</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+  </body>
+
+  <!-- Scripts -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+
+</html>

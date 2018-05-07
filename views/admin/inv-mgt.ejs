@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>Order Management</title>
+  <title>Inventory Management</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <style type="text/css">
     body{
@@ -14,10 +14,9 @@
   </style>
   <script>
     function check() {
-      return confirm('Are you sure you want to delete this order?');
+      return confirm('Are you sure you want to delete this user?');
     }
-  </script>
-  
+  </script>  
 </head>
 
 <body>
@@ -33,45 +32,43 @@
   </div>
 
   <div class="container mt-5 mb-3">
-    <h3>Order List: Page <%= page %></h3>
-      <table class="table">
-        <thead>
-          <th scope="col">Order Name</th>
-          <th scope="col">Order Total</th>
-          <th scope="col">Date of Order</th>
-          <th scope="col">Order ID</th>
-          <th scope="col">User ID</th>
+    <h3>Product List</h3>
+    <input class="form-control" type="text" id="psearch" placeholder="Search for products">
+      <table class="table table-hover mt-3">
+        <thead class="table-secondary table-bordered">
+          <th scope="col">Product</th>
+          <th scope="col">Series</th>
+          <th scope="col">Model</th>
+          <th class="text-center" scope="col">Retail Price</th>
+          <th class="text-center" scope="col">Number in Inventory</th>
         </thead>
-        <% orders.forEach(function(order) { %>
-          <tr>
-            <td><%= order.name %></td>
-            <td>$<%= order.cart.total.toFixed(2) %></td>
-            <td><%= order.date %></td>
-            <td><a href="/api/orders/review/<%= order._id %>" target="_blank"><%= order._id %></a></td>
-            <td><%= order.user %></td>
-          </tr>
+        <tbody id="ptable">
+        <% products.forEach(function(product) { %>
+            <tr>
+              <td><%= product.title %></a></td>
+              <td><%= product.series %></td>
+              <td><a href="/admin/manage-product/<%= product.model %>" target="_blank"><%= product.model %></a></td>
+              <td class="text-center">$<%= product.pricing.retail %></td>
+              <td class="text-center"><%= product.qty %></td>
+            </tr>
         <% })%>
+        </tbody>
       </table>
-        <div class="row justify-content-md-center">
-          <div class="col-md-2">
-            <% if(page !== 1) { %>
-              <a href="/admin/order-mgt/<%= (page - 1) %>">&lt&lt Prev Page</a>
-            <% } %>
-          </div>
-          <div class="col-md-2">
-            Page: <%= page %>
-          </div>
-          <div class="col-md-2">
-            <% if(morePages) { %>
-              <a href="/admin/order-mgt/<%= (page + 1) %>">Next Page &gt&gt</a>
-            <% } %>
-          </div>
-      </div>
     </div>
   
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script>
+    $(document).ready(function(){
+      $("#psearch").on("keyup", function() {
+        let value = $(this).val().toLowerCase();
+        $("#ptable tr").filter(function() {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+      });
+    });
+    </script>
 </body>
 
 </html>
